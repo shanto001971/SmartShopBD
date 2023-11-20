@@ -1,14 +1,15 @@
 import { CiBookmark } from "react-icons/ci";
 import { TiShoppingCart } from "react-icons/ti";
 import { Carousel } from "react-responsive-carousel";
+import ReactStars from "react-rating-stars-component";
 
 
 
 
 const BannerSlider = () => {
     return (
-        <div className="lg:flex justify-between items-center">
-            <div className="flex flex-col gap-4 px-5">
+        <div className="lg:flex justify-between">
+            <div className="flex flex-col gap-4 px-5 lg:mt-32">
                 <h1 className="text-4xl uppercase font-bold">Air jordan 1 low</h1>
                 <p>High-quality Nike shoes with excellent comfort and durability.
                     <br />
@@ -18,7 +19,14 @@ const BannerSlider = () => {
                     <br />
                     worth it for the overall performance and style.
                 </p>
+                <div className="lg:flex items-center gap-3">
                 <p className="">Price: 1400 <span className="">Offer Price 1,200</span></p>
+                <ReactStars
+                    count={5}
+                    size={24}
+                    activeColor="#FED900"
+                />
+                </div>
                 <div className="flex items-center gap-3">
                     <button className="lg:w-[35%] inline-flex overflow-hidden text-white bg-gray-900 rounded group">
                         <span className="px-3.5 py-2 text-white bg-purple-500 group-hover:bg-purple-600 flex items-center justify-center">
@@ -34,13 +42,13 @@ const BannerSlider = () => {
 
             <div className="lg:w-[50%] mt-10 lg:mt-0">
                 <Carousel className="relative">
-                    <div className="bg-yellow-500 rounded-full w-[80%] mx-auto">
+                    <div className="bg-yellow-500 bg-opacity-40 rounded-full w-[90%] mx-auto">
                         <img src="https://i.ibb.co/hHHTdm1/png-clipart-removebg-preview.png" />
                     </div>
-                    <div className="bg-red-400 rounded-full w-[80%] mx-auto">
+                    <div className="bg-red-400 bg-opacity-40 rounded-full w-[90%] mx-auto">
                         <img src="https://i.ibb.co/hHHTdm1/png-clipart-removebg-preview.png" />
                     </div>
-                    <div className="bg-blue-500 rounded-full w-[80%] mx-auto">
+                    <div className="bg-blue-500 bg-opacity-40 rounded-full w-[90%] mx-auto">
                         <img src="https://i.ibb.co/hHHTdm1/png-clipart-removebg-preview.png" />
                     </div>
 
