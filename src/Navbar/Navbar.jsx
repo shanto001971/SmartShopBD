@@ -1,29 +1,29 @@
-
-import Home from "../Home/Home";
 import { NavLink } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 import { CiBookmark, CiSearch } from "react-icons/ci";
 
 const Navbar = () => {
     return (
-        <div className="drawer bg-transparent ">
+        <div className="drawer bg-black z-10">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
                 {/* Navbar */}
-                <div className="w-full navbar  bg-transparent z-10 ">
+                <div className="w-full navbar  bg-transparent">
                     <div className="flex-none lg:hidden">
                         <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                         </label>
                     </div>
                     <div className="flex-1 items-center gap-4 px-2 lg:ml-10">
-                        
+
                         <img className="w- h-6" src="https://pngimg.com/d/nike_PNG4.png" alt="" />
                     </div>
                     <div className="flex-none justify-evenly hidden lg:block ">
-                        <div className="flex justify-around items-center w-full mr-10">
+                        <div className="flex justify-around items-center w-full mr-10 p-6">
                             <div className="bg-[#1A1C1B]  flex gap-5 px-3 p-1 rounded-xl text-slate-300 items-center">
-                                <NavLink className={({ isActive, isPending }) =>
+                                <NavLink 
+                                to="/"
+                                className={({ isActive, isPending }) =>
                                     isActive
                                         ? "bg-white text-black rounded-3xl px-3 p-1"
                                         : isPending
@@ -34,10 +34,10 @@ const Navbar = () => {
                                     Home
                                 </NavLink>
                                 <NavLink
-                                    to="/Collection"
+                                    to="/collection"
                                     className={({ isActive, isPending }) =>
                                         isActive
-                                            ? "bg-white text-black rounded-xl px-5 p-3"
+                                            ? "bg-white text-black rounded-3xl px-3 p-1"
                                             : isPending
                                                 ? "pending"
                                                 : ""
@@ -48,7 +48,7 @@ const Navbar = () => {
                                     to="/Fashion"
                                     className={({ isActive, isPending }) =>
                                         isActive
-                                            ? "bg-white text-black rounded-xl px-3"
+                                            ? "bg-white text-black rounded-3xl px-3 p-1"
                                             : isPending
                                                 ? "pending"
                                                 : ""
@@ -60,7 +60,7 @@ const Navbar = () => {
                                     to="/New Collection"
                                     className={({ isActive, isPending }) =>
                                         isActive
-                                            ? "bg-white text-black rounded-xl px-3"
+                                            ? "bg-white text-black rounded-3xl px-3 p-1"
                                             : isPending
                                                 ? "pending"
                                                 : ""
@@ -72,7 +72,7 @@ const Navbar = () => {
                                     to="/Kids"
                                     className={({ isActive, isPending }) =>
                                         isActive
-                                            ? "bg-white text-black rounded-xl px-3"
+                                            ? "bg-white text-black rounded-3xl px-3 p-1"
                                             : isPending
                                                 ? "pending"
                                                 : ""
@@ -84,7 +84,7 @@ const Navbar = () => {
                                     to="/Woman Collection"
                                     className={({ isActive }) =>
                                         isActive
-                                            ? "bg-white text-black rounded-xl px-3"
+                                            ? "bg-white text-black rounded-3xl px-3 p-1"
                                             : ""
 
                                     }
@@ -108,14 +108,15 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-                <Home />
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side ">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200">
                     {/* Sidebar content here */}
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
+                    <div className="mt-10">
+                        <li><a>Sidebar Item 1</a></li>
+                        <li><a>Sidebar Item 2</a></li>
+                    </div>
                 </ul>
             </div>
         </div>

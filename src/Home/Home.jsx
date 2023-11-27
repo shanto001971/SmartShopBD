@@ -1,12 +1,16 @@
 import BannerSlider from "../BannerSlider/BannerSlider";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Card from "../CardSection/Card";
+import ImageHoverEffect from "../ImageHoverEffect/ImageHoverEffect";
 
 
 const Home = () => {
     return (
-        <div className="bg-black -my-20 text-white">
-           <div className="my-24 lg:mx-5">
+        <div className="">
+           <div className=" lg:mx-5">
            <BannerSlider/>
+           <Card/>
+           <ImageHoverEffect/>
            </div>
         </div>
     );

@@ -8,7 +8,7 @@ import ReactStars from "react-rating-stars-component";
 
 const BannerSlider = () => {
     return (
-        <div className="lg:flex justify-between">
+        <div className="lg:flex justify-between lg:mt-5">
             <div className="flex flex-col gap-4 px-5 lg:mt-32">
                 <h1 className="text-4xl uppercase font-bold">Air jordan 1 low</h1>
                 <p>High-quality Nike shoes with excellent comfort and durability.
@@ -20,13 +20,14 @@ const BannerSlider = () => {
                     worth it for the overall performance and style.
                 </p>
                 <div className="lg:flex items-center gap-3">
-                <p className="">Price: 1400 <span className="">Offer Price 1,200</span></p>
+                <p className="font-semibold">Price: 1400 <span className="">Offer Price 1,200</span></p>
                 <ReactStars
                     count={5}
                     size={24}
                     activeColor="#FED900"
                 />
                 </div>
+
                 <div className="flex items-center gap-3">
                     <button className="lg:w-[35%] inline-flex overflow-hidden text-white bg-gray-900 rounded group">
                         <span className="px-3.5 py-2 text-white bg-purple-500 group-hover:bg-purple-600 flex items-center justify-center">
@@ -54,12 +55,12 @@ const BannerSlider = () => {
 
 
                 </Carousel>
-                <div className="w-21 border absolute top-24 right-20 z-10 overflow-hidden hidden lg:block">
+                {/* <div className="w-21 border absolute top-24 right-5 overflow-hidden hidden lg:block text-white">
                     <div className="p-2 border">38</div>
                     <div className="p-2 border">39</div>
                     <div className="p-2 border bg-slate-100 text-black">40</div>
                     <div className="p-2 border">41</div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
