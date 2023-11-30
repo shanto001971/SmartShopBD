@@ -14,9 +14,9 @@ const Home = () => {
            <BannerSlider/>
            <Card/>
            <ImageHoverEffect/>
+           <ImageHoverEffect/>
            <ProductCard/>
            <ShowCase/>
-           <ImageHoverEffect/>
            <ProductCard/>
            <Review/>
            </div>

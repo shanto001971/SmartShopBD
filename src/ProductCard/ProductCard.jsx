@@ -2,7 +2,7 @@
 
 const ProductCard = () => {
     return (
-        <div className="lg:grid grid-cols-4 gap-3 lg:mx-4">
+        <div className="lg:grid grid-cols-4 gap-3 lg:mx-4 lg:mt-10">
             <div className="card card-compact bg-base-100 shadow-xl">
                 <figure><img className="h-52" src="https://i.ebayimg.com/images/g/7KMAAOSwakRjkr~j/s-l400.jpg" alt="Shoes" /></figure>
                 <div className="card-body">

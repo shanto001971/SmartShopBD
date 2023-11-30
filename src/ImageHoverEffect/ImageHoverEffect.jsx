@@ -18,13 +18,13 @@ const ImageHoverEffect = () => {
     };
 
     return (
-        <div className="mt-10 lg:flex justify-center gap-3 lg:p-4">
+        <div className="mt-5 lg:flex justify-center gap-3 lg:p-4 border rounded shadow-md">
             <div className="lg:w-[50%] ">
             <Zoom className="rounded-md" img="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" zoomScale={3} width={600} height={600} />
             </div>
             <div className="lg:flex flex-col gap-5 p-3 lg:p-8">
                 <h1 className="text-3xl">Stride in Style: Comfortable and Trendy Footwear for Every Occasion - Shop Now for the Perfect Pair!</h1>
-                <p className="bg-red-600 px-1 w-20 rounded">Save 40%</p>
+                <p className="bg-red-600 px-1 w-20 rounded text-white">Save 40%</p>
                 <div className="mt-10">
                     <p className="font-semibold">Smart shoes shop</p>
                     <p className="flex items-center gap-2">
