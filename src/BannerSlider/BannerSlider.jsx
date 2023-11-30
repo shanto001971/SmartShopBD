@@ -20,7 +20,7 @@ const BannerSlider = () => {
                     worth it for the overall performance and style.
                 </p>
                 <div className="lg:flex items-center gap-3">
-                <p className="font-semibold">Price: 1400 <span className="">Offer Price 1,200</span></p>
+                <p className="text-2xl mt-3">Price: 3000 <del className="text-lg">Tk: 3,800</del></p>
                 <ReactStars
                     count={5}
                     size={24}
