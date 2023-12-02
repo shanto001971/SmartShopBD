@@ -25,7 +25,7 @@ const Navbar = () => {
                                 to="/"
                                 className={({ isActive, isPending }) =>
                                     isActive
-                                        ? "bg-white text-black rounded-3xl px-3 p-1"
+                                        ? "bg-white text-black rounded-3xl px-3 p-1 animate-bounce"
                                         : isPending
                                             ? "pending"
                                             : ""
@@ -37,7 +37,7 @@ const Navbar = () => {
                                     to="/collection"
                                     className={({ isActive, isPending }) =>
                                         isActive
-                                            ? "bg-white text-black rounded-3xl px-3 p-1"
+                                            ? "bg-white text-black rounded-3xl px-3 p-1 animate-bounce"
                                             : isPending
                                                 ? "pending"
                                                 : ""
