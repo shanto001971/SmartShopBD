@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 import { CiBookmark, CiSearch } from "react-icons/ci";
+import "./NavStyle.css"
+
 
 const Navbar = () => {
     return (
@@ -25,7 +27,7 @@ const Navbar = () => {
                                 to="/"
                                 className={({ isActive, isPending }) =>
                                     isActive
-                                        ? "bg-white text-black rounded-3xl px-3 p-1 animate-bounce"
+                                        ? "bg-white text-black rounded-3xl px-3 p-1 custom-animation"
                                         : isPending
                                             ? "pending"
                                             : ""
@@ -37,7 +39,7 @@ const Navbar = () => {
                                     to="/collection"
                                     className={({ isActive, isPending }) =>
                                         isActive
-                                            ? "bg-white text-black rounded-3xl px-3 p-1 animate-bounce"
+                                            ? "bg-white text-black rounded-3xl px-3 p-1 custom-animation"
                                             : isPending
                                                 ? "pending"
                                                 : ""
@@ -48,7 +50,7 @@ const Navbar = () => {
                                     to="/Fashion"
                                     className={({ isActive, isPending }) =>
                                         isActive
-                                            ? "bg-white text-black rounded-3xl px-3 p-1"
+                                            ? "bg-white text-black rounded-3xl px-3 p-1 custom-animation"
                                             : isPending
                                                 ? "pending"
                                                 : ""
