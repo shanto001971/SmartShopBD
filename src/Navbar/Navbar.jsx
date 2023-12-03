@@ -1,5 +1,5 @@
 
-import { TiShoppingCart } from "react-icons/ti";
+import { BsCart } from "react-icons/bs";
 import { CiBookmark, CiSearch } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
@@ -45,7 +45,7 @@ const Navbar = () => {
                             </div>
 
                             <div className="flex items-center gap-5  ml-3 text-white ">
-                                <TiShoppingCart className="w-6 h-6" />
+                                <BsCart className="w-6 h-6"/>
                                 <CiBookmark className="w-6 h-6" />
                             </div>
                         </div>
