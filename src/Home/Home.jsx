@@ -5,19 +5,22 @@ import ImageHoverEffect from "../ImageHoverEffect/ImageHoverEffect";
 import ProductCard from "../ProductCard/ProductCard";
 import ShowCase from "../ShowCaseSection/ShowCase";
 import Review from "../ReviewSection/Review";
+import HeroSlider from "../HeroSection/HeroSlider";
 
 
 const Home = () => {
     return (
         <div className="">
+            <HeroSlider/>
            <div className=" lg:mx-5">
-           <BannerSlider/>
+            
            <Card/>
            <ImageHoverEffect/>
            <ImageHoverEffect/>
            <ProductCard/>
            <ShowCase/>
            <ProductCard/>
+           <BannerSlider/>
            <Review/>
            </div>
         </div>
