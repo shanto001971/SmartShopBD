@@ -15,7 +15,6 @@ const NavItemMenu = () => {
                 <li>
                     <select
                         className=""
-                        value={selectedOption}
                         onChange={handleSelectChange}
                     >
                         <option value="" className="p-0">Gadgets<FaAngleDown /></option>
@@ -28,7 +27,6 @@ const NavItemMenu = () => {
                 <li>
                     <select
                         className=""
-                        value={selectedOption}
                         onChange={handleSelectChange}
                     >
                         <option value="" disabled>Jewelry<FaAngleDown /></option>
@@ -41,7 +39,6 @@ const NavItemMenu = () => {
                 <li>
                     <select
                         className=""
-                        value={selectedOption}
                         onChange={handleSelectChange}
                     >
                         <option value="" disabled>Leather<FaAngleDown /></option>

@@ -39,9 +39,24 @@ const Navbar = () => {
                     </div>
                     <div className="flex-none justify-evenly hidden lg:block ">
                         <div className="flex justify-between items-center w-full mr-10 p-6 ">
-                            <div className="text-slate-300 pr-6 border-e-2">
+                            <div className="text-slate-300 pr-6 border-e-2 ">
                                 <p>Login / SignUp</p>
-                                <button className="flex items-center gap-2 font-medium ">My account <FaAngleDown /></button>
+                                <button onClick={() => document.getElementById('my_modal_1').showModal()} className="flex items-center gap-2 font-medium ">My account <FaAngleDown /></button>
+                                <dialog id="my_modal_1" className="modal ">
+                                    <div className="modal-box relative">
+                                        <div className="">
+                                            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                                            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                                            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                                        </div>
+                                        <div className="modal-action absolute -top-7 right-0">
+                                            <form method="dialog">
+                                                {/* if there is a button in form, it will close the modal */}
+                                                <button className="btn">Close</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </dialog>
                             </div>
 
                             <div className="flex items-center gap-5  ml-3 text-white ">
