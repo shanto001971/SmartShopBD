@@ -29,7 +29,7 @@ const Navbar = () => {
                                 value={selectedOption}
                                 onChange={handleSelectChange}
                             >
-                                <option value="" disabled>All categorig <FaAngleDown /></option>
+                                <option value="" disabled>All categories <FaAngleDown /></option>
                                 <option value="strapi">Strapi</option>
                                 <option value="ghost">Ghost</option>
                                 <option value="netlify">Netlify CMS</option>
@@ -45,7 +45,10 @@ const Navbar = () => {
                             </div>
 
                             <div className="flex items-center gap-5  ml-3 text-white ">
-                                <BsCart className="w-6 h-6"/>
+                                <div className="relative">
+                                    <BsCart className="w-6 h-6" />
+                                    <div className="badge badge-secondary p-[5px] rounded-full absolute -top-3 -right-3">0</div>
+                                </div>
                                 <CiBookmark className="w-6 h-6" />
                             </div>
                         </div>
