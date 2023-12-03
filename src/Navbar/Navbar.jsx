@@ -1,109 +1,50 @@
-import { NavLink } from "react-router-dom";
+
 import { TiShoppingCart } from "react-icons/ti";
 import { CiBookmark, CiSearch } from "react-icons/ci";
-import "./NavStyle.css"
-
+import { FaAngleDown } from "react-icons/fa6";
+import { useState } from "react";
 
 const Navbar = () => {
+    const [selectedOption, setSelectedOption] = useState('');
+
+    const handleSelectChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
     return (
         <div className="drawer bg-black z-10">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
                 {/* Navbar */}
-                <div className="w-full navbar  bg-transparent">
-                    <div className="flex-none lg:hidden">
-                        <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                        </label>
-                    </div>
-                    <div className="flex-1 items-center gap-4 px-2 lg:ml-10">
+                <div className="w-full navbar  bg-transparent flex justify-between">
+                    <div className="lg:mx-10">
 
                         <img className="w- h-6" src="https://pngimg.com/d/nike_PNG4.png" alt="" />
                     </div>
+                    <div className="w-[50%]">
+                        <form className="flex items-center w-full relative">
+                            <input className="bg-white p-2 rounded-s-lg w-full" type="text" />
+                            <button className="bg-white text-black p-3 px-4 rounded-r-lg "><CiSearch /></button>
+                            <select
+                                className="absolute right-12 py-[7px]"
+                                value={selectedOption}
+                                onChange={handleSelectChange}
+                            >
+                                <option value="" disabled>All categorig <FaAngleDown /></option>
+                                <option value="strapi">Strapi</option>
+                                <option value="ghost">Ghost</option>
+                                <option value="netlify">Netlify CMS</option>
+                                <option value="sanity">Sanity</option>
+                            </select>
+                        </form>
+                    </div>
                     <div className="flex-none justify-evenly hidden lg:block ">
-                        <div className="flex justify-around items-center w-full mr-10 p-6">
-                            <div className="bg-[#1A1C1B]  flex gap-5 px-3 p-1 rounded-xl text-slate-300 items-center">
-                                <NavLink 
-                                to="/"
-                                className={({ isActive, isPending }) =>
-                                    isActive
-                                        ? "bg-white text-black rounded-3xl px-3 p-1 custom-animation"
-                                        : isPending
-                                            ? "pending"
-                                            : ""
-                                }
-                                >
-                                    Home
-                                </NavLink>
-                                <NavLink
-                                    to="/collection"
-                                    className={({ isActive, isPending }) =>
-                                        isActive
-                                            ? "bg-white text-black rounded-3xl px-3 p-1 custom-animation"
-                                            : isPending
-                                                ? "pending"
-                                                : ""
-                                    }>
-                                    Collection
-                                </NavLink>
-                                <NavLink
-                                    to="/Fashion"
-                                    className={({ isActive, isPending }) =>
-                                        isActive
-                                            ? "bg-white text-black rounded-3xl px-3 p-1 custom-animation"
-                                            : isPending
-                                                ? "pending"
-                                                : ""
-                                    }
-                                >
-                                    Fashion
-                                </NavLink>
-                                <NavLink
-                                    to="/New Collection"
-                                    className={({ isActive, isPending }) =>
-                                        isActive
-                                            ? "bg-white text-black rounded-3xl px-3 p-1"
-                                            : isPending
-                                                ? "pending"
-                                                : ""
-                                    }
-                                >
-                                    New Collection
-                                </NavLink>
-                                <NavLink
-                                    to="/Kids"
-                                    className={({ isActive, isPending }) =>
-                                        isActive
-                                            ? "bg-white text-black rounded-3xl px-3 p-1"
-                                            : isPending
-                                                ? "pending"
-                                                : ""
-                                    }
-                                >
-                                    Kids
-                                </NavLink>
-                                <NavLink
-                                    to="/Woman Collection"
-                                    className={({ isActive }) =>
-                                        isActive
-                                            ? "bg-white text-black rounded-3xl px-3 p-1"
-                                            : ""
-
-                                    }
-                                >
-                                    Woman Collection
-                                </NavLink>
+                        <div className="flex justify-between items-center w-full mr-10 p-6 ">
+                            <div className="text-slate-300 pr-6 border-e-2">
+                                <p>Login / SignUp</p>
+                                <button className="flex items-center gap-2 font-medium ">My account <FaAngleDown /></button>
                             </div>
-                            <ul className="menu menu-horizontal bg-[#1A1C1B]  flex gap-5  p-0 rounded-xl text-slate-300 border ">
-                                {/* Navbar menu content here */}
-                                <div className="">
-                                    <form className="flex items-center">
-                                        <input className="bg-[#1A1C1B] p-2 rounded-lg" type="text" />
-                                        <button className="bg-white text-black p-3 px-4 rounded-lg"><CiSearch /></button>
-                                    </form>
-                                </div>
-                            </ul>
-                            <div className="flex items-center gap-5 mr-10 ml-3 text-white">
+
+                            <div className="flex items-center gap-5  ml-3 text-white ">
                                 <TiShoppingCart className="w-6 h-6" />
                                 <CiBookmark className="w-6 h-6" />
                             </div>

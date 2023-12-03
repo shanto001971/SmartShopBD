@@ -8,7 +8,7 @@ import ReactStars from "react-rating-stars-component";
 
 const BannerSlider = () => {
     return (
-        <div className="lg:flex justify-between lg:mt-5">
+        <div className="lg:flex justify-between lg:mt-10">
             <div className="flex flex-col gap-4 px-5 lg:mt-32">
                 <h1 className="text-4xl uppercase font-bold">Air jordan 1 low</h1>
                 <p>High-quality Nike shoes with excellent comfort and durability.
