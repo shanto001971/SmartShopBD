@@ -47,15 +47,15 @@ const EndSection = () => {
 
     return (
         <div className="lg:flex mt-10 border">
-            <div className="lg:w-[50%] lg:flex">
-                <div className="w-[20%] lg:flex flex-col gap-3 ">
+            <div className="lg:w-[50%] lg:flex ">
+                <div className="w-[20%] lg:flex lg:flex-col gap-3  flex border">
                     {
-                        productData.slice(0, 4).map((dataInf, i) => <img onClick={() => setCard(dataInf)} className="border" key={i} src={dataInf?.productsImage} alt="" />)
+                        productData.slice(0, 4).map((dataInf, i) => <img onClick={() => setCard(dataInf)} className={`cursor-pointer ${card === dataInf ? "border-2 border-blue-500" : "border"}`} key={i} src={dataInf?.productsImage} alt="" />)
                     }
 
 
                 </div>
-                <div className="w-[80%]">
+                <div className="lg:w-[80%]">
                     <img src={card?.productsImage} alt="" />
                 </div>
             </div>
@@ -85,7 +85,7 @@ const EndSection = () => {
                         <div onClick={() => setShoesColoer("Black")} className="p-3 bg-black border border-red-500 w-10"></div>
                         <div onClick={() => setShoesColoer("Yellow")} className="p-3 bg-amber-300 border border-red-500 w-10"></div>
                     </div>
-                    <p className="text-2xl mt-3">{card?.price} <del className="text-lg">Tk: 3,800</del></p>
+                    <p className="text-2xl mt-3">Tk {card?.price} <del className="text-lg">Tk: 3,800</del></p>
                     <div className="mt-4 border w-44 p-[10px] flex">
                         <button className="px-5" onClick={decrementQuantity}>-</button>
                         <span className="px-6  ">{quantity}</span>

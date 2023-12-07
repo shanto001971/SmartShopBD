@@ -17,13 +17,14 @@ const Home = () => {
            <div className=" lg:mx-5">
             <OurCollection/>
            <Card/>
-           <ImageHoverEffect/>
+           <EndSection/>
            <ImageHoverEffect/>
            <ProductCard/>
            <ShowCase/>
            <ProductCard/>
            <BannerSlider/>
            <EndSection/>
+           <ImageHoverEffect/>
            <Review/>
            </div>
         </div>
