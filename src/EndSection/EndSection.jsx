@@ -47,7 +47,7 @@ const EndSection = () => {
 
     return (
         <div className="lg:flex mt-10 border">
-            <div className="lg:w-[50%] lg:flex ">
+            <div className="lg:w-[60%] lg:flex ">
                 <div className="w-[20%] lg:flex lg:flex-col gap-3  flex border">
                     {
                         productData.slice(0, 4).map((dataInf, i) => <img onClick={() => setCard(dataInf)} className={`cursor-pointer ${card === dataInf ? "border-2 border-blue-500" : "border"}`} key={i} src={dataInf?.productsImage} alt="" />)
@@ -66,9 +66,11 @@ const EndSection = () => {
                     <p className="font-semibold">{card?.shopName}</p>
                     <p className="flex items-center gap-2">
                         <ReactStars
-                            count={card?.reviews}
+                            rating={card?.reviews}
                             size={24}
-                            activeColor="#FED900"
+                            // activeColor="#FED900"
+                            starRatedColor="#FED900"
+                            isHalf={true}
                         />
                         {card?.reviews}
                     </p>
