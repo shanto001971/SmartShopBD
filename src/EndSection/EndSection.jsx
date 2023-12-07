@@ -5,8 +5,11 @@ import ReactStars from "react-rating-stars-component";
 const EndSection = () => {
     const [quantity, setQuantity] = useState(1);
     const [shoesColor, setShoesColoer] = useState("White")
-    const [card, setCard] = useState({})
+    const [card, setCard] = useState(null)
     const [productData, setProductData] = useState([])
+    const [loading, setLoading] = useState(true);
+
+
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
     };
@@ -20,17 +23,34 @@ const EndSection = () => {
     useEffect(() => {
         fetch("CardInfo.json")
             .then(res => res.json())
-            .then(data => setProductData(data))
-    }, [])
+            .then(data => {
+                setProductData(data);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+                setLoading(false);
+            });
+    }, []);
 
-    console.log(card)
+
+    if (loading) {
+        return <div className="text-center">Loading...</div>;
+    }
+
+    if (!card) {
+        productData.map(dataItem => setCard(dataItem))
+    }
+
+
+    // console.log(card)
 
     return (
         <div className="lg:flex mt-10 border">
             <div className="lg:w-[50%] lg:flex">
                 <div className="w-[20%] lg:flex flex-col gap-3 ">
                     {
-                        productData.slice(0,4).map((dataInf,i)=><img onClick={()=>setCard(dataInf)} className="border" key={i}  src={dataInf?.productsImage} alt="" />)
+                        productData.slice(0, 4).map((dataInf, i) => <img onClick={() => setCard(dataInf)} className="border" key={i} src={dataInf?.productsImage} alt="" />)
                     }
 
 
