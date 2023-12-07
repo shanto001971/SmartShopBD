@@ -7,6 +7,7 @@ import ShowCase from "../ShowCaseSection/ShowCase";
 import Review from "../ReviewSection/Review";
 import HeroSlider from "../HeroSection/HeroSlider";
 import OurCollection from "../OurCollectionSection/OurCollection";
+import EndSection from "../EndSection/EndSection";
 
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
            <ShowCase/>
            <ProductCard/>
            <BannerSlider/>
+           <EndSection/>
            <Review/>
            </div>
         </div>

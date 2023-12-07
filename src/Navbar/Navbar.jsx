@@ -11,16 +11,15 @@ const Navbar = () => {
         setSelectedOption(event.target.value);
     };
     return (
-        <div className="drawer bg-black z-10">
-            <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col">
+        <div className="drawer ">
+            <input id="my-drawer-3" type="checkbox" className="drawer-toggle " />
+            <div className="drawer-content flex flex-col bg-black ">
                 {/* Navbar */}
                 <div className="w-full navbar  bg-transparent flex justify-between">
                     <div className="lg:mx-10">
-
                         <img className="w- h-6" src="https://pngimg.com/d/nike_PNG4.png" alt="" />
                     </div>
-                    <div className="w-[50%]">
+                    <div className="w-[50%] hidden lg:block">
                         <form className="flex items-center w-full relative">
                             <input className="bg-white p-2 rounded-s-lg w-full" type="text" />
                             <button className="bg-white text-black p-3 px-4 rounded-r-lg "><CiSearch /></button>
@@ -70,7 +69,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <div className="drawer-side ">
+            <div className="drawer-side">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200">
                     {/* Sidebar content here */}

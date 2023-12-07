@@ -1,0 +1,50 @@
+[
+    {
+        "productsImage": "https://www.bdstall.com/asset/product-image/giant_200304.jpg",
+        "productTitle": "Smartphone XYZ - High-Resolution Camera, 128GB Storage, 6.5\" Display, 20% Off Today!",
+        "discounts": 20,
+        "shopName": "TechGadgets Store",
+        "reviews": 4.5,
+        "price": 499.99
+    },
+    {
+        "productsImage": "https://www.shopz.com.bd/wp-content/uploads/2021/12/LIGE-9866-Men-Quartz-Watch-1.jpg",
+        "productTitle": "Wireless Headphones ABC - Noise-Canceling, Bluetooth Connectivity, 15% Discount!",
+        "discounts": 15,
+        "shopName": "AudioEmporium",
+        "reviews": 4.2,
+        "price": 89.99
+    },
+    {
+        "productsImage": "https://timex.eu/cdn/shop/products/TW2V27500_7d5ce90e-646e-4eb9-8117-928c8cd4ff27.png?v=1687312318&width=990",
+        "productTitle": "Laptop DEF - Powerful Performance, 1TB SSD, 25% Off Limited Time Offer!",
+        "discounts": 25,
+        "shopName": "ElectroTech Hub",
+        "reviews": 4.7,
+        "price": 1099.99
+    },
+    {
+        "productsImage": "https://dropshop.com.bd/wp-content/uploads/2023/08/QCY-HT07-.jpeg",
+        "productTitle": "Fitness Tracker 123 - Heart Rate Monitor, Water-Resistant, 10% Discount!",
+        "discounts": 10,
+        "shopName": "ActiveGear Outlet",
+        "reviews": 4.0,
+        "price": 49.99
+    },
+    {
+        "productsImage": "https://www.kinasamall.com/cdn/shop/products/M10TWS3_1024x1024@2x.jpg?v=1607813467",
+        "productTitle": "Coffee Maker EFG - Programmable, 12-Cup Capacity, 30% Off for Coffee Lovers!",
+        "discounts": 30,
+        "shopName": "KitchenWonders",
+        "reviews": 4.8,
+        "price": 79.99
+    },
+    {
+        "productsImage": "https://blackbud.com.bd/wp-content/uploads/2023/01/Realme-Buds-T100-TWS-Earphone-RMA2109.webp",
+        "productTitle": "4K Smart TV HIJ - 55\" Display, Dolby Vision, 18% Off - Elevate Your Viewing Experience!",
+        "discounts": 18,
+        "shopName": "HomeElectronics Center",
+        "reviews": 4.6,
+        "price": 799.99
+    }
+]
