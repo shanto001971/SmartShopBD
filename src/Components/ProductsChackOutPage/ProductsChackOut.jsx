@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { useParams } from "react-router-dom";
+import RightBar from "./RightBar";
 
 const ProductsChackOut = () => {
     const { id } = useParams()
@@ -9,7 +10,6 @@ const ProductsChackOut = () => {
 
     const [quantity, setQuantity] = useState(1);
     const [shoesColor, setShoesColoer] = useState("White")
-    const [card, setCard] = useState(null)
     const [productData, setProductData] = useState({})
     const [loading, setLoading] = useState(true);
 
@@ -112,8 +112,8 @@ const ProductsChackOut = () => {
             </div>
 
 
-            <div className="p-2">
-                right side items
+            <div className="">
+                <RightBar/>
             </div>
         </div>
     );
