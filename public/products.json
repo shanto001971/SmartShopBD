@@ -1,0 +1,198 @@
+
+[
+
+    {
+        "productsImage": "https://www.bdstall.com/asset/product-image/giant_200304.jpg",
+        "productTitle": "Smartphone XYZ - High-Resolution Camera, 128GB Storage, 6.5\" Display, 20% Off Today!",
+        "discounts": 20,
+        "shopName": "TechGadgets Store",
+        "reviews": 4.5,
+        "price": 499.99,
+        "category": "Electronics"
+    },
+    {
+        "productsImage": "https://www.shopz.com.bd/wp-content/uploads/2021/12/LIGE-9866-Men-Quartz-Watch-1.jpg",
+        "productTitle": "Wireless Headphones ABC - Noise-Canceling, Bluetooth Connectivity, 15% Discount!",
+        "discounts": 15,
+        "shopName": "AudioEmporium",
+        "reviews": 4.2,
+        "price": 89.99,
+        "category": "Electronics"
+    },
+    {
+        "productsImage": "https://timex.eu/cdn/shop/products/TW2V27500_7d5ce90e-646e-4eb9-8117-928c8cd4ff27.png?v=1687312318&width=990",
+        "productTitle": "Laptop DEF - Powerful Performance, 1TB SSD, 25% Off Limited Time Offer!",
+        "discounts": 25,
+        "shopName": "ElectroTech Hub",
+        "reviews": 4.7,
+        "price": 1099.99,
+        "category": "Electronics"
+    },
+    {
+        "productsImage": "https://dropshop.com.bd/wp-content/uploads/2023/08/QCY-HT07-.jpeg",
+        "productTitle": "Fitness Tracker 123 - Heart Rate Monitor, Water-Resistant, 10% Discount!",
+        "discounts": 10,
+        "shopName": "ActiveGear Outlet",
+        "reviews": 4.0,
+        "price": 49.99,
+        "category": "Electronics"
+    },
+    {
+        "productsImage": "https://www.kinasamall.com/cdn/shop/products/M10TWS3_1024x1024@2x.jpg?v=1607813467",
+        "productTitle": "Coffee Maker EFG - Programmable, 12-Cup Capacity, 30% Off for Coffee Lovers!",
+        "discounts": 30,
+        "shopName": "KitchenWonders",
+        "reviews": 4.8,
+        "price": 79.99,
+        "category": "Electronics"
+    },
+    {
+        "productsImage": "https://blackbud.com.bd/wp-content/uploads/2023/01/Realme-Buds-T100-TWS-Earphone-RMA2109.webp",
+        "productTitle": "4K Smart TV HIJ - 55\" Display, Dolby Vision, 18% Off - Elevate Your Viewing Experience!",
+        "discounts": 18,
+        "shopName": "HomeElectronics Center",
+        "reviews": 4.6,
+        "price": 799.99,
+        "category": "Electronics"
+    },
+    {
+      "productsImage": "https://www.bdstall.com/asset/product-image/giant_200304.jpg",
+      "productTitle": "Smartphone XYZ - High-Resolution Camera, 128GB Storage, 6.5\" Display, 20% Off Today!",
+      "discounts": 20,
+      "shopName": "TechGadgets Store",
+      "reviews": 4.5,
+      "oldPrice": 599.99,
+      "newPrice": 479.99,
+      "category": "Electronics"
+    },
+    {
+      "productsImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd4fiIS5fSutekkSVCuorS5vzEvs7JfFB5DTGwFav-dHvJklcQVN9h9JqfJkgMjRVxs2Q&usqp=CAU",
+      "productTitle": "ONLY Curve ONCNOVA LIFE STRAP ALEXA DRESS - Day dress - grapemist/blue - Zalando.co.uk",
+      "discounts": 15,
+      "shopName": "ElectroDeals",
+      "reviews": 4.2,
+      "oldPrice": 899.99,
+      "newPrice": 764.99,
+      "category": "FemaleDress"
+    },
+    {
+      "productsImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuwpOkzPueOEQv9hj-TopFRrPsU9do1seJhwvU1-1byhtWCcuFsHC_L_8Aa12-7jHIGlE&usqp=CAU",
+      "productTitle": "Hire EFFIE KATS Riviera Set in Black (Maxi Skirt + LS Crop Top) – TheOnlyDress Hire",
+      "discounts": 30,
+      "shopName": "GadgetHub",
+      "reviews": 4.8,
+      "oldPrice": 129.99,
+      "newPrice": 90.99,
+      "category": "FemaleDress"
+    },
+    {
+      "productsImage": "https://ae01.alicdn.com/kf/HTB1RH5Rah_rK1RkHFqDq6yJAFXaM/AIJINGYU-Wedding-Dress-Plain-Nice-Gowns-Designer-Sweden-3Xl-Boutiques-Online-Sale-Plus-Size-Gown-Wedding.jpg_Q90.jpg_.webp",
+      "productTitle": "Headphones HD-500 - Noise Cancelling, Wireless, Crystal Clear Sound, 15% Off!",
+      "discounts": 15,
+      "shopName": "AudioEmporium",
+      "reviews": 4.0,
+      "oldPrice": 129.99,
+      "newPrice": 110.49,
+      "category": "FemaleDress"
+    },
+    {
+      "productsImage": "https://i.pinimg.com/736x/39/ee/86/39ee86ec20058377b97e949a76d64813.jpg",
+      "productTitle": "Muslim Wedding Dress Collection 👰 Our latest model available on order only.. Dress can be",
+      "discounts": 10,
+      "shopName": "PhotoPros",
+      "reviews": 4.7,
+      "oldPrice": 799.99,
+      "newPrice": 719.99,
+      "category": "FemaleDress"
+    },
+    {
+      "productsImage": "https://static-01.daraz.com.bd/p/9f3f0cc497f3e59cb78f05d60d96199e.jpg_750x750.jpg_.webp",
+      "productTitle": "Men`s Winter Cotton White Long Sleeve Hoodie For Man",
+      "discounts": 25,
+      "shopName": "GameNest",
+      "reviews": 4.9,
+      "oldPrice": 499.99,
+      "newPrice": 374.99,
+      "category": "Gaming"
+    },
+    {
+      "productsImage": "https://static-01.daraz.com.bd/p/314447069066d7c25f4bed9cb2e35d2d.jpg_300x0q75.webp",
+      "productTitle": "Men`s Winter Cotton White Long Sleeve Hoodie For Man",
+      "discounts": 15,
+      "shopName": "EduTech Solutions",
+      "reviews": 4.6,
+      "oldPrice": 199.99,
+      "newPrice": 169.99,
+      "category": "Education"
+    },
+    {
+      "productsImage": "https://static-01.daraz.com.bd/p/2ffd75121de46003e9a2e95f81392e1a.jpg_300x0q75.webp",
+      "productTitle": "New Style Winter Comfortable Hodi for Man",
+      "discounts": 30,
+      "shopName": "FitZone",
+      "reviews": 4.5,
+      "oldPrice": 79.99,
+      "newPrice": 55.99,
+      "category": "Fitness"
+    },
+    {
+      "productsImage": "https://static-01.daraz.com.bd/p/2174ffb1155d23667b74b6ce4ad3a1ff.jpg_300x0q75.webp",
+      "productTitle": "Sneakers for men white plain lace up trendy model classic shoes. ",
+      "discounts": 20,
+      "shopName": "PrintCraft",
+      "reviews": 4.4,
+      "oldPrice": 299.99,
+      "newPrice": 239.99,
+      "category": "Printers"
+    },
+    {
+      "productsImage": "https://static-01.daraz.com.bd/p/a9f33b3cd224a050e11e3fce82f40549.jpg_300x0q75.webp",
+      "productTitle": "Stylish and Fashionable Winter and Summer Exclusive Sneakers",
+      "discounts": 15,
+      "shopName": "HomeEntertain",
+      "reviews": 4.3,
+      "oldPrice": 399.99,
+      "newPrice": 339.99,
+      "category": "Home Entertainment"
+    },
+    {
+      "productsImage": "https://static-01.daraz.com.bd/p/856096147ac50e07cc7eae1ce3f478c8.jpg_300x0q75.webp",
+      "productTitle": "Indispensable -Hot Collection Stylish and Fashionable Winter",
+      "discounts": 25,
+      "shopName": "AudioTech",
+      "reviews": 4.6,
+      "oldPrice": 129.99,
+      "newPrice": 97.49,
+      "category": "Audio"
+    },
+    {
+      "productsImage": "https://static-01.daraz.com.bd/p/062692e61572900ca15440129c3c84c1.jpg_300x0q75.webp",
+      "productTitle": "New Trendy Look Very Stylish Black Sunglass for Men 2022",
+      "discounts": 15,
+      "shopName": "SafeGuard",
+      "reviews": 4.2,
+      "oldPrice": 79.99,
+      "newPrice": 67.99,
+      "category": "Security"
+    },
+    {
+        "productsImage": "https://static-01.daraz.com.bd/p/485427940d27ebe13a5fed2e536c30ee.jpg_300x0q75.webp",
+        "productTitle": "Full White Sunglasses For Men",
+        "discounts": 25,
+        "shopName": "AudioTech",
+        "reviews": 4.6,
+        "oldPrice": 129.99,
+        "newPrice": 97.49,
+        "category": "Audio"
+      },
+      {
+        "productsImage": "https://static-01.daraz.com.bd/p/3a95d5d5e63edd392fbc440edd384044.jpg_300x0q75.webp",
+        "productTitle": "Blue Light Double Beam Silver Frame Style Sunglasses for Men",
+        "discounts": 15,
+        "shopName": "SafeGuard",
+        "reviews": 4.2,
+        "oldPrice": 79.99,
+        "newPrice": 67.99,
+        "category": "Security"
+      }
+]

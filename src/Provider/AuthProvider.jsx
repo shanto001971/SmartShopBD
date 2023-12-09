@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import { createContext } from "react";
 import { useState } from "react";
@@ -39,6 +39,21 @@ const AuthProvider = ({ children }) => {
     }
 
 
+    const UserEmailVerify = () => {
+        return sendEmailVerification(auth.currentUser)
+
+        // .then(() => {
+        //     // Email verification sent!
+        //     console.log("Email verification sent!");
+        //     // Update UI elements
+        //     disableFeaturesUntilVerification();
+        // })
+        // .catch((error) => {
+        //     console.error("Error sending email verification", error);
+        // });
+    }
+
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
@@ -56,7 +71,8 @@ const AuthProvider = ({ children }) => {
         LogInUser,
         singUpUser,
         LogOutUser,
-        UpdateUserProfile
+        UpdateUserProfile,
+        UserEmailVerify
 
     }
 
