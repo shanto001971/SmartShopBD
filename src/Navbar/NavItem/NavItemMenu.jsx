@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
 const NavItemMenu = () => {
@@ -11,7 +12,7 @@ const NavItemMenu = () => {
     return (
         <div className="">
             <ul className="menu menu-horizontal px-1 items-center gap-3">
-                <li className="border rounded-md"><a>Home</a></li>
+                <Link to="/"><li className="border rounded-md"><a>Home</a></li></Link>
                 <li className="border rounded-md">
                     <select
                         className=""

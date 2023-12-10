@@ -91,10 +91,10 @@ const ProductsChackOut = () => {
 
     return (
         <div className="">
-            <div className="lg:flex lg:px-5 mt-5">
+            <div className="lg:flex lg:px-5 mt-5 ">
 
-                <div className="lg:flex border w-[75%] rounded-md">
-                    <div className="lg:w-[50%] flex flex-col gap-2">
+                <div className="lg:flex border lg:w-[75%] rounded-md ">
+                    <div className="lg:w-[50%] flex flex-col gap-2 ">
                         <div className="h-[68%] ">
                             <img className="w-full h-[100%] rounded-md" src={productData?.productsImage} alt="" />
                         </div>
@@ -161,10 +161,10 @@ const ProductsChackOut = () => {
             </div>
 
             <div className="w-full flex ">
-                <div className="w-[80%] ">
+                <div className="lg:w-[80%] ">
                     <RatingReviews />
 
-                    <div className="flex justify-between items-center gap-3 border mx-5 py-3 px-3">
+                    <div className="flex justify-between items-center gap-3 border mx-5 py-3 px-3 overflow-hidden">
                         <div className="flex items-center gap-3">
                             <div className="flex items-center gap-2 border px-2 rounded-md p-1">
                                 <FiCamera className="w-5 h-5" />
@@ -207,7 +207,7 @@ const ProductsChackOut = () => {
                     </div>
                     <Reviews data={productData} />
                 </div>
-                <div className="w-[20%] mt-8 p-2 flex flex-col gap-3">
+                <div className="w-[20%] mt-8 p-2 flex flex-col gap-3 ">
                     {cardData?.slice(10, 14).map(singleData => <ProductsUseCard key={singleData?._id} data={singleData} />)
 
                     }

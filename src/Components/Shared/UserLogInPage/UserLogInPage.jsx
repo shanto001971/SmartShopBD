@@ -25,7 +25,7 @@ const UserLogInPage = () => {
                 Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: "Your work has been saved",
+                    title: "LogIn SuccessFully",
                     showConfirmButton: false,
                     timer: 1500
                   });

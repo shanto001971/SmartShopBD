@@ -6,7 +6,7 @@ const Reviews = ({ data }) => {
     // console.log(data)
     return (
         <div className="">
-            <div className='mx-5 border mt-5 p-5'>
+            <div className='mx-5 border mt-5 p-5 overflow-hidden'>
                 <div className="flex">
                     <div className="flex items-center px-2 rounded-md">
                         <img className='w-[16px]' src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png" alt=""></img>

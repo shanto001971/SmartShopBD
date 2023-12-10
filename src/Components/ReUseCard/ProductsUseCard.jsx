@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 
 
 const ProductsUseCard = ({ data }) => {
-    console.log(data)
+    // console.log(data)
     return (
-        <Link>
             <Link to={`/cardCollection/${data?._id}`}>
-                <div className="card card-compact bg-base-100 shadow-xl overflow-hidden relative">
+                <div className="card card-compact bg-base-100 shadow-xl overflow-hidden relative hidden lg:block">
                     <figure><img className="h-52 w-full" src={data?.productsImage} alt="Shoes" /></figure>
                     <p className="bg-red-600 px-1 w-20 rounded text-white absolute">Save {data?.discounts}%</p>
                     <div className="card-body">
@@ -21,7 +20,7 @@ const ProductsUseCard = ({ data }) => {
                     </div>
                 </div>
             </Link>
-        </Link>
+        
     );
 };
 

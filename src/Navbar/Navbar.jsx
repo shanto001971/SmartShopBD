@@ -21,7 +21,7 @@ const Navbar = () => {
             .catch(() => { })
     }
 
-    console.log(user)
+    // console.log(user)
 
     return (
         <div className="drawer ">
@@ -55,7 +55,7 @@ const Navbar = () => {
                         <div className="flex justify-between items-center w-full mr-10 p-6 ">
                             {
                                 user ? <div className="text-slate-300 pr-6 border-e-2 ">
-                                    <p>Login / SignUp</p>
+                                    {user?<p>Hi..{user?.displayName}</p>:<p>Login / SignUp</p>}
                                     <button className="flex items-center gap-2 font-medium " onClick={() => document.getElementById('my_modal_1').showModal()}>My account <FaAngleDown /></button>
                                 </div> : <Link to="/logIn">
                                     <div className="text-slate-300 pr-6 border-e-2 ">
