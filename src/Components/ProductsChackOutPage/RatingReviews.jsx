@@ -2,11 +2,12 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { CiStar } from "react-icons/ci";
 
+
 const RatingReviews = () => {
     return (
         <div className="mt-5 lg:flex">
-            <div className="lg:flex  p-5 lg:w-[80%]">
-                <div className="flex flex-col gap-2 p-3 border lg:px-8">
+            <div className="lg:flex  p-5 lg:w-[100%]">
+                <div className="flex flex-col gap-2 p-3 border lg:px-8 rounded-tl-2xl">
                     <div className="flex items-center gap-2 ">
                         <h1 className="text-4xl">3.7</h1>
                         <h4 className="bg-[#FED900] px-[2px] w-16 text-center rounded flex items-center gap-1"><CiStar /> Good</h4>
@@ -21,7 +22,7 @@ const RatingReviews = () => {
 
                 </div>
 
-                <div className="flex flex-col gap-3 border p-3 lg:px-8 w-full">
+                <div className="flex flex-col gap-3 border p-3 lg:px-8 w-full rounded-tr-2xl">
                     <div className="flex items-center gap-5">
                         <Rating
                             style={{ maxWidth: 80 }}
