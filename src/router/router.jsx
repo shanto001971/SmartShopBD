@@ -22,14 +22,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/cardCollection/:id",
-        element: <ProductsChackOut/>
+        element: <ProductsChackOut />,
+        loader: () => fetch('http://localhost:5000/cardCollection')
       },
 
     ]
   },
   {
     path: "/logIn",
-    element: <UserLogInPage/>
+    element: <UserLogInPage />
   },
 
   {

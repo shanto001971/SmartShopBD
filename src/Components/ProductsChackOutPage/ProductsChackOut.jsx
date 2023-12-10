@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import ReactStars from "react-rating-stars-component";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import RightBar from "./RightBar";
 import RatingReviews from "./RatingReviews";
 import ProductsUseCard from "../ReUseCard/ProductsUseCard";
@@ -45,13 +45,13 @@ const customStyles = {
 
 const ProductsChackOut = () => {
     const { id } = useParams()
-    console.log(id)
-
     const [quantity, setQuantity] = useState(1);
     const [shoesColor, setShoesColoer] = useState("White")
     const [productData, setProductData] = useState({})
     const [loading, setLoading] = useState(true);
     const [rating, setRating] = useState(0);
+    const cardData = useLoaderData()
+    // console.log(cardData)
 
 
     const incrementQuantity = () => {
@@ -87,6 +87,8 @@ const ProductsChackOut = () => {
     // }
 
     // console.log(productData)
+
+
     return (
         <div className="">
             <div className="lg:flex lg:px-5 mt-5">
@@ -162,7 +164,7 @@ const ProductsChackOut = () => {
                 <div className="w-[80%] ">
                     <RatingReviews />
 
-                    <div className="flex justify-between items-center gap-3 border mx-5 py-3">
+                    <div className="flex justify-between items-center gap-3 border mx-5 py-3 px-3">
                         <div className="flex items-center gap-3">
                             <div className="flex items-center gap-2 border px-2 rounded-md p-1">
                                 <FiCamera className="w-5 h-5" />
@@ -203,12 +205,13 @@ const ProductsChackOut = () => {
                             transition="zoom"
                         />
                     </div>
-                    <Reviews />
+                    <Reviews data={productData} />
                 </div>
                 <div className="w-[20%] mt-8 p-2 flex flex-col gap-3">
-                    <ProductsUseCard />
-                    <ProductsUseCard />
-                    <ProductsUseCard />
+                    {cardData?.slice(10, 14).map(singleData => <ProductsUseCard key={singleData?._id} data={singleData} />)
+
+                    }
+
                 </div>
             </div>
 

@@ -5,7 +5,7 @@ import { CiStar } from "react-icons/ci";
 
 const RatingReviews = () => {
     return (
-        <div className="mt-5 lg:flex">
+        <div className="mt-5 lg:flex ">
             <div className="lg:flex  p-5 lg:w-[100%]">
                 <div className="flex flex-col gap-2 p-3 border lg:px-8 rounded-tl-2xl">
                     <div className="flex items-center gap-2 ">

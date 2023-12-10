@@ -1,21 +1,27 @@
+import { BsCart } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 
-const ProductsUseCard = () => {
+const ProductsUseCard = ({ data }) => {
+    console.log(data)
     return (
-        <div className="card w-full bg-base-100 shadow-xl">
-            <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">
-                    Shoes!
-                    <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Fashion</div>
-                    <div className="badge badge-outline">Products</div>
+        <Link>
+            <Link to={`/cardCollection/${data?._id}`}>
+                <div className="card card-compact bg-base-100 shadow-xl overflow-hidden relative">
+                    <figure><img className="h-52 w-full" src={data?.productsImage} alt="Shoes" /></figure>
+                    <p className="bg-red-600 px-1 w-20 rounded text-white absolute">Save {data?.discounts}%</p>
+                    <div className="card-body">
+                        <h2 className="card-title">{data?.productTitle.slice(0, 50)}</h2>
+                        <p>{data?.shopName}</p>
+                        <div className="flex items-center">
+                            <p className="text-2xl">$ {data?.newPrice} <del className="text-lg">$ {data?.oldPrice}</del></p>
+                            <BsCart className="w-6 h-6" />
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </div>
+            </Link>
+        </Link>
     );
 };
 
