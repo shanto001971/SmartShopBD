@@ -38,6 +38,7 @@ const Home = () => {
            <BannerSlider />
            <EndSection/>
            <ImageHoverEffect/>
+           <ProductCard data={data?.slice(6,14)} key={data._id}/>
            <Review/>
            </div>
         </div>

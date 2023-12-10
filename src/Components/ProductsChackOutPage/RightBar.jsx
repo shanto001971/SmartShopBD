@@ -6,8 +6,8 @@ const RightBar = () => {
     return (
         <div className="w-full border p-5">
             <div className="w-full ">
-                <p className="font-bold">Delivery </p>
-                <h1 className="flex justify-around gap-3 items-center mt-2"><span><CiLocationOn className="w-5 h-5" /></span> <span>Dhaka, Dhaka North,<br /> Banani Road No. 12 - 19</span> <span className="link-primary">CHANGE</span></h1>
+                <small>Delivery</small>
+                <h1 className="flex justify-around gap-3 items-center mt-5"><span><CiLocationOn className="w-5 h-5" /></span> <span>Dhaka, Dhaka North,<br /> Banani Road No. 12 - 19</span> <span className="link-primary">CHANGE</span></h1>
                 <div className="flex gap-2 mt-2">
                     <LuCar className="w-5 h-5" />
                     <h2 > <span className="font-bold">Free Delivery</span> <span>15 Dec - 20 Dec</span> </h2>

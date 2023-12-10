@@ -29,9 +29,11 @@ const Navbar = () => {
             <div className="drawer-content flex flex-col bg-black ">
                 {/* Navbar */}
                 <div className="w-full navbar  bg-transparent flex justify-between">
-                    <div className="lg:mx-10">
-                        <img className="w-12 h-12" src="https://i.ibb.co/tbpvpMM/www-deshihawker-com-free-logo-e-commerce-11564258090k03hqojlfy-removebg-preview.png" alt="" />
-                    </div>
+                    <Link to="/">
+                        <div className="lg:mx-10">
+                            <img className="w-12 h-12" src="https://i.ibb.co/tbpvpMM/www-deshihawker-com-free-logo-e-commerce-11564258090k03hqojlfy-removebg-preview.png" alt="" />
+                        </div>
+                    </Link>
                     <div className="w-[50%] hidden lg:block">
                         <form className="flex items-center w-full relative">
                             <input className="bg-white p-2 rounded-s-lg w-full" type="text" />

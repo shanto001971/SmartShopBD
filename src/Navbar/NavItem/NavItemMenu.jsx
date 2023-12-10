@@ -11,8 +11,8 @@ const NavItemMenu = () => {
     return (
         <div className="">
             <ul className="menu menu-horizontal px-1 items-center gap-3">
-                <li><a>Home</a></li>
-                <li>
+                <li className="border rounded-md"><a>Home</a></li>
+                <li className="border rounded-md">
                     <select
                         className=""
                         onChange={handleSelectChange}
@@ -24,7 +24,7 @@ const NavItemMenu = () => {
                         <option value="sanity">Sanity</option>
                     </select>
                 </li>
-                <li>
+                <li className="border rounded-md">
                     <select
                         className=""
                         onChange={handleSelectChange}
@@ -36,7 +36,7 @@ const NavItemMenu = () => {
                         <option value="sanity">Sanity</option>
                     </select>
                 </li>
-                <li>
+                <li className="border rounded-md">
                     <select
                         className=""
                         onChange={handleSelectChange}
@@ -48,9 +48,9 @@ const NavItemMenu = () => {
                         <option value="sanity">Sanity</option>
                     </select>
                 </li>
-                <li className="px-5">Health & Fitness</li>
-                <li className="px-5">Super Deals</li>
-                <li className="px-5">Shop Now</li>
+                <li className="px-5 border rounded-md p-2">Health & Fitness</li>
+                <li className="px-5 border rounded-md p-2">Super Deals</li>
+                <li className="px-5 border rounded-md p-2">Shop Now</li>
             </ul>
         </div>
     );
