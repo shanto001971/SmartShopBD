@@ -13,7 +13,7 @@ const ProductCard = ({ data }) => {
                 data?.slice(0, 8).map(singleData => <div key={singleData._id} className="">
                     <Link to={`/cardCollection/${singleData?._id}`}>
                         <div className="card card-compact bg-base-100 shadow-xl overflow-hidden relative">
-                            <figure><img className="h-52 w-full" src={singleData?.productsImage} alt="Shoes" /></figure>
+                            <figure><img className="lg:h-52 w-full" src={singleData?.productsImage} alt="Shoes" /></figure>
                             <p className="bg-red-600 px-1 w-20 rounded text-white absolute">Save {singleData?.discounts}%</p>
                             <div className="card-body">
                                 <h2 className="card-title" title={singleData?.productTitle}>{singleData?.productTitle.slice(0, 50)}</h2>

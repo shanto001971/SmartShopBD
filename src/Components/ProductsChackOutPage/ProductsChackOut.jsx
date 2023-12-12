@@ -50,6 +50,7 @@ const ProductsChackOut = () => {
     const [productData, setProductData] = useState({})
     const [loading, setLoading] = useState(true);
     const [rating, setRating] = useState(0);
+    const [hoveredImage, setHoveredImage] = useState(null);
     const cardData = useLoaderData()
     // console.log(cardData)
 
@@ -82,11 +83,11 @@ const ProductsChackOut = () => {
         return <div className="text-center">Loading...</div>;
     }
 
-    // if (!card) {
-    //     productData.map(dataItem => setCard(dataItem))
-    // }
+    if (!hoveredImage) {
+        setHoveredImage(productData?.productsImage)
+    }
 
-    // console.log(productData)
+    console.log(productData)
 
 
     return (
@@ -96,17 +97,25 @@ const ProductsChackOut = () => {
                 <div className="lg:flex border lg:w-[75%] rounded-md ">
                     <div className="lg:w-[50%] flex flex-col gap-2 ">
                         <div className="h-[68%] ">
-                            <img className="w-full h-[100%] rounded-md" src={productData?.productsImage} alt="" />
+                            <img className="w-full h-[100%] rounded-md" src={hoveredImage} alt="" />
                         </div>
 
                         <div className="border p-1 ">
                             <div className="w-[20%] lg:flex gap-2  flex border ">
-                                <img className={`cursor-pointer`} src={productData?.productsImage} alt="" />
-                                <img className={`cursor-pointer`} src={productData?.productsImage} alt="" />
-                                <img className={`cursor-pointer`} src={productData?.productsImage} alt="" />
-                                <img className={`cursor-pointer`} src={productData?.productsImage} alt="" />
+                                {/* <img className={`cursor-pointer`} onMouseEnter={() => setHoveredImage(productData?.productsImage)} src={productData?.productsImage} alt="" />
+                                <img className={`cursor-pointer`} onMouseEnter={() => setHoveredImage(productData?.productsImage)} src={productData?.productsImage} alt="" />
+                                <img className={`cursor-pointer`} onMouseEnter={() => setHoveredImage(productData?.productsImage)} src={productData?.productsImage} alt="" />
+                                <img className={`cursor-pointer`} onMouseEnter={() => setHoveredImage(productData?.productsImage)} src={productData?.productsImage} alt="" /> */}
 
-
+                                {productData?.imageVarient?.map((image, index) => (
+                                    <img
+                                        key={index}
+                                        className={`cursor-pointer hover:border border-indigo-700`}
+                                        onMouseEnter={() => setHoveredImage(image)}
+                                        src={image}
+                                        alt=""
+                                    />
+                                ))}
 
                             </div>
                         </div>

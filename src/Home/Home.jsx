@@ -32,7 +32,7 @@ const Home = () => {
            <Card />
            <EndSection/>
            <ImageHoverEffect/>
-           <ProductCard data={data?.slice(6,14)} key={data._id}/>
+           <ProductCard data={data?.slice(0,8)} key={data._id}/>
            <ShowCase/>
            <ProductCard data={data?.slice(12,20)} key={data._id}/>
            <BannerSlider />
