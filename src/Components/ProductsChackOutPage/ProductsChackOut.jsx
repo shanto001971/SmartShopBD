@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
 import ReactStars from "react-rating-stars-component";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import RightBar from "./RightBar";
 import RatingReviews from "./RatingReviews";
 import ProductsUseCard from "../ReUseCard/ProductsUseCard";
@@ -112,15 +112,16 @@ const ProductsChackOut = () => {
                 productsImage: productData?.productsImage,
                 reviews: productData?.reviews,
                 shopName: productData?.shopName,
-                productsId: productData?._id
+                productsId: productData?._id,
+                quantity: quantity
             }
-            axiosSecure.post("/carts", cartItem )
+            axiosSecure.post("/carts", cartItem)
                 .then(res => {
                     if (res.data?.insertedId) {
                         toast.success('Add Success');
                         refetch()
                     }
-                    console.log(res.data)
+                    // console.log(res.data)
                 })
 
         }
@@ -190,9 +191,9 @@ const ProductsChackOut = () => {
                                 <span className="px-6  ">{quantity}</span>
                                 <button className="px-5 " onClick={incrementQuantity}>+</button>
                             </div>
-                            <div className="w-full mt-5 lg:flex items-center justify-center gap-2 ">
+                            <div className="w-full mt-5 lg:flex items-center gap-2 ">
                                 <button onClick={() => handelAddToCart()} className="w-full lg:w-[50%] bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
-                                <button className="w-full mt-2 lg:w-[50%] bg-[#3A2A2F] p-2 rounded text-white">Buy Now</button>
+                                <Link className="w-full mt-2 lg:w-[50%] bg-[#3A2A2F] p-2 rounded text-white text-center" to={`/PlaceOrderPage/${productData?._id}`}><button className="">Buy Now</button></Link>
                             </div>
                         </div>
                     </div>
