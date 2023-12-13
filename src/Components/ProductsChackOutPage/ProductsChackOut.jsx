@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { useLoaderData, useParams } from "react-router-dom";
@@ -9,6 +9,11 @@ import Reviews from "./Reviews";
 import { FiCamera } from "react-icons/fi";
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
+import { useCart } from "../../hooks/useCart";
+
 
 const SadFace = (
     <path d="M12.0000002,1.99896738 C17.523704,1.99896738 22.0015507,6.47681407 22.0015507,12.0005179 C22.0015507,17.5242217 17.523704,22.0020684 12.0000002,22.0020684 C6.47629639,22.0020684 1.99844971,17.5242217 1.99844971,12.0005179 C1.99844971,6.47681407 6.47629639,1.99896738 12.0000002,1.99896738 Z M12.0000002,3.49896738 C7.30472352,3.49896738 3.49844971,7.30524119 3.49844971,12.0005179 C3.49844971,16.6957946 7.30472352,20.5020684 12.0000002,20.5020684 C16.6952769,20.5020684 20.5015507,16.6957946 20.5015507,12.0005179 C20.5015507,7.30524119 16.6952769,3.49896738 12.0000002,3.49896738 Z M12.0000001,13.4979816 C13.6312483,13.4979816 15.1603686,14.1528953 16.2810488,15.2934358 C16.5713583,15.5888901 16.5671876,16.0637455 16.2717333,16.354055 C15.976279,16.6443646 15.5014236,16.6401939 15.211114,16.3447396 C14.3696444,15.4883577 13.2246935,14.9979816 12.0000001,14.9979816 C10.7726114,14.9979816 9.62535029,15.4905359 8.78347552,16.3502555 C8.49366985,16.6462041 8.01882223,16.6511839 7.72287367,16.3613782 C7.4269251,16.0715726 7.4219453,15.5967249 7.71175097,15.3007764 C8.83296242,14.155799 10.3651558,13.4979816 12.0000001,13.4979816 Z M9.00044779,8.75115873 C9.69041108,8.75115873 10.2497368,9.3104845 10.2497368,10.0004478 C10.2497368,10.6904111 9.69041108,11.2497368 9.00044779,11.2497368 C8.3104845,11.2497368 7.75115873,10.6904111 7.75115873,10.0004478 C7.75115873,9.3104845 8.3104845,8.75115873 9.00044779,8.75115873 Z M15.0004478,8.75115873 C15.6904111,8.75115873 16.2497368,9.3104845 16.2497368,10.0004478 C16.2497368,10.6904111 15.6904111,11.2497368 15.0004478,11.2497368 C14.3104845,11.2497368 13.7511587,10.6904111 13.7511587,10.0004478 C13.7511587,9.3104845 14.3104845,8.75115873 15.0004478,8.75115873 Z" />
@@ -45,6 +50,7 @@ const customStyles = {
 
 const ProductsChackOut = () => {
     const { id } = useParams()
+    const { user } = useContext(AuthContext)
     const [quantity, setQuantity] = useState(1);
     const [shoesColor, setShoesColoer] = useState("White")
     const [productData, setProductData] = useState({})
@@ -52,6 +58,8 @@ const ProductsChackOut = () => {
     const [rating, setRating] = useState(0);
     const [hoveredImage, setHoveredImage] = useState(null);
     const cardData = useLoaderData()
+    const [axiosSecure] = useAxiosSecure()
+    const [cart, refetch] = useCart();
     // console.log(cardData)
 
 
@@ -87,11 +95,43 @@ const ProductsChackOut = () => {
         setHoveredImage(productData?.productsImage)
     }
 
-    console.log(productData)
+    // console.log(productData)
 
+
+    const handelAddToCart = () => {
+
+
+        if (user && user.email) {
+
+            const cartItem = {
+                email: user?.email,
+                category: productData?.category,
+                discounts: productData?.discounts,
+                newPrice: productData?.newPrice,
+                productTitle: productData?.productTitle,
+                productsImage: productData?.productsImage,
+                reviews: productData?.reviews,
+                shopName: productData?.shopName,
+                productsId: productData?._id
+            }
+            axiosSecure.post("/carts", cartItem )
+                .then(res => {
+                    if (res.data?.insertedId) {
+                        toast.success('Add Success');
+                        refetch()
+                    }
+                    console.log(res.data)
+                })
+
+        }
+    }
 
     return (
         <div className="">
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <div className="lg:flex lg:px-5 mt-5 ">
 
                 <div className="lg:flex border lg:w-[75%] rounded-md ">
@@ -101,12 +141,7 @@ const ProductsChackOut = () => {
                         </div>
 
                         <div className="border p-1 ">
-                            <div className="w-[20%] lg:flex gap-2  flex border ">
-                                {/* <img className={`cursor-pointer`} onMouseEnter={() => setHoveredImage(productData?.productsImage)} src={productData?.productsImage} alt="" />
-                                <img className={`cursor-pointer`} onMouseEnter={() => setHoveredImage(productData?.productsImage)} src={productData?.productsImage} alt="" />
-                                <img className={`cursor-pointer`} onMouseEnter={() => setHoveredImage(productData?.productsImage)} src={productData?.productsImage} alt="" />
-                                <img className={`cursor-pointer`} onMouseEnter={() => setHoveredImage(productData?.productsImage)} src={productData?.productsImage} alt="" /> */}
-
+                            <div className="w-[20%] lg:flex gap-2  flex">
                                 {productData?.imageVarient?.map((image, index) => (
                                     <img
                                         key={index}
@@ -134,7 +169,7 @@ const ProductsChackOut = () => {
                                     starRatedColor="#FED900"    // Color for filled stars (rated)
                                     isHalf={true}
                                 />
-                                {productData?.reviews}
+                                <span>({productData?.reviews})</span>
                             </p>
                         </div>
 
@@ -156,7 +191,7 @@ const ProductsChackOut = () => {
                                 <button className="px-5 " onClick={incrementQuantity}>+</button>
                             </div>
                             <div className="w-full mt-5 lg:flex items-center justify-center gap-2 ">
-                                <button className="w-full lg:w-[50%] bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
+                                <button onClick={() => handelAddToCart()} className="w-full lg:w-[50%] bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
                                 <button className="w-full mt-2 lg:w-[50%] bg-[#3A2A2F] p-2 rounded text-white">Buy Now</button>
                             </div>
                         </div>

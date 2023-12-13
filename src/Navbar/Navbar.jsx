@@ -6,10 +6,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { useCart } from "../hooks/useCart";
+import { useEffect } from "react";
 
 const Navbar = () => {
     const { user, LogOutUser } = useContext(AuthContext)
     const [selectedOption, setSelectedOption] = useState('');
+    const [cart, refetch] = useCart();
 
     const handleSelectChange = (event) => {
         setSelectedOption(event.target.value);
@@ -21,7 +24,14 @@ const Navbar = () => {
             .catch(() => { })
     }
 
-    // console.log(user)
+
+    // console.log(cart)
+
+    // useEffect(() => {
+    //     fetch(`https://smart-shop-bd.vercel.app/carts?email=${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(data => console.log(data))
+    // }, [user?.email])
 
     return (
         <div className="drawer ">
@@ -55,7 +65,7 @@ const Navbar = () => {
                         <div className="flex justify-between items-center w-full mr-10 p-6 ">
                             {
                                 user ? <div className="text-slate-300 pr-6 border-e-2 ">
-                                    {user?<p>Hi..{user?.displayName}</p>:<p>Login / SignUp</p>}
+                                    {user ? <p>Hi..{user?.displayName}</p> : <p>Login / SignUp</p>}
                                     <button className="flex items-center gap-2 font-medium " onClick={() => document.getElementById('my_modal_1').showModal()}>My account <FaAngleDown /></button>
                                 </div> : <Link to="/logIn">
                                     <div className="text-slate-300 pr-6 border-e-2 ">
@@ -99,7 +109,7 @@ const Navbar = () => {
                             <div className="flex items-center gap-5  ml-3 text-white ">
                                 <div className="relative">
                                     <BsCart className="w-6 h-6" />
-                                    <div className="badge badge-secondary p-[5px] rounded-full absolute -top-3 -right-3">0</div>
+                                    <div className="badge badge-secondary p-[5px] rounded-full absolute -top-3 -right-3">{cart?.length}</div>
                                 </div>
                                 <CiBookmark className="w-6 h-6" />
                             </div>

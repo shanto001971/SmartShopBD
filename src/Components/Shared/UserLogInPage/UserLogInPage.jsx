@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
 
 
 const UserLogInPage = () => {
 
     const { LogInUser } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const froms = location.state?.from?.pathname || "/";
 
     const handleSignIn = async (event) => {
         event.preventDefault();
@@ -16,7 +19,7 @@ const UserLogInPage = () => {
         const password = form.password.value;
 
         try {
-            
+
 
             // Continue with the login process
             const result = await LogInUser(email, password);
@@ -28,8 +31,8 @@ const UserLogInPage = () => {
                     title: "LogIn SuccessFully",
                     showConfirmButton: false,
                     timer: 1500
-                  });
-                navigate("/");
+                });
+                navigate(froms, { replace: true });
             }
         } catch (error) {
             console.log(error);

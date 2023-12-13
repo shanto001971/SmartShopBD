@@ -5,6 +5,7 @@ import Home from "../Home/Home";
 import SingUpPage from "../Components/Shared/SingUpPage/SingUpPage";
 import UserLogInPage from "../Components/Shared/UserLogInPage/UserLogInPage";
 import ProductsChackOut from "../Components/ProductsChackOutPage/ProductsChackOut";
+import PrivateRoute from "../privateRoute/privateRoute";
 
 
 export const router = createBrowserRouter([
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/cardCollection/:id",
-        element: <ProductsChackOut />,
+        element: <PrivateRoute><ProductsChackOut /></PrivateRoute>,
         loader: () => fetch('https://smart-shop-bd.vercel.app/cardCollection')
       },
 

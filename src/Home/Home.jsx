@@ -14,6 +14,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 
+
+
 const Home = () => {
     const [data, setData] = useState([])
 
@@ -22,25 +24,28 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setData(data))
     }, [])
+
+    
     // console.log(data)
 
     return (
         <div className="">
-            <HeroSlider/>
-           <div className=" lg:mx-5">
-            <OurCollection/>
-           <Card />
-           <EndSection/>
-           <ImageHoverEffect/>
-           <ProductCard data={data?.slice(0,8)} key={data._id}/>
-           <ShowCase/>
-           <ProductCard data={data?.slice(12,20)} key={data._id}/>
-           <BannerSlider />
-           <EndSection/>
-           <ImageHoverEffect/>
-           <ProductCard data={data?.slice(6,14)} key={data._id}/>
-           <Review/>
-           </div>
+            
+            <HeroSlider />
+            <div className=" lg:mx-5">
+                <OurCollection />
+                <Card />
+                <EndSection />
+                <ImageHoverEffect />
+                <ProductCard data={data?.slice(0, 8)} key={data._id} />
+                <ShowCase />
+                <ProductCard data={data?.slice(12, 20)} key={data._id} />
+                <BannerSlider />
+                <EndSection />
+                <ImageHoverEffect />
+                <ProductCard data={data?.slice(6, 14)} key={data._id} />
+                <Review />
+            </div>
         </div>
     );
 };
