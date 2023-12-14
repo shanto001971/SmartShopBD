@@ -8,6 +8,7 @@ import ProductsChackOut from "../Components/ProductsChackOutPage/ProductsChackOu
 import PrivateRoute from "../privateRoute/privateRoute";
 import PlaceOrderPage from "../Components/PlaceOrderPage/PlaceOrderPage";
 import CartPage from "../AddToCartPage/CartPage";
+import ProceedToCheckOutPage from "../ProceedToCheckOutPage/ProceedToCheckOutPage";
 
 
 export const router = createBrowserRouter([
@@ -34,8 +35,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/cartPage",
-        element: <CartPage />
+        element: <CartPage />,
       },
+      {
+        path:"/cartPage/ProceedToCheckOutPage",
+        element:<ProceedToCheckOutPage/>
+      }
 
 
     ]

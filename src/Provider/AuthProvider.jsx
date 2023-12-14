@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [checkOutId, setCheckOutId] = useState([])
 
 
 
@@ -72,7 +73,9 @@ const AuthProvider = ({ children }) => {
         singUpUser,
         LogOutUser,
         UpdateUserProfile,
-        UserEmailVerify
+        UserEmailVerify,
+        setCheckOutId,
+        checkOutId
 
     }
 
