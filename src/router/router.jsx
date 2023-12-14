@@ -7,6 +7,7 @@ import UserLogInPage from "../Components/Shared/UserLogInPage/UserLogInPage";
 import ProductsChackOut from "../Components/ProductsChackOutPage/ProductsChackOut";
 import PrivateRoute from "../privateRoute/privateRoute";
 import PlaceOrderPage from "../Components/PlaceOrderPage/PlaceOrderPage";
+import CartPage from "../AddToCartPage/CartPage";
 
 
 export const router = createBrowserRouter([
@@ -28,9 +29,14 @@ export const router = createBrowserRouter([
         loader: () => fetch('https://smart-shop-bd.vercel.app/cardCollection')
       },
       {
-        path:"/PlaceOrderPage/:id",
-        element:<PlaceOrderPage/>
-      }
+        path: "/PlaceOrderPage/:id",
+        element: <PlaceOrderPage />
+      },
+      {
+        path: "/cartPage",
+        element: <CartPage />
+      },
+
 
     ]
   },

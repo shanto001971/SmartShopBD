@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 
-const OrderPage = ({ user,obData,filterData,deliveryFee }) => {
+const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
 
     const [itemsTotal, setItemsTotal] = useState(0);
     const [totalPayment, setTotalPayment] = useState(0);
@@ -36,11 +36,12 @@ const OrderPage = ({ user,obData,filterData,deliveryFee }) => {
                                 <small>No Brand,Color Family:White, Lens Color:White, Frame Color:White</small>
                             </div>
                             <div className="">
-                                <h3 className="flex gap-4">
-                                    <small className="flex gap-2 bg-slate-200 p-1 rounded-md">
+                                <h3 className="flex gap-4 lg:w-52">
+                                    <small className="flex items-center gap-2 bg-slate-200 p-1 rounded-md">
                                         <del>{obData?.oldPrice}</del>
                                         {obData?.discounts}% off
-                                    </small>৳ {obData?.newPrice}
+                                    </small>
+                                    ৳ {obData?.newPrice}
                                 </h3>
                             </div>
                         </div>

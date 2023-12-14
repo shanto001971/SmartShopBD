@@ -107,10 +107,12 @@ const Navbar = () => {
                             </dialog>
 
                             <div className="flex items-center gap-5  ml-3 text-white ">
-                                <div className="relative">
-                                    <BsCart className="w-6 h-6" />
-                                    <div className="badge badge-secondary p-[5px] rounded-full absolute -top-3 -right-3">{cart?.length}</div>
-                                </div>
+                                <Link to="/cartPage">
+                                    <div className="relative">
+                                        <BsCart className="w-6 h-6" />
+                                        <div className="badge badge-secondary p-[5px] rounded-full absolute -top-3 -right-3"><span className="text-xs">{cart?.length}</span></div>
+                                    </div>
+                                </Link>
                                 <CiBookmark className="w-6 h-6" />
                             </div>
                         </div>
