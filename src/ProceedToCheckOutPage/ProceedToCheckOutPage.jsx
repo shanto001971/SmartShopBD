@@ -1,14 +1,9 @@
-import { useContext } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
-
+import React from 'react';
 
 const ProceedToCheckOutPage = () => {
-    const {checkOutId}=useContext(AuthContext);
-    console.log(checkOutId)
-
     return (
         <div>
-            this is ProceedToCheckOutPage
+            process to cart page
         </div>
     );
 };

@@ -1,8 +1,6 @@
 import BannerSlider from "../BannerSlider/BannerSlider";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
 import ImageHoverEffect from "../ImageHoverEffect/ImageHoverEffect";
-
 import ShowCase from "../ShowCaseSection/ShowCase";
 import Review from "../ReviewSection/Review";
 import HeroSlider from "../HeroSection/HeroSlider";
@@ -20,7 +18,7 @@ const Home = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch("https://smart-shop-bd.vercel.app/cardCollection")
+        fetch("http://localhost:5000/cardCollection")
             .then(res => res.json())
             .then(data => setData(data))
     }, [])

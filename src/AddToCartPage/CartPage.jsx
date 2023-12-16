@@ -1,12 +1,13 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useCart } from "../hooks/useCart";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Provider/AuthProvider";
+import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const CartPage = () => {
-    const { setCheckOutId } = useContext(AuthContext)
+    // const { setCheckOutId } = useContext(AuthContext)
     const [cart, refetch] = useCart();
     const [quantity, setQuantity] = useState(1);
     const [selectedItems, setSelectedItems] = useState([]);
@@ -37,6 +38,7 @@ const CartPage = () => {
         }
     };
 
+
     const calculateSubtotal = () => {
         let total = 0;
 
@@ -59,40 +61,86 @@ const CartPage = () => {
         // Apply logic to handle voucher code and adjust prices if needed
     };
 
-    console.log(selectedItems)
+    // console.log(selectedItems)
 
     const handleSingleItemDelete = async (productId) => {
         try {
-            await axiosSecure.delete(`YOUR_API_ENDPOINT/${productId}`);
-            refetch(); // Assuming refetch is a function to refresh the cart data
+
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const result = await axiosSecure.delete(`/cart/${productId}`);
+                    console.log(result)
+                    if (result.statusText == "OK") {
+                        toast.success('Delete Success');
+                    } else {
+                        toast.error("Try Again")
+                    }
+                    refetch();
+                }
+            });
+
+            // Assuming refetch is a function to refresh the cart data
         } catch (error) {
             console.error("Error deleting single item:", error);
         }
     };
 
+    // console.log(selectedItems)
+
     const handleDeleteAll = async () => {
         try {
-            await axiosSecure.delete("YOUR_API_ENDPOINT/batch", {
-                data: { productIds: selectedItems },
+            const data = { productIds: selectedItems };
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const result = await axiosSecure.delete(`/carts`, { data });
+                    if (result.data.deletedCount) {
+                        toast.success(`Delete Success (${result.data.deletedCount}) items`);
+                    } else {
+                        toast.error("Try Again")
+                    }
+                    setSelectedItems([]);
+                    // Assuming refetch is a function to refresh the cart data
+                    refetch();
+                }
             });
-            setSelectedItems([]);
-            refetch(); // Assuming refetch is a function to refresh the cart data
+
+
         } catch (error) {
             console.error("Error deleting all items:", error);
         }
     };
 
-    const handleProcess = () => {
-        setCheckOutId(selectedItems)
+    const handleProcess = async () => {
+        // const data = { productIds: selectedItems };
+        // const result = await axiosSecure.post(`/proceedToCheckOut`, { data });
     }
-
+    // console.log(selectedItems)
 
     return (
         <div className="w-full">
+            <Toaster />
             <div className="lg:flex w-full lg:px-20">
                 <div className="lg:w-[80%] lg:mr-20 ">
                     <div className=" flex items-center justify-between border lg:p-2  rounded-md">
-                        <h1 className="flex items-center gap-3">
+                        <h1 className="flex items-center gap-3 font-medium">
                             <input
                                 type="checkbox"
                                 checked={selectedItems.length === cart.length}
@@ -104,7 +152,7 @@ const CartPage = () => {
                                     );
                                 }}
                                 className="checkbox checkbox-xs" />
-                            SELECT ALL ({selectedItems.length} ITEM(S))
+                            SELECT ALL ({selectedItems.length}) ITEMS
                         </h1>
                         <button
 
@@ -117,12 +165,12 @@ const CartPage = () => {
                     </div>
 
 
-                    <div className="mt-8 ">
-                        <div className="border lg:px-3 ">
-                            <h1 className="flex items-center gap-3 mt-4">
-                                Footwear Point
+                    <div className="mt-8 shadow-2xl">
+                        <div className="border lg:px-3 rounded-lg shadow-xl">
+                            <h1 className="flex items-center gap-3 mt-4 font-medium">
+                                All Items
                             </h1>
-                            <p className="text-end mb-2"> Earliest Delivery:20 Dec</p>
+                            <p className="text-end mb-2 text-xs"> Earliest Delivery:20 Dec</p>
                         </div>
                         <br />
                         <hr />
@@ -132,7 +180,7 @@ const CartPage = () => {
                                 cart?.map(singleData => <div key={singleData._id} className="mt-1 shadow-xl p-5 lg:p-10 rounded-md relative">
                                     <input type="checkbox"
                                         checked={selectedItems.includes(singleData._id)}
-                                        onChange={() => handleCheckboxChange(singleData._id)}
+                                        onChange={() => { handleCheckboxChange(singleData._id) }}
                                         className="checkbox checkbox-xs absolute right-2 top-5 border border-sky-500" />
                                     <div className=" lg:flex justify-around gap-5 items-center rounded-md">
                                         <div className="h-28 w-28">
@@ -180,12 +228,12 @@ const CartPage = () => {
                     <h1 className="font-medium">Order Summary</h1>
                     <div className="flex justify-between items-center p-3  mt-2 rounded-md ">
                         <small>Subtotal (1 items)</small>
-                        <small>৳ {calculateSubtotal()}</small>
+                        <small>৳ {calculateSubtotal().toFixed(2)} <span className="">Taka</span></small>
                     </div>
 
                     <div className="flex justify-between items-center p-3  mt-2 rounded-md ">
                         <small>Shipping Fee</small>
-                        <small>৳ {shippingFee}</small>
+                        <small>৳ {shippingFee} <span>Taka</span></small>
                     </div>
 
                     <div className="flex items-center mt-2 border rounded-md">
@@ -194,14 +242,14 @@ const CartPage = () => {
                             type="text"
                             value={voucherCode}
                             onChange={handleVoucherCodeChange}
-                            className="file-input file-input-bordered w-full max-w-xs pl-2" placeholder="Enter Voucher Code" />
+                            className="file-input w-full max-w-xs pl-2" placeholder="Enter Voucher Code" />
                     </div>
                     <br />
                     <hr />
 
                     <div className="flex justify-between items-center p-3  mt-2 rounded-md ">
                         <p className="font-medium">Total</p>
-                        <p>৳ {calculateTotalPrice()}</p>
+                        <p>৳ {calculateTotalPrice().toFixed(2)} <span>Taka</span></p>
                     </div>
 
                     <Link to="/cartPage/ProceedToCheckOutPage"><button onClick={() => handleProcess()} className="btn bg-orange-400 uppercase text-slate-100 mt-10 w-full"> Proceed to checkout </button></Link>

@@ -28,7 +28,7 @@ const Navbar = () => {
     // console.log(cart)
 
     // useEffect(() => {
-    //     fetch(`https://smart-shop-bd.vercel.app/carts?email=${user?.email}`)
+    //     fetch(`http://localhost:5000/carts?email=${user?.email}`)
     //         .then(res => res.json())
     //         .then(data => console.log(data))
     // }, [user?.email])
