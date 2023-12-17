@@ -78,8 +78,7 @@ const CartPage = () => {
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     const result = await axiosSecure.delete(`/cart/${productId}`);
-                    console.log(result)
-                    if (result.statusText == "OK") {
+                    if (result.statusText == "OK" || result.status == 200) {
                         toast.success('Delete Success');
                     } else {
                         toast.error("Try Again")
@@ -111,7 +110,7 @@ const CartPage = () => {
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     const result = await axiosSecure.delete(`/carts`, { data });
-                    if (result.data.deletedCount) {
+                    if (result.data.deletedCount > 0) {
                         toast.success(`Delete Success (${result.data.deletedCount}) items`);
                     } else {
                         toast.error("Try Again")

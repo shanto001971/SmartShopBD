@@ -18,7 +18,7 @@ const Home = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/cardCollection")
+        fetch("https://smartshopbd-serverside-production.up.railway.app/cardCollection")
             .then(res => res.json())
             .then(data => setData(data))
     }, [])
