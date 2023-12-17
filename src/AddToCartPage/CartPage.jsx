@@ -14,6 +14,7 @@ const CartPage = () => {
     const [voucherCode, setVoucherCode] = useState("");
     const [shippingFee, setShippingFee] = useState(69);
     const [axiosSecure] = useAxiosSecure();
+    const [selectedProduct, setSelectedProduct] = useState({})
 
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
@@ -128,10 +129,20 @@ const CartPage = () => {
     };
 
     const handleProcess = async () => {
-        // const data = { productIds: selectedItems };
-        // const result = await axiosSecure.post(`/proceedToCheckOut`, { data });
-    }
-    // console.log(selectedItems)
+        try {
+            // Prepare the data to be sent to the server
+            const data = { productIds: selectedItems };
+    
+            // Make a POST request to the server
+            const result = await axiosSecure.post(`/proceedToCheckOut`, data);
+    
+            // Handle the result as needed
+            console.log(result);
+        } catch (error) {
+            console.error('Error during Axios request:', error);
+        }
+    };
+    // console.log(selectedProduct)
 
     return (
         <div className="w-full">
@@ -149,6 +160,11 @@ const CartPage = () => {
                                             ? []
                                             : cart.map((item) => item._id)
                                     );
+                                    setSelectedProduct(
+                                        selectedProduct.length === cart.length
+                                            ? []
+                                            : cart.map((item) => item)
+                                    )
                                 }}
                                 className="checkbox checkbox-xs" />
                             SELECT ALL ({selectedItems.length}) ITEMS
@@ -179,7 +195,10 @@ const CartPage = () => {
                                 cart?.map(singleData => <div key={singleData._id} className="mt-1 shadow-xl p-5 lg:p-10 rounded-md relative">
                                     <input type="checkbox"
                                         checked={selectedItems.includes(singleData._id)}
-                                        onChange={() => { handleCheckboxChange(singleData._id) }}
+                                        onChange={() => { 
+                                            handleCheckboxChange(singleData._id) 
+                                            setSelectedProduct(singleData)
+                                        }}
                                         className="checkbox checkbox-xs absolute right-2 top-5 border border-sky-500" />
                                     <div className=" lg:flex justify-around gap-5 items-center rounded-md">
                                         <div className="h-28 w-28">
@@ -251,7 +270,7 @@ const CartPage = () => {
                         <p>৳ {calculateTotalPrice().toFixed(2)} <span>Taka</span></p>
                     </div>
 
-                    <Link to="/cartPage/ProceedToCheckOutPage"><button onClick={() => handleProcess()} className="btn bg-orange-400 uppercase text-slate-100 mt-10 w-full"> Proceed to checkout </button></Link>
+                    <Link ><button onClick={() => handleProcess()} className="btn bg-orange-400 uppercase text-slate-100 mt-10 w-full"> Proceed to checkout </button></Link>
                 </div>
             </div>
         </div>
@@ -259,3 +278,5 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
+// to="/cartPage/ProceedToCheckOutPage"

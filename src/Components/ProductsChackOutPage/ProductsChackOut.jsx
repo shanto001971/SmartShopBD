@@ -74,7 +74,7 @@ const ProductsChackOut = () => {
     };
 
     useEffect(() => {
-        fetch(`https://smartshopbd-serverside-production.up.railway.app/cardCollection/${id}`)
+        fetch(`http://localhost:5000/cardCollection/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProductData(data);
@@ -193,7 +193,7 @@ const ProductsChackOut = () => {
                             </div>
                             <div className="w-full mt-5 lg:flex items-center gap-2 ">
                                 <button onClick={() => handelAddToCart()} className="w-full lg:w-[50%] bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
-                                <Link className="" to={`/PlaceOrderPage/${productData?._id}`}><button className="w-full mt-2 lg:w-[50%] bg-[#3A2A2F] p-2 rounded text-white text-center">Buy Now</button></Link>
+                                <Link className="w-full" to={`/PlaceOrderPage/${productData?._id}`}><button className="w-full mt-2 lg:w-[50%] bg-[#3A2A2F] p-2 rounded text-white text-center">Buy Now</button></Link>
                             </div>
                         </div>
                     </div>
