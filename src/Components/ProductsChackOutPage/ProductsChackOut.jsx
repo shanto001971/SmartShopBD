@@ -74,7 +74,7 @@ const ProductsChackOut = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cardCollection/${id}`)
+        fetch(`https://smartshopbd-serverside-production.up.railway.app/cardCollection/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProductData(data);

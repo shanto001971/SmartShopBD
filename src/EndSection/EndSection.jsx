@@ -47,7 +47,7 @@ const EndSection = () => {
 
     return (
         <div className="lg:flex mt-10 border">
-            <div className="lg:w-[60%] lg:flex ">
+            <div className="lg:w-[60%] lg:flex">
                 <div className="w-[20%] lg:flex lg:flex-col gap-3  flex border">
                     {
                         productData.slice(0, 4).map((dataInf, i) => <img onClick={() => setCard(dataInf)} className={`cursor-pointer ${card === dataInf ? "border-2 border-blue-500" : "border"}`} key={i} src={dataInf?.productsImage} alt="" />)
@@ -60,9 +60,9 @@ const EndSection = () => {
                 </div>
             </div>
             <div className="lg:flex flex-col gap-5 p-3 lg:p-8 lg:w-[40%]">
-                <h1 className="text-3xl">{card?.productTitle}</h1>
+                <h1 className="lg:text-3xl text-lg">{card?.productTitle}</h1>
                 <p className="bg-red-600 px-1 w-20 rounded text-white">Save{card?.discounts}%</p>
-                <div className="mt-10">
+                <div className="lg:mt-10">
                     <p className="font-semibold">{card?.shopName}</p>
                     <p className="flex items-center gap-2">
                         <ReactStars
@@ -87,13 +87,13 @@ const EndSection = () => {
                         <div onClick={() => setShoesColoer("Black")} className="p-3 bg-black border border-red-500 w-10"></div>
                         <div onClick={() => setShoesColoer("Yellow")} className="p-3 bg-amber-300 border border-red-500 w-10"></div>
                     </div>
-                    <p className="text-2xl mt-3">Tk {card?.price} <del className="text-lg">Tk: 3,800</del></p>
-                    <div className="mt-4 border w-44 p-[10px] flex">
+                    <p className="lg:text-2xl lg:mt-3 my-1">Tk {card?.price} <del className="lg:text-lg">Tk: 3,800</del></p>
+                    <div className="lg:mt-4 border w-44 p-[10px] flex my-1">
                         <button className="px-5" onClick={decrementQuantity}>-</button>
                         <span className="px-6  ">{quantity}</span>
                         <button className="px-5 " onClick={incrementQuantity}>+</button>
                     </div>
-                    <div className="w-full mt-10 lg:flex items-center justify-center gap-2 ">
+                    <div className="w-full lg:mt-10 lg:flex items-center justify-center gap-2 ">
                         <button className="w-full lg:w-[50%] bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
                         <button className="w-full mt-2 lg:w-[50%] bg-[#3A2A2F] p-2 rounded text-white">Buy Now</button>
                     </div>

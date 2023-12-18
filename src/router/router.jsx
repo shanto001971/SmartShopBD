@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       {
         path: "/cardCollection/:id",
         element: <PrivateRoute><ProductsChackOut /></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/cardCollection')
+        loader: () => fetch('https://smartshopbd-serverside-production.up.railway.app/cardCollection')
       },
       {
         path: "/PlaceOrderPage/:id",

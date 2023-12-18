@@ -8,9 +8,9 @@ import ReactStars from "react-rating-stars-component";
 
 const BannerSlider = () => {
     return (
-        <div className="lg:flex justify-between lg:mt-10">
-            <div className="flex flex-col gap-4 px-5 lg:mt-32">
-                <h1 className="text-4xl uppercase font-bold">Air jordan 1 low</h1>
+        <div className="lg:flex justify-between mt-10">
+            <div className="flex flex-col lg:gap-4  px-5 lg:mt-32">
+                <h1 className="lg:text-4xl text-base uppercase font-bold">Air jordan 1 low</h1>
                 <p>High-quality Nike shoes with excellent comfort and durability.
                     <br />
                     Stylish design and advanced technology make them perfect for
@@ -20,7 +20,7 @@ const BannerSlider = () => {
                     worth it for the overall performance and style.
                 </p>
                 <div className="lg:flex items-center gap-3">
-                <p className="text-2xl mt-3">Price: 3000 <del className="text-lg">Tk: 3,800</del></p>
+                <p className="lg:text-2xl lg:mt-3">Price: 3000 <del className="lg:text-lg">Tk: 3,800</del></p>
                 <ReactStars
                     count={5}
                     size={24}

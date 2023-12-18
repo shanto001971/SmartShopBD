@@ -28,7 +28,7 @@ const Navbar = () => {
     // console.log(cart)
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/carts?email=${user?.email}`)
+    //     fetch(`https://smartshopbd-serverside-production.up.railway.app/carts?email=${user?.email}`)
     //         .then(res => res.json())
     //         .then(data => console.log(data))
     // }, [user?.email])
@@ -44,12 +44,12 @@ const Navbar = () => {
                             <img className="w-12 h-12" src="https://i.ibb.co/tbpvpMM/www-deshihawker-com-free-logo-e-commerce-11564258090k03hqojlfy-removebg-preview.png" alt="" />
                         </div>
                     </Link>
-                    <div className="w-[50%] hidden lg:block">
+                    <div className="w-[50%]">
                         <form className="flex items-center w-full relative">
-                            <input className="bg-white p-2 rounded-s-lg w-full" type="text" />
-                            <button className="bg-white text-black p-3 px-4 rounded-r-lg "><CiSearch /></button>
+                            <input className="bg-white p-2 rounded-s-2xl lg:rounded-s-lg w-full" type="text" />
+                            <button className="bg-white text-black p-3 px-4 rounded-r-2xl lg:rounded-r-lg"><CiSearch /></button>
                             <select
-                                className="absolute right-12 py-[7px]"
+                                className="absolute right-12 py-[7px] hidden lg:block"
                                 value={selectedOption}
                                 onChange={handleSelectChange}
                             >
@@ -61,19 +61,21 @@ const Navbar = () => {
                             </select>
                         </form>
                     </div>
-                    <div className="flex-none justify-evenly hidden lg:block ">
-                        <div className="flex justify-between items-center w-full mr-10 p-6 ">
-                            {
-                                user ? <div className="text-slate-300 pr-6 border-e-2 ">
-                                    {user ? <p>Hi..{user?.displayName}</p> : <p>Login / SignUp</p>}
-                                    <button className="flex items-center gap-2 font-medium " onClick={() => document.getElementById('my_modal_1').showModal()}>My account <FaAngleDown /></button>
-                                </div> : <Link to="/logIn">
-                                    <div className="text-slate-300 pr-6 border-e-2 ">
-                                        <p>Login / SignUp</p>
-                                        <button className="flex items-center gap-2 font-medium " >My account <FaAngleDown /></button>
-                                    </div>
-                                </Link>
-                            }
+                    <div className="flex-none lg:justify-evenly">
+                        <div className="flex justify-between items-center w-full lg:mr-10 lg:p-6">
+                            <div className="hidden lg:block">
+                                {
+                                    user ? <div className="text-slate-300 pr-6 border-e-2">
+                                        {user ? <p>Hi..{user?.displayName}</p> : <p>Login / SignUp</p>}
+                                        <button className="flex items-center gap-2 font-medium " onClick={() => document.getElementById('my_modal_1').showModal()}>My account <FaAngleDown /></button>
+                                    </div> : <Link to="/logIn">
+                                        <div className="text-slate-300 pr-6 border-e-2 ">
+                                            <p>Login / SignUp</p>
+                                            <button className="flex items-center gap-2 font-medium " >My account <FaAngleDown /></button>
+                                        </div>
+                                    </Link>
+                                }
+                            </div>
 
 
 
