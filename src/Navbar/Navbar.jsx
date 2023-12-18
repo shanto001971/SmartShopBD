@@ -28,7 +28,7 @@ const Navbar = () => {
     // console.log(cart)
 
     // useEffect(() => {
-    //     fetch(`https://smartshopbd-serverside-production.up.railway.app/carts?email=${user?.email}`)
+    //     fetch(`https://smart-shop-bd-server-side.vercel.app/carts?email=${user?.email}`)
     //         .then(res => res.json())
     //         .then(data => console.log(data))
     // }, [user?.email])
@@ -36,7 +36,7 @@ const Navbar = () => {
     return (
         <div className="drawer ">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle " />
-            <div className="drawer-content flex flex-col bg-black ">
+            <div className="drawer-content flex flex-col bg-black">
                 {/* Navbar */}
                 <div className="w-full navbar  bg-transparent flex justify-between">
                     <Link to="/">

@@ -1,13 +1,10 @@
-import { useEffect } from "react";
 import { useState } from "react";
 import ReactStars from "react-rating-stars-component";
 
-const EndSection = () => {
+const EndSection = ({productData,loading}) => {
     const [quantity, setQuantity] = useState(1);
     const [shoesColor, setShoesColoer] = useState("White")
     const [card, setCard] = useState(null)
-    const [productData, setProductData] = useState([])
-    const [loading, setLoading] = useState(true);
 
 
     const incrementQuantity = () => {
@@ -19,21 +16,6 @@ const EndSection = () => {
             setQuantity(quantity - 1);
         }
     };
-
-    useEffect(() => {
-        fetch("CardInfo.json")
-            .then(res => res.json())
-            .then(data => {
-                setProductData(data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error("Error fetching data:", error);
-                setLoading(false);
-            });
-    }, []);
-
-
     if (loading) {
         return <div className="text-center">Loading...</div>;
     }
@@ -46,17 +28,17 @@ const EndSection = () => {
     // console.log(card)
 
     return (
-        <div className="lg:flex mt-10 border">
+        <div className="lg:flex mt-10 border ">
             <div className="lg:w-[60%] lg:flex">
                 <div className="w-[20%] lg:flex lg:flex-col gap-3  flex border">
                     {
-                        productData.slice(0, 4).map((dataInf, i) => <img onClick={() => setCard(dataInf)} className={`cursor-pointer ${card === dataInf ? "border-2 border-blue-500" : "border"}`} key={i} src={dataInf?.productsImage} alt="" />)
+                        productData.slice(0, 4).map((dataInf, i) => <img onClick={() => setCard(dataInf)} className={`cursor-pointer ${card === dataInf ? "border-2 border-blue-500" : "border"} lg:h-32 lg:w-32 mx-auto my-3`} key={i} src={dataInf?.productsImage} alt="" />)
                     }
 
 
                 </div>
                 <div className="lg:w-[80%]">
-                    <img src={card?.productsImage} alt="" />
+                    <img className="w-full" src={card?.productsImage} alt="" />
                 </div>
             </div>
             <div className="lg:flex flex-col gap-5 p-3 lg:p-8 lg:w-[40%]">

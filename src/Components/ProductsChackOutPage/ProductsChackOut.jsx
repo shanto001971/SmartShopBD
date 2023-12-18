@@ -74,7 +74,7 @@ const ProductsChackOut = () => {
     };
 
     useEffect(() => {
-        fetch(`https://smartshopbd-serverside-production.up.railway.app/cardCollection/${id}`)
+        fetch(`https://smart-shop-bd-server-side.vercel.app/cardCollection/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProductData(data);
@@ -158,7 +158,7 @@ const ProductsChackOut = () => {
 
                     </div>
                     <div className="lg:flex flex-col gap-5 p-3 lg:p-8 lg:w-[50%]">
-                        <h1 className="text-3xl">{productData?.productTitle}</h1>
+                        <h1 className="lg:text-3xl font-medium">{productData?.productTitle}</h1>
                         <p className="bg-red-600 px-1 w-20 rounded text-white">Save{productData?.discounts}%</p>
                         <div className="">
                             <p className="font-semibold">{productData?.shopName}</p>
@@ -177,23 +177,23 @@ const ProductsChackOut = () => {
                         <hr />
 
                         <div className="">
-                            <h3 className="text-xl font-semibold">
-                                Color Family: <span className="text-xl font-semibold">{shoesColor}</span>
+                            <h3 className="lg:text-xl font-semibold">
+                                Color Family: <span className="lg:text-xl font-semibold">{shoesColor}</span>
                             </h3>
                             <div className="flex gap-2">
                                 <div onClick={() => setShoesColoer("White")} className="p-3 bg-white border border-red-500 w-10"></div>
                                 <div onClick={() => setShoesColoer("Black")} className="p-3 bg-black border border-red-500 w-10"></div>
                                 <div onClick={() => setShoesColoer("Yellow")} className="p-3 bg-amber-300 border border-red-500 w-10"></div>
                             </div>
-                            <p className="text-2xl mt-3">Tk {productData?.newPrice} <del className="text-lg">{productData?.oldPrice}</del></p>
+                            <p className="lg:text-2xl lg:mt-3 mt-1">Tk {productData?.newPrice} <del className="lg:text-lg">{productData?.oldPrice}</del></p>
                             <div className="mt-4 border w-44 p-[10px] flex">
                                 <button className="px-5" onClick={decrementQuantity}>-</button>
                                 <span className="px-6  ">{quantity}</span>
                                 <button className="px-5 " onClick={incrementQuantity}>+</button>
                             </div>
                             <div className="w-full mt-5 lg:flex items-center gap-2 ">
-                                <button onClick={() => handelAddToCart()} className="w-full lg:w-[50%] bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
-                                <Link className="w-full" to={`/PlaceOrderPage/${productData?._id}`}><button className="w-full mt-2 lg:w-[50%] bg-[#3A2A2F] p-2 rounded text-white text-center">Buy Now</button></Link>
+                                <button onClick={() => handelAddToCart()} className="w-full  bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
+                                <Link className="w-full" to={`/PlaceOrderPage/${productData?._id}`}><button className="w-full mt-2 bg-[#3A2A2F] p-2 rounded text-white text-center">Buy Now</button></Link>
                             </div>
                         </div>
                     </div>

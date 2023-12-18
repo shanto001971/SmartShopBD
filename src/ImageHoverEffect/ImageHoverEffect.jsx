@@ -5,7 +5,7 @@ import ReactStars from "react-rating-stars-component";
 const ImageHoverEffect = () => {
     const [quantity, setQuantity] = useState(1);
     const [shoesColor, setShoesColoer] = useState("White");
-    
+
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
     };

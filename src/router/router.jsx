@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       {
         path: "/cardCollection/:id",
         element: <PrivateRoute><ProductsChackOut /></PrivateRoute>,
-        loader: () => fetch('https://smartshopbd-serverside-production.up.railway.app/cardCollection')
+        loader: () => fetch('https://smart-shop-bd-server-side.vercel.app/cardCollection')
       },
       {
         path: "/PlaceOrderPage/:id",

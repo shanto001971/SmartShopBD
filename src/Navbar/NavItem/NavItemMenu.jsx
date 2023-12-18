@@ -11,8 +11,8 @@ const NavItemMenu = () => {
     };
     return (
         <div className="">
-            <ul className="menu menu-horizontal px-1 items-center gap-3">
-                <Link to="/"><li className="border rounded-md"><a>Home</a></li></Link>
+            <ul className="menu menu-horizontal px-1 items-center gap-3 flex overflow-x-auto">
+                <Link to="/"><li className="border rounded-md "><a>Home</a></li></Link>
                 <li className="border rounded-md">
                     <select
                         className=""

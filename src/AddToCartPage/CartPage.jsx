@@ -145,11 +145,11 @@ const CartPage = () => {
     // console.log(selectedProduct)
 
     return (
-        <div className="w-full">
+        <div className="w-full mt-5 px-5 lg:px-0">
             <Toaster />
             <div className="lg:flex w-full lg:px-20">
                 <div className="lg:w-[80%] lg:mr-20 ">
-                    <div className=" flex items-center justify-between border lg:p-2  rounded-md">
+                    <div className=" flex items-center justify-between border lg:p-2  rounded-md p-5 ">
                         <h1 className="flex items-center gap-3 font-medium">
                             <input
                                 type="checkbox"
@@ -172,7 +172,7 @@ const CartPage = () => {
                         <button
 
                             onClick={handleDeleteAll}
-                            className="flex items-center gap-2 cursor-pointer text-red-500"
+                            className="flex items-center gap-2 cursor-pointer text-red-500 mr-5 lg:mr-0"
                             disabled={selectedItems.length === 0}>
                             <RiDeleteBin6Line />
                             Delete
@@ -181,7 +181,7 @@ const CartPage = () => {
 
 
                     <div className="mt-8 shadow-2xl">
-                        <div className="border lg:px-3 rounded-lg shadow-xl">
+                        <div className="border lg:px-3 rounded-lg shadow-xl px-4">
                             <h1 className="flex items-center gap-3 mt-4 font-medium">
                                 All Items
                             </h1>
@@ -212,7 +212,7 @@ const CartPage = () => {
 
                                     </div>
 
-                                    <div className=" lg:flex justify-around gap-5 items-center p-5 rounded-md">
+                                    <div className=" lg:flex justify-around gap-5 items-center lg:p-5 rounded-md">
                                         <div className="">
                                             <h3 className="flex gap-4 lg:w-52">
                                                 <small className="flex items-center gap-2 p-1 rounded-md">
@@ -222,7 +222,7 @@ const CartPage = () => {
                                                 ৳ {singleData?.newPrice}
                                             </h3>
                                         </div>
-                                        <div className=" border  p-[5px] flex">
+                                        <div className=" border  p-[5px] flex w-32 my-3 lg:my-0">
                                             <button className="px-2" onClick={decrementQuantity}>-</button>
                                             <span className="px-6  ">{quantity}</span>
                                             <button className="px-2 " onClick={incrementQuantity}>+</button>
@@ -242,7 +242,7 @@ const CartPage = () => {
 
 
                 </div>
-                <div className="lg:w-[40%] border lg:p-5">
+                <div className="lg:w-[40%] border lg:p-5 my-10 lg:my-0 px-5 lg:px-0">
                     <h1 className="font-medium">Order Summary</h1>
                     <div className="flex justify-between items-center p-3  mt-2 rounded-md ">
                         <small>Subtotal (1 items)</small>

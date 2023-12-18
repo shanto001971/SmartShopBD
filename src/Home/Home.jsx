@@ -16,30 +16,48 @@ import { useEffect } from "react";
 
 const Home = () => {
     const [data, setData] = useState([])
+    const [productData, setProductData] = useState([])
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
-        fetch("https://smartshopbd-serverside-production.up.railway.app/cardCollection")
+        fetch("https://smart-shop-bd-server-side.vercel.app/cardCollection")
             .then(res => res.json())
             .then(data => setData(data))
     }, [])
 
-    // https://smartshopbd-serverside-production.up.railway.app
+    // https://smart-shop-bd-server-side.vercel.app
     // console.log(data)
+
+    useEffect(() => {
+        fetch("CardInfo.json")
+            .then(res => res.json())
+            .then(data => {
+                setProductData(data);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+                setLoading(false);
+            });
+    }, []);
+
+    console.log(productData)
 
     return (
         <div className="">
-            
+
             <HeroSlider />
             <div className=" lg:mx-5">
                 <OurCollection />
                 <Card />
-                <EndSection />
+                <EndSection productData={productData} loading={loading} />
                 <ImageHoverEffect />
                 <ProductCard data={data?.slice(0, 8)} key={data._id} />
                 <ShowCase />
                 <ProductCard data={data?.slice(12, 20)} key={data._id} />
                 <BannerSlider />
-                <EndSection />
+                <EndSection productData={data?.slice(8,14)} loading={loading} />
                 <ImageHoverEffect />
                 <ProductCard data={data?.slice(6, 14)} key={data._id} />
                 <Review />
