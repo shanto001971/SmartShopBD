@@ -50,7 +50,7 @@ const Home = () => {
             <HeroSlider />
             <div className=" lg:mx-5">
                 <OurCollection />
-                <Card />
+                <Card productData={data}/>
                 <EndSection productData={productData} loading={loading} />
                 <ImageHoverEffect />
                 <ProductCard data={data?.slice(0, 8)} key={data._id} />
