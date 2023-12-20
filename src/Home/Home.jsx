@@ -21,11 +21,11 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("https://smart-shop-bd-server-side.vercel.app/cardCollection")
+        fetch("http://localhost:5000/cardCollection")
             .then(res => res.json())
             .then(data => setData(data))
     }, [])
-
+    // https://smart-shop-bd-server-side.vercel.app
 
     useEffect(() => {
         fetch("CardInfo.json")
@@ -40,7 +40,7 @@ const Home = () => {
             });
     }, []);
 
-    console.log(productData)
+    // console.log(productData)
 
     return (
         <div className="">

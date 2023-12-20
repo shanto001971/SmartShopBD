@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useCart } from "../hooks/useCart";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
 import emailjs from '@emailjs/browser';
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 
@@ -18,7 +20,9 @@ const CartPage = () => {
     const [shippingFee, setShippingFee] = useState(69);
     const [axiosSecure] = useAxiosSecure();
     const [selectedProduct, setSelectedProduct] = useState([])
-
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate();
+    // console.log(user)
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
     };
@@ -132,26 +136,6 @@ const CartPage = () => {
     };
 
     const handleProcess = async (productsData) => {
-        // const sendEmail = (e) => {
-        //     e.preventDefault();
-        
-        //     const templateParams = {
-        //       user_name: form.current.user_name.value,
-        //       user_email: form.current.user_email.value,
-        //       message: form.current.message.value,
-        //       to_email: recipientEmail,
-        //     };
-        
-        //     emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams, 'YOUR_PUBLIC_KEY')
-        //       .then((result) => {
-        //         console.log(result.text);
-        //       })
-        //       .catch((error) => {
-        //         console.log(error.text);
-        //       });
-        //   };
-
-
         try {
 
             const itemIndex = selectedProduct.indexOf(productsData);
@@ -162,30 +146,60 @@ const CartPage = () => {
                 const updatedItems = [...selectedProduct];
                 updatedItems.splice(itemIndex, 1);
                 setSelectedProduct(updatedItems);
-    
+
             }
-
-
-
-
-
-
-
-
-
-            // Prepare the data to be sent to the server
-            // const data = { productIds: selectedItems };
-    
-            // // Make a POST request to the server
-            // const result = await axiosSecure.post(`/proceedToCheckOut`, data);
-    
-            // // Handle the result as needed
-            // console.log(result);
         } catch (error) {
             console.error('Error during Axios request:', error);
         }
     };
     // console.log(selectedProduct)
+
+
+    const handelProcessOrder = async () => {
+
+        const sendEmail = () => {
+            const templateParams = {
+                user_name: user?.displayName,
+                user_email: user?.email,
+                message: "Your order has been placed",
+            };
+
+            emailjs.send(`${import.meta.env.VITE_SERVICE}`, `${import.meta.env.VITE_TAMPALTE}`, templateParams, `${import.meta.env.VITE_PUBLIC_KEY}`)
+                .then((result) => {
+                    console.log(result.text);
+                    if (result.text == "OK") {
+                        toast.success('Order Confirm')
+                        navigate("/ConfirmOrderPage")
+                    } else {
+                        toast.error("Try Again")
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.text);
+                });
+        };
+
+
+
+
+        try {
+
+            // Prepare the data to be sent to the server
+            const data = { product: selectedProduct };
+
+            // Make a POST request to the server
+            const result = await axiosSecure.post(`/proceedToCheckOut`, data);
+            if (result.data.acknowledged == true || result.data.insertedCount > 0) {
+                sendEmail()
+            }
+            // Handle the result as needed
+            console.log(result);
+
+        } catch (error) {
+            console.error('Error during Axios request:', error);
+        }
+
+    }
 
     return (
         <div className="w-full mt-5 px-5 lg:px-0">
@@ -223,8 +237,8 @@ const CartPage = () => {
                     </div>
 
 
-                    <div className="mt-8 shadow-2xl">
-                        <div className="border lg:px-3 rounded-lg shadow-xl px-4">
+                    <div className="mt-8 lg:shadow-2xl">
+                        <div className="border lg:px-3 rounded-lg lg:shadow-xl px-4">
                             <h1 className="flex items-center gap-3 mt-4 font-medium">
                                 All Items
                             </h1>
@@ -235,11 +249,11 @@ const CartPage = () => {
 
                         <div className="">
                             {
-                                cart?.map(singleData => <div key={singleData._id} className="mt-1 shadow-xl p-5 lg:p-10 rounded-md relative">
+                                cart?.map(singleData => <div key={singleData._id} className="mt-1 lg:shadow-xl p-5 lg:p-10 rounded-md relative">
                                     <input type="checkbox"
                                         checked={selectedItems.includes(singleData._id)}
-                                        onChange={() => { 
-                                            handleCheckboxChange(singleData._id) 
+                                        onChange={() => {
+                                            handleCheckboxChange(singleData._id)
                                             handleProcess(singleData)
                                         }}
                                         className="checkbox checkbox-xs absolute right-2 top-5 border border-sky-500" />
@@ -313,13 +327,45 @@ const CartPage = () => {
                         <p>৳ {calculateTotalPrice().toFixed(2)} <span>Taka</span></p>
                     </div>
 
-                    <Link ><button onClick={() => handleProcess()} className="btn bg-orange-400 uppercase text-slate-100 mt-10 w-full"> Proceed to checkout </button></Link>
+                    <Link ><button onClick={() => document.getElementById('my_modal_3').showModal()} className="btn bg-orange-400 uppercase text-slate-100 mt-10 w-full"> Proceed to checkout </button></Link>
                 </div>
             </div>
+
+
+
+            <dialog id="my_modal_3" className="modal">
+                <div className="modal-box relative">
+                    <form method="dialog">
+                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-0">✕</button>
+                    </form>
+
+                    <div className="mt-5 ">
+                        <div className="lg:grid grid-cols-2 gap-2">
+                            <div className="border border-sky-400 p-3 rounded-md flex gap-2 items-center lg:shadow-2xl">
+                                <img className="h-10 w-10" src="https://www.vhv.rs/dpng/d/601-6012125_hand-cash-circular-symbol-cash-logo-black-and.png" alt="" />
+                                <h3 className="font-medium">Cash On Delivery</h3>
+                            </div>
+                            <div className="border border-sky-400 p-3 rounded-md lg:shadow-2xl mt-3 lg:mt-0">
+                                <img className="h-10 w-16" src="https://1000logos.net/wp-content/uploads/2021/02/Bkash-logo.png" alt="" />
+                                <h3 className="font-medium">Bkash Payment</h3>
+                            </div>
+                            
+                        </div>
+
+                        <div className="mt-5">
+                            <p>Total Items: ({selectedItems.length}) </p>
+                            <p><span className="font-medium">Total</span> ৳ {calculateTotalPrice().toFixed(2)} <span>Taka</span></p>
+                        </div>
+
+                    </div>
+
+
+                    <button onClick={() => handelProcessOrder()} className="btn bg-orange-400 uppercase text-slate-100 mt-10 ">Confirm Order</button>
+                </div>
+            </dialog>
         </div>
     );
 };
 
 export default CartPage;
 
-// to="/cartPage/ProceedToCheckOutPage"
