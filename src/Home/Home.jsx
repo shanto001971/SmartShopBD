@@ -26,8 +26,6 @@ const Home = () => {
             .then(data => setData(data))
     }, [])
 
-    // https://smart-shop-bd-server-side.vercel.app
-    // console.log(data)
 
     useEffect(() => {
         fetch("CardInfo.json")

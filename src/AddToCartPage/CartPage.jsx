@@ -5,6 +5,9 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
+import emailjs from '@emailjs/browser';
+
+
 
 const CartPage = () => {
     // const { setCheckOutId } = useContext(AuthContext)
@@ -14,7 +17,7 @@ const CartPage = () => {
     const [voucherCode, setVoucherCode] = useState("");
     const [shippingFee, setShippingFee] = useState(69);
     const [axiosSecure] = useAxiosSecure();
-    const [selectedProduct, setSelectedProduct] = useState({})
+    const [selectedProduct, setSelectedProduct] = useState([])
 
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
@@ -128,16 +131,56 @@ const CartPage = () => {
         }
     };
 
-    const handleProcess = async () => {
+    const handleProcess = async (productsData) => {
+        // const sendEmail = (e) => {
+        //     e.preventDefault();
+        
+        //     const templateParams = {
+        //       user_name: form.current.user_name.value,
+        //       user_email: form.current.user_email.value,
+        //       message: form.current.message.value,
+        //       to_email: recipientEmail,
+        //     };
+        
+        //     emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams, 'YOUR_PUBLIC_KEY')
+        //       .then((result) => {
+        //         console.log(result.text);
+        //       })
+        //       .catch((error) => {
+        //         console.log(error.text);
+        //       });
+        //   };
+
+
         try {
+
+            const itemIndex = selectedProduct.indexOf(productsData);
+
+            if (itemIndex === -1) {
+                setSelectedProduct([...selectedProduct, productsData]);
+            } else {
+                const updatedItems = [...selectedProduct];
+                updatedItems.splice(itemIndex, 1);
+                setSelectedProduct(updatedItems);
+    
+            }
+
+
+
+
+
+
+
+
+
             // Prepare the data to be sent to the server
-            const data = { productIds: selectedItems };
+            // const data = { productIds: selectedItems };
     
-            // Make a POST request to the server
-            const result = await axiosSecure.post(`/proceedToCheckOut`, data);
+            // // Make a POST request to the server
+            // const result = await axiosSecure.post(`/proceedToCheckOut`, data);
     
-            // Handle the result as needed
-            console.log(result);
+            // // Handle the result as needed
+            // console.log(result);
         } catch (error) {
             console.error('Error during Axios request:', error);
         }
@@ -197,7 +240,7 @@ const CartPage = () => {
                                         checked={selectedItems.includes(singleData._id)}
                                         onChange={() => { 
                                             handleCheckboxChange(singleData._id) 
-                                            setSelectedProduct(singleData)
+                                            handleProcess(singleData)
                                         }}
                                         className="checkbox checkbox-xs absolute right-2 top-5 border border-sky-500" />
                                     <div className=" lg:flex justify-around gap-5 items-center rounded-md">

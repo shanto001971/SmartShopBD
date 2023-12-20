@@ -95,7 +95,7 @@ const ProductsChackOut = () => {
         setHoveredImage(productData?.productsImage)
     }
 
-    // console.log(productData)
+    
 
 
     const handelAddToCart = () => {
