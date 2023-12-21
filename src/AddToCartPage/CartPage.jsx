@@ -179,7 +179,15 @@ const CartPage = () => {
                 });
         };
 
-
+        const handelClearCart = async () => {
+            const data = { productIds: selectedItems };
+            const result = await axiosSecure.delete(`/carts`, { data });
+            // if (result.text == "OK") {
+            //     navigate("/ConfirmOrderPage")
+            // }
+            // Assuming refetch is a function to refresh the cart data
+            refetch();
+        }
 
 
         try {
@@ -191,10 +199,12 @@ const CartPage = () => {
             const result = await axiosSecure.post(`/proceedToCheckOut`, data);
             console.log(result);
             if (result?.statusText == 'OK') {
-                sendEmail()
+                sendEmail();
+                handelClearCart();
+
             }
             // Handle the result as needed
-           
+
 
         } catch (error) {
             console.error('Error during Axios request:', error);
@@ -238,7 +248,7 @@ const CartPage = () => {
                     </div>
 
 
-                    <div className="mt-2 lg:shadow-2xl">
+                    <div className="mt-2">
                         <div className="border lg:px-3 rounded-lg lg:shadow-xl px-4">
                             <h1 className="flex items-center gap-3 mt-4 font-medium">
                                 All Items
@@ -323,9 +333,9 @@ const CartPage = () => {
                     <hr />
 
                     <div className="">
-                        <div className="flex justify-between items-center p-3  mt-2 rounded-md ">
-                        <p className="font-medium">Total</p>
-                        <p className="text-sm">৳ {calculateTotalPrice().toFixed(2)} <span>Taka</span></p>
+                        <div className="flex justify-between items-center p-3  rounded-md ">
+                            <p className="font-medium">Total</p>
+                            <p className="text-sm">৳ {calculateTotalPrice().toFixed(2)} <span>Taka</span></p>
                         </div>
                         <small className="flex justify-end text-xs">VAT included, where applicable</small>
                     </div>
@@ -352,7 +362,7 @@ const CartPage = () => {
                                 <img className="h-10 w-16" src="https://1000logos.net/wp-content/uploads/2021/02/Bkash-logo.png" alt="" />
                                 <h3 className="font-medium">Bkash Payment</h3>
                             </div>
-                            
+
                         </div>
 
                         <div className="mt-5">
