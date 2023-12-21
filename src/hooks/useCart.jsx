@@ -12,7 +12,7 @@ export const useCart = () => {
         queryKey: ['cart', user?.email],
         enabled: !loading,
         // queryFn: async () => {
-        //     const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`)
+        //     const response = await fetch(`https://smart-shop-bd-server-side.vercel.app/carts?email=${user?.email}`)
         //     return response.json()
         // },
         queryFn: async () => {

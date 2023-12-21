@@ -74,7 +74,7 @@ const ProductsChackOut = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cardCollection/${id}`)
+        fetch(`https://smart-shop-bd-server-side.vercel.app/cardCollection/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProductData(data);

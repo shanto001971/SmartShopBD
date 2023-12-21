@@ -189,11 +189,12 @@ const CartPage = () => {
 
             // Make a POST request to the server
             const result = await axiosSecure.post(`/proceedToCheckOut`, data);
-            if (result.data.acknowledged == true || result.data.insertedCount > 0) {
+            console.log(result);
+            if (result?.statusText == 'OK') {
                 sendEmail()
             }
             // Handle the result as needed
-            console.log(result);
+           
 
         } catch (error) {
             console.error('Error during Axios request:', error);
@@ -205,7 +206,7 @@ const CartPage = () => {
         <div className="w-full mt-5 px-5 lg:px-0">
             <Toaster />
             <div className="lg:flex w-full lg:px-20">
-                <div className="lg:w-[80%] lg:mr-20 ">
+                <div className="lg:w-[80%] lg:mr-10 ">
                     <div className=" flex items-center justify-between border lg:p-2  rounded-md p-5 ">
                         <h1 className="flex items-center gap-3 font-medium">
                             <input
@@ -237,7 +238,7 @@ const CartPage = () => {
                     </div>
 
 
-                    <div className="mt-8 lg:shadow-2xl">
+                    <div className="mt-2 lg:shadow-2xl">
                         <div className="border lg:px-3 rounded-lg lg:shadow-xl px-4">
                             <h1 className="flex items-center gap-3 mt-4 font-medium">
                                 All Items
@@ -299,10 +300,10 @@ const CartPage = () => {
 
 
                 </div>
-                <div className="lg:w-[40%] border lg:p-5 my-10 lg:my-0 px-5 lg:px-0">
+                <div className="lg:w-[40%] border lg:p-5 my-10 lg:my-0 px-5 lg:px-5 rounded-md">
                     <h1 className="font-medium">Order Summary</h1>
                     <div className="flex justify-between items-center p-3  mt-2 rounded-md ">
-                        <small>Subtotal (1 items)</small>
+                        <small>Subtotal (1) items</small>
                         <small>৳ {calculateSubtotal().toFixed(2)} <span className="">Taka</span></small>
                     </div>
 
@@ -319,15 +320,17 @@ const CartPage = () => {
                             onChange={handleVoucherCodeChange}
                             className="file-input w-full max-w-xs pl-2" placeholder="Enter Voucher Code" />
                     </div>
-                    <br />
                     <hr />
 
-                    <div className="flex justify-between items-center p-3  mt-2 rounded-md ">
+                    <div className="">
+                        <div className="flex justify-between items-center p-3  mt-2 rounded-md ">
                         <p className="font-medium">Total</p>
-                        <p>৳ {calculateTotalPrice().toFixed(2)} <span>Taka</span></p>
+                        <p className="text-sm">৳ {calculateTotalPrice().toFixed(2)} <span>Taka</span></p>
+                        </div>
+                        <small className="flex justify-end text-xs">VAT included, where applicable</small>
                     </div>
 
-                    <Link ><button onClick={() => document.getElementById('my_modal_3').showModal()} className="btn bg-orange-400 uppercase text-slate-100 mt-10 w-full"> Proceed to checkout </button></Link>
+                    <Link ><button onClick={() => document.getElementById('my_modal_3').showModal()} className="btn bg-orange-400 uppercase text-slate-100 mt-5 w-full"> Proceed to checkout </button></Link>
                 </div>
             </div>
 
