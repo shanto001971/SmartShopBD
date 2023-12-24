@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { QueryCache, useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import toast, { Toaster } from "react-hot-toast";
-
+import emailjs from '@emailjs/browser';
 
 const ConfirmOrderPage = () => {
     const { user, loading } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
 
     // useEffect(() => {
     //     const fetchData = async () => {
@@ -42,7 +42,16 @@ const ConfirmOrderPage = () => {
 
     const handleCancelOrder = async (productsId) => {
 
+
+
+
+
         try {
+
+
+
+
+
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -53,14 +62,35 @@ const ConfirmOrderPage = () => {
                 confirmButtonText: "Yes, delete it!"
             }).then(async (result) => {
                 if (result.isConfirmed) {
+
+                    const sendEmail = () => {
+                        const templateParams = {
+                            user_name: user?.displayName,
+                            user_email: user?.email,
+                            message: "Your order has been Cancel",
+                        };
+
+                        emailjs.send(`${import.meta.env.VITE_SERVICE}`, `${import.meta.env.VITE_TAMPALTE}`, templateParams, `${import.meta.env.VITE_PUBLIC_KEY}`)
+                            .then((result) => {
+
+                            })
+                            .catch((error) => {
+                                console.log(error.text);
+                            });
+                    };
+
+
+
                     const result = await axiosSecure.delete(`/cancelOrder/${productsId}`);
                     if (result.data.message == "Order cancelled successfully") {
                         toast.success('Delete Success');
+                        sendEmail()
                     } else {
                         toast.error("Try Again")
                     }
                     refetch();
                 }
+
             });
             // Handle the result or update the UI accordingly
         } catch (error) {
