@@ -10,6 +10,7 @@ import Card from "../Components/CardSection/Card";
 import ProductCard from "../Components/ProductCard/ProductCard";
 import { useState } from "react";
 import { useEffect } from "react";
+import Loader from "../Components/Loader/Loader";
 
 
 
@@ -25,7 +26,7 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setData(data))
     }, [])
-    
+
     // https://smart-shop-bd-server-side.vercel.app
     // http://localhost:5000
 
@@ -50,14 +51,14 @@ const Home = () => {
             <HeroSlider />
             <div className=" lg:mx-5">
                 <OurCollection />
-                <Card productData={data}/>
+                <Card productData={data} />
                 <EndSection productData={productData} loading={loading} />
                 <ImageHoverEffect />
                 <ProductCard data={data?.slice(0, 8)} key={data._id} />
                 <ShowCase />
                 <ProductCard data={data?.slice(12, 20)} key={data._id} />
                 <BannerSlider />
-                <EndSection productData={data?.slice(8,14)} loading={loading} />
+                <EndSection productData={data?.slice(8, 14)} loading={loading} />
                 <ImageHoverEffect />
                 <ProductCard data={data?.slice(6, 14)} key={data._id} />
                 <Review />
