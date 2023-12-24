@@ -167,7 +167,7 @@ const CartPage = () => {
             emailjs.send(`${import.meta.env.VITE_SERVICE}`, `${import.meta.env.VITE_TAMPALTE}`, templateParams, `${import.meta.env.VITE_PUBLIC_KEY}`)
                 .then((result) => {
                     console.log(result.text);
-                    if (result.text == "OK") {
+                    if (result.text == "OK" || result.status == 200) {
                         toast.success('Order Confirm')
                         navigate("/ConfirmOrderPage")
                     } else {
@@ -182,9 +182,9 @@ const CartPage = () => {
         const handelClearCart = async () => {
             const data = { productIds: selectedItems };
             const result = await axiosSecure.delete(`/carts`, { data });
-            // if (result.text == "OK") {
-            //     navigate("/ConfirmOrderPage")
-            // }
+            if (result.text == "OK") {
+                navigate("/ConfirmOrderPage")
+            }
             // Assuming refetch is a function to refresh the cart data
             refetch();
         }
@@ -198,7 +198,7 @@ const CartPage = () => {
             // Make a POST request to the server
             const result = await axiosSecure.post(`/proceedToCheckOut`, data);
             console.log(result);
-            if (result?.statusText == 'OK') {
+            if (result?.statusText == 'OK' || result?.data.insertedCount > 0) {
                 sendEmail();
                 handelClearCart();
 
