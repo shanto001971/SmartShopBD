@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import emailjs from '@emailjs/browser';
+import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
-
+    const [axiosSecure] = useAxiosSecure()
     const [itemsTotal, setItemsTotal] = useState(0);
     const [totalPayment, setTotalPayment] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const newItemsTotal = filterData.reduce(
@@ -15,10 +22,62 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
 
         const newTotalPayment = newItemsTotal + deliveryFee;
         setTotalPayment(newTotalPayment);
-    }, [deliveryFee, filterData])
+    }, [deliveryFee, filterData]);
+
+    const handelPlaceOrder = async (product) => {
+
+
+
+        const sendEmail = () => {
+            const templateParams = {
+                user_name: user?.displayName,
+                user_email: user?.email,
+                message: "Your order has been placed",
+            };
+
+            emailjs.send(`${import.meta.env.VITE_SERVICE}`, `${import.meta.env.VITE_TAMPALTE}`, templateParams, `${import.meta.env.VITE_PUBLIC_KEY}`)
+                .then((result) => {
+                    console.log(result.text);
+                    if (result.text == "OK" || result.status == 200) {
+                        toast.success('Order Confirm')
+                        navigate("/ConfirmOrderPage")
+                    } else {
+                        toast.error("Try Again")
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.text);
+                });
+        };
+
+
+        try {
+
+            // Prepare the data to be sent to the server
+
+
+            // Make a POST request to the server
+            const result = await axiosSecure.post(`/placeOrder`, product);
+            console.log(result.data.insertedId)
+            if (result.data.insertedId) {
+                sendEmail();
+
+            }
+            // Handle the result as needed
+
+
+        } catch (error) {
+            console.error('Error during Axios request:', error);
+        }
+
+
+
+
+    }
 
     return (
         <div>
+            <Toaster />
             <div className="lg:flex gap-5  mx-auto bg-slate-200">
                 <div className="lg:w-[70%] lg:px-10 bg-slate-200 rounded-md p-5">
                     <div className="py-10 text-center bg-slate-100 rounded-md shadow-2xl">
@@ -113,7 +172,7 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
                         </p>
                     </div>
 
-                    <button className="btn w-full bg-[#F85606] mt-5 text-slate-200">Place Order</button>
+                    <button onClick={() => handelPlaceOrder(obData)} className="btn w-full bg-[#F85606] mt-5 text-slate-200">Place Order</button>
 
                 </div>
             </div>

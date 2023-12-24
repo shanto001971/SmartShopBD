@@ -10,7 +10,6 @@ import Card from "../Components/CardSection/Card";
 import ProductCard from "../Components/ProductCard/ProductCard";
 import { useState } from "react";
 import { useEffect } from "react";
-import Loader from "../Components/Loader/Loader";
 
 
 
