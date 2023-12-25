@@ -21,13 +21,13 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/cardCollection")
+        fetch("https://smart-shop-bd-server-side.vercel.app/cardCollection")
             .then(res => res.json())
             .then(data => setData(data))
     }, [])
 
     // https://smart-shop-bd-server-side.vercel.app
-    // http://localhost:5000
+    // https://smart-shop-bd-server-side.vercel.app
 
     useEffect(() => {
         fetch("CardInfo.json")

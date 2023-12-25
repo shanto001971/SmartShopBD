@@ -24,7 +24,7 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
         setTotalPayment(newTotalPayment);
     }, [deliveryFee, filterData]);
 
-    const handelPlaceOrder = async (product) => {
+    const handelPlaceOrder = async () => {
 
 
 
@@ -50,11 +50,22 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
                 });
         };
 
-
+// console.log(obData)
         try {
 
             // Prepare the data to be sent to the server
-
+            const product = {
+                email: user?.email,
+                category: obData?.category,
+                discounts: obData?.discounts,
+                newPrice: obData?.newPrice,
+                productTitle: obData?.productTitle,
+                productsImage: obData?.productsImage,
+                reviews: obData?.reviews,
+                shopName: obData?.shopName,
+                productsId: obData?._id,
+                quantity: 1
+            }
 
             // Make a POST request to the server
             const result = await axiosSecure.post(`/placeOrder`, product);
@@ -172,7 +183,7 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
                         </p>
                     </div>
 
-                    <button onClick={() => handelPlaceOrder(obData)} className="btn w-full bg-[#F85606] mt-5 text-slate-200">Place Order</button>
+                    <button onClick={() => handelPlaceOrder()} className="btn w-full bg-[#F85606] mt-5 text-slate-200">Place Order</button>
 
                 </div>
             </div>

@@ -34,7 +34,7 @@ const PlaceOrderPage = () => {
     }, [id, user]);
 
 
-    // console.log(filterData)
+    // console.log(obData)
 
 
 
@@ -42,7 +42,7 @@ const PlaceOrderPage = () => {
 
     return (
         <div className="w-full">
-            <OrderPage user={user} obData={obData} filterData={filterData} deliveryFee={deliveryFee}/>
+            <OrderPage user={user} obData={obData} filterData={filterData} deliveryFee={deliveryFee} />
         </div>
     );
 };

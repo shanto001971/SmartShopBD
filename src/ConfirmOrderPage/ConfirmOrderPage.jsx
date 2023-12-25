@@ -28,7 +28,7 @@ const ConfirmOrderPage = () => {
         queryKey: ['currentOrder', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const response = await fetch(`http://localhost:5000/confirmOrder?email=${user?.email}`);
+            const response = await fetch(`https://smart-shop-bd-server-side.vercel.app/confirmOrder?email=${user?.email}`);
             return response.json();
         },
     });
@@ -42,16 +42,7 @@ const ConfirmOrderPage = () => {
 
     const handleCancelOrder = async (productsId) => {
 
-
-
-
-
         try {
-
-
-
-
-
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
