@@ -5,7 +5,7 @@ const Card = ({ productData }) => {
         <div className="grid grid-cols-2 gap-3  lg:mt-10 ">
             {
                 productData?.slice(1, 3).map(singleData => <div key={singleData?._id} className="card lg:card-side bg-base-100 shadow-xl">
-                    <figure><img className="" src={singleData?.productsImage} alt="Movie" /></figure>
+                    <figure><img  src={singleData?.productsImage} alt="Card" /></figure>
                     <div className="lg:card-body px-5 ">
                         <h2 className="lg:card-title font-medium my-2 lg:my-0">{singleData?.productTitle.slice(0,40)}...</h2>
                         <div className="hidden lg:block">
