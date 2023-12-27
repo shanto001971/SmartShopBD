@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { AuthContext } from "../Provider/AuthProvider";
+import { useCart } from "../hooks/useCart";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
-const EndSection = ({productData,loading}) => {
+const EndSection = ({ productData, loading }) => {
     const [quantity, setQuantity] = useState(1);
     const [shoesColor, setShoesColoer] = useState("White")
     const [card, setCard] = useState(null)
-
+    const [axiosSecure] = useAxiosSecure()
+    const { user } = useContext(AuthContext);
+    const [cart, refetch] = useCart();
 
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
@@ -22,6 +29,40 @@ const EndSection = ({productData,loading}) => {
 
     if (!card) {
         productData.map(dataItem => setCard(dataItem))
+    }
+
+
+
+    const handelAddToCart = (productData) => {
+        // console.log(productData)
+
+        if (user && user.email) {
+
+            const cartItem = {
+                email: user?.email,
+                category: productData?.category,
+                discounts: productData?.discounts,
+                newPrice: productData?.newPrice,
+                productTitle: productData?.productTitle,
+                productsImage: productData?.productsImage,
+                reviews: productData?.reviews,
+                shopName: productData?.shopName,
+                productsId: productData?._id,
+                quantity: quantity
+            }
+            axiosSecure.post("/carts", cartItem)
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data?.insertedId) {
+                        toast.success('Add Success');
+                        refetch()
+                    }
+                    // console.log(res.data)
+                })
+
+        }else{
+            toast.error("Please LogIn fast")
+        }
     }
 
 
@@ -76,8 +117,8 @@ const EndSection = ({productData,loading}) => {
                         <button className="px-5 " onClick={incrementQuantity}>+</button>
                     </div>
                     <div className="w-full lg:mt-10 lg:flex items-center justify-center gap-2 ">
-                        <button className="w-full lg:w-[50%] bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
-                        <button className="w-full mt-2 lg:w-[50%] bg-[#3A2A2F] p-2 rounded text-white">Buy Now</button>
+                        <button onClick={() => handelAddToCart(card)} className="w-full lg:w-[50%] bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
+                        <Link  className="w-full lg:w-[50%]" to={`/PlaceOrderPage/${card?._id}`} ><button className="w-full mt-2 lg:mt-0  bg-[#3A2A2F] p-2 rounded text-white">Buy Now</button></Link>
                     </div>
                 </div>
             </div>
