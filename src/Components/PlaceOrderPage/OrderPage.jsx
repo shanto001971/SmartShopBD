@@ -175,7 +175,7 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
                         <hr />
                         <div className="flex justify-between items-center mt-2">
                             <small>Total Payment</small>
-                            <small>৳ {totalPayment}</small>
+                            <small>৳ {totalPayment.toFixed(2)}</small>
                         </div>
 
                         <p className="text-right text-xs mt-2">

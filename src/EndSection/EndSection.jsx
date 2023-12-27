@@ -5,6 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { useCart } from "../hooks/useCart";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import Loader from "../Components/Loader/Loader";
 
 const EndSection = ({ productData, loading }) => {
     const [quantity, setQuantity] = useState(1);
@@ -23,12 +24,12 @@ const EndSection = ({ productData, loading }) => {
             setQuantity(quantity - 1);
         }
     };
-    if (loading) {
-        return <div className="text-center">Loading...</div>;
+    if (loading || !productData) {
+        return <Loader />
     }
 
-    if (!card) {
-        productData.map(dataItem => setCard(dataItem))
+    if (!card && productData.length > 0) {
+        setCard(productData[0]);
     }
 
 
@@ -60,13 +61,13 @@ const EndSection = ({ productData, loading }) => {
                     // console.log(res.data)
                 })
 
-        }else{
+        } else {
             toast.error("Please LogIn fast")
         }
     }
 
 
-    // console.log(card)
+    console.log(card)
 
     return (
         <div className="lg:flex mt-10 border ">
@@ -118,7 +119,7 @@ const EndSection = ({ productData, loading }) => {
                     </div>
                     <div className="w-full lg:mt-10 lg:flex items-center justify-center gap-2 ">
                         <button onClick={() => handelAddToCart(card)} className="w-full lg:w-[50%] bg-[#EA33B6] p-2 rounded text-white">Add to cart</button>
-                        <Link  className="w-full lg:w-[50%]" to={`/PlaceOrderPage/${card?._id}`} ><button className="w-full mt-2 lg:mt-0  bg-[#3A2A2F] p-2 rounded text-white">Buy Now</button></Link>
+                        <Link className="w-full lg:w-[50%]" to={`/PlaceOrderPage/${card?._id}`} ><button className="w-full mt-2 lg:mt-0  bg-[#3A2A2F] p-2 rounded text-white">Buy Now</button></Link>
                     </div>
                 </div>
             </div>
