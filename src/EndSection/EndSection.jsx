@@ -67,10 +67,10 @@ const EndSection = ({ productData, loading }) => {
     }
 
 
-    console.log(card)
+    // console.log(card)
 
     return (
-        <div className="lg:flex mt-10 border ">
+        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="lg:flex mt-10 border lg:my-10">
             <div className="lg:w-[60%] lg:flex">
                 <div className="w-[20%] lg:flex lg:flex-col gap-3  flex border">
                     {

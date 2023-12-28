@@ -51,7 +51,7 @@ const Card = ({ productData }) => {
         <div className="grid grid-cols-2 gap-3  lg:mt-10 ">
             <Toaster />
             {
-                productData?.slice(5, 7).map(singleData => <div key={singleData?._id} className="card lg:card-side bg-base-100 border shadow-xl">
+                productData?.slice(5, 7).map(singleData => <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} key={singleData?._id} className="card lg:card-side bg-base-100 border">
                     <figure><img className="w-[80%]" src={singleData?.productsImage} alt="Card" /></figure>
                     <div className="lg:card-body px-5">
                         <h2 className="lg:card-title font-medium my-2 lg:my-0">{singleData?.productTitle.slice(0, 40)}...</h2>

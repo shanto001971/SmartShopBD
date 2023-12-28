@@ -16,31 +16,38 @@ import { useEffect } from "react";
 
 const Home = () => {
     const [data, setData] = useState([])
-    const [productData, setProductData] = useState([])
     const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
         fetch("https://smart-shop-bd-server-side.vercel.app/cardCollection")
             .then(res => res.json())
-            .then(data => setData(data))
+            .then(data => {
+                setData(data)
+                setLoading(false);
+            })
+                
+            .catch(error => {
+                console.error("Error fetching data:", error);
+                setLoading(false);
+            });
     }, [])
 
     // https://smart-shop-bd-server-side.vercel.app
     // https://smart-shop-bd-server-side.vercel.app
 
-    useEffect(() => {
-        fetch("CardInfo.json")
-            .then(res => res.json())
-            .then(data => {
-                setProductData(data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error("Error fetching data:", error);
-                setLoading(false);
-            });
-    }, []);
+    // useEffect(() => {
+    //     fetch("CardInfo.json")
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setProductData(data);
+    //             setLoading(false);
+    //         })
+    //         .catch(error => {
+    //             console.error("Error fetching data:", error);
+    //             setLoading(false);
+    //         });
+    // }, []);
 
     // console.log(productData)
 
@@ -51,10 +58,10 @@ const Home = () => {
             <div className=" lg:mx-5">
                 <OurCollection />
                 <Card productData={data} />
-                <EndSection productData={productData} loading={loading} />
+                <EndSection productData={data?.slice(0, 8)} loading={loading} />
                 <ImageHoverEffect />
                 <ProductCard data={data?.slice(0, 8)} key={data._id} />
-                <ShowCase />
+                <ShowCase data={data} />
                 <ProductCard data={data?.slice(12, 20)} key={data._id} />
                 <BannerSlider />
                 <EndSection productData={data?.slice(8, 14)} loading={loading} />

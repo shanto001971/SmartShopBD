@@ -4,6 +4,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 
 
@@ -11,6 +12,7 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
     const [axiosSecure] = useAxiosSecure()
     const [itemsTotal, setItemsTotal] = useState(0);
     const [totalPayment, setTotalPayment] = useState(0);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -37,7 +39,7 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
 
             emailjs.send(`${import.meta.env.VITE_SERVICE}`, `${import.meta.env.VITE_TAMPALTE}`, templateParams, `${import.meta.env.VITE_PUBLIC_KEY}`)
                 .then((result) => {
-                    console.log(result.text);
+                    // console.log(result.text);
                     if (result.text == "OK" || result.status == 200) {
                         toast.success('Order Confirm')
                         navigate("/ConfirmOrderPage")
@@ -47,10 +49,14 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
                 })
                 .catch((error) => {
                     console.log(error.text);
+                })
+                .finally(() => {
+                    setLoading(false); // Set loading state to false when email processing is done
                 });
+
         };
 
-// console.log(obData)
+        // console.log(obData)
         try {
 
             // Prepare the data to be sent to the server
@@ -183,7 +189,7 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
                         </p>
                     </div>
 
-                    <button onClick={() => handelPlaceOrder()} className="btn w-full bg-[#F85606] mt-5 text-slate-200">Place Order</button>
+                    <button disabled={loading} onClick={() => handelPlaceOrder()} className="btn w-full bg-[#F85606] mt-5 text-slate-200">{loading ? <Loader /> : "Place Order"}</button>
 
                 </div>
             </div>

@@ -20,7 +20,7 @@ const ImageHoverEffect = () => {
 
 
     return (
-        <div className="mt-5 lg:flex justify-center gap-3 lg:p-4 border rounded shadow-md">
+        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="mt-5 lg:flex justify-center gap-3 lg:p-4 border rounded lg:my-10">
             <div className="">
                 {/* <Zoom className="rounded-md" img="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" zoomScale={3} width={600} height={600} /> */}
                 <img className="rounded-md w-full" src="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" alt="" />
