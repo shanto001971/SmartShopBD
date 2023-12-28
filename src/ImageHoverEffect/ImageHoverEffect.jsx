@@ -1,10 +1,11 @@
 
 import { useState } from "react";
-// import Zoom from "react-img-zoom-gdn";
 import ReactStars from "react-rating-stars-component";
+
+
 const ImageHoverEffect = () => {
     const [quantity, setQuantity] = useState(1);
-    const [shoesColor, setShoesColoer] = useState("White");
+    const [shoesColor, setShoesColor] = useState("White");
 
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
@@ -20,7 +21,7 @@ const ImageHoverEffect = () => {
 
 
     return (
-        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="mt-5 lg:flex justify-center gap-3 lg:p-4 border rounded lg:my-10">
+        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="mt-5 lg:flex justify-center gap-3 lg:p-4 border rounded lg:my-">
             <div className="">
                 {/* <Zoom className="rounded-md" img="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" zoomScale={3} width={600} height={600} /> */}
                 <img className="rounded-md w-full" src="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" alt="" />
@@ -47,9 +48,9 @@ const ImageHoverEffect = () => {
                         Color Family: <span className="lg:text-xl font-semibold">{shoesColor}</span>
                     </h3>
                     <div className="flex gap-2 mt-2">
-                        <div onClick={() => setShoesColoer("White")} className="p-3 bg-white border border-red-500 w-10"></div>
-                        <div onClick={() => setShoesColoer("Black")} className="p-3 bg-black border border-red-500 w-10"></div>
-                        <div onClick={() => setShoesColoer("Yellow")} className="p-3 bg-amber-300 border border-red-500 w-10"></div>
+                        <div onClick={() => setShoesColor("White")} className="p-3 bg-white border border-red-500 w-10"></div>
+                        <div onClick={() => setShoesColor("Black")} className="p-3 bg-black border border-red-500 w-10"></div>
+                        <div onClick={() => setShoesColor("Yellow")} className="p-3 bg-amber-300 border border-red-500 w-10"></div>
                     </div>
                     <p className="text-2xl">Price: 3000 <del className="text-lg">Tk: 3,800</del></p>
                     <div className=" border w-44 p-[10px] flex my-1">
