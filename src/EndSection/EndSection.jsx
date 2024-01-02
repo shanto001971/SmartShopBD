@@ -6,12 +6,15 @@ import { useCart } from "../hooks/useCart";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import Loader from "../Components/Loader/Loader";
+import ReactImageMagnify from "react-image-magnify";
+import SpringModal from "../Components/SpringModal/SpringModal";
 
 const EndSection = ({ productData, loading }) => {
     const [quantity, setQuantity] = useState(1);
-    const [shoesColor, setShoesColoer] = useState("White")
-    const [card, setCard] = useState(null)
-    const [axiosSecure] = useAxiosSecure()
+    const [shoesColor, setShoesColoer] = useState("White");
+    const [card, setCard] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
+    const [axiosSecure] = useAxiosSecure();
     const { user } = useContext(AuthContext);
     const [cart, refetch] = useCart();
 
@@ -70,7 +73,7 @@ const EndSection = ({ productData, loading }) => {
     // console.log(card)
 
     return (
-        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="lg:flex mt-10 border lg:my-10">
+        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="lg:flex mt-10 border lg:my-10 overflow-hidden">
             <div className="lg:w-[60%] lg:flex">
                 <div className="w-[20%] lg:flex lg:flex-col gap-3  flex border">
                     {
@@ -79,8 +82,29 @@ const EndSection = ({ productData, loading }) => {
 
 
                 </div>
-                <div className="lg:w-[80%]">
-                    <img className="w-full" src={card?.productsImage} alt="" />
+                <div className="lg:w-[80%] relative" onClick={() => setIsOpen(true)}>
+                    {/* <img className="w-full" src={card?.productsImage} alt="" /> */}
+                    <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />
+                    <ReactImageMagnify
+                        {...{
+                            smallImage: {
+                                alt: "",
+                                isFluidWidth: true,
+                                src: card?.productsImage,
+                            },
+                            largeImage: {
+                                src: card?.productsImage,
+                                width: 1100,
+                                height: 1600,
+                            },
+                            lensStyle: { backgroundColor: 'rgba(0,0,0,0.6)' },
+                            lensBorderSize: 1,
+                            lensBorderRadius: 0,
+                            hoverDelayInMs: 200,
+                        }}
+                    />
+
+                    <p className="absolute bottom-6 left-[30%] text-white bg-black px-2 rounded-xl bg-opacity-15">Hover and Roll To Zoom</p>
                 </div>
             </div>
             <div className="lg:flex flex-col gap-5 p-3 lg:p-8 lg:w-[40%]">
@@ -88,7 +112,7 @@ const EndSection = ({ productData, loading }) => {
                 <p className="bg-red-600 px-1 w-20 rounded text-white">Save{card?.discounts}%</p>
                 <div className="lg:mt-10">
                     <p className="font-semibold">{card?.shopName}</p>
-                    <p className="flex items-center gap-2">
+                    {/* <p className="flex items-center gap-2">
                         <ReactStars
                             rating={card?.reviews}
                             size={24}
@@ -97,7 +121,7 @@ const EndSection = ({ productData, loading }) => {
                             isHalf={true}
                         />
                         {card?.reviews}
-                    </p>
+                    </p> */}
                 </div>
 
                 <hr />

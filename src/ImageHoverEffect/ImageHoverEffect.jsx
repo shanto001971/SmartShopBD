@@ -3,11 +3,11 @@ import { useRef, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import ReactImageMagnify from 'react-image-magnify';
 import "./ImageHoverEffect.css"
+import ReactImageZoom from 'react-image-zoom';
 
 const ImageHoverEffect = () => {
     const [quantity, setQuantity] = useState(1);
     const [shoesColor, setShoesColor] = useState("White");
-    const zoomedAreaRef = useRef(null);
 
 
     const incrementQuantity = () => {
@@ -20,63 +20,28 @@ const ImageHoverEffect = () => {
         }
     };
 
-    const [currentImage, setCurrentImage] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseEnter = () => {
-    setIsZoomed(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsZoomed(false);
-  };
-
-  const handleMouseMove = (e) => {
-    const boundingRect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - boundingRect.left;
-    const y = e.clientY - boundingRect.top;
-    setMousePosition({ x, y });
-  };
-
-  const handleImageChange = (index) => {
-    setCurrentImage(index);
-  };
-
 
     // console.log(imageWidth)
     const image = "https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*"
-
+    const zoomProps = {
+      width: 400,
+      zoomWidth: 500,
+      img: image,
+      
+    };
 
     return (
         <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="mt-5 lg:flex justify-center gap-3 lg:p-4 border rounded lg:my-">
-            <div className="">
+            <div className="w-[50%]">
                 {/* <Zoom className="rounded-md" img="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" zoomScale={3} width={600} height={600} /> */}
-                <img className="rounded-md w-full" src="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" alt="" />
-                <ReactImageMagnify
-          {...{
-            smallImage: {
-              alt: "",
-              isFluidWidth: true,
-              src: image,
-            },
-            largeImage: {
-              src: image,
-              width: 1200,
-              height: 1800,
-            },
-            lensStyle: { backgroundColor: 'rgba(0,0,0,0.6)' },
-            lensBorderSize: 1,
-            lensBorderRadius: 0,
-            hoverDelayInMs: 200,
-          }}
-        />
-
+                {/* <img className="rounded-md w-full" src="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" alt="" /> */}
+                
+                <ReactImageZoom {...zoomProps} />
             </div>
 
 
 
-            <div className="lg:flex flex-col gap-3 px-2 lg:px-0">
+            <div className="lg:flex flex-col gap-3 px-2 lg:px-0 w-[50%]">
                 <h1 className="lg:text-3xl font-medium">Stride in Style: Comfortable and Trendy Footwear for Every Occasion - Shop Now for the Perfect Pair!</h1>
                 <p className="bg-red-600 px-1 w-20 rounded text-white">Save 40%</p>
                 <div className="">
