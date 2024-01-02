@@ -75,7 +75,7 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
 
             // Make a POST request to the server
             const result = await axiosSecure.post(`/placeOrder`, product);
-            console.log(result.data.insertedId)
+            // console.log(result.data.insertedId)
             if (result.data.insertedId) {
                 sendEmail();
 
