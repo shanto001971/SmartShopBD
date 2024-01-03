@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { AuthContext } from "../Provider/AuthProvider";
@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import Loader from "../Components/Loader/Loader";
 import ReactImageMagnify from "react-image-magnify";
 import SpringModal from "../Components/SpringModal/SpringModal";
+import { FaSearchPlus } from "react-icons/fa";
+
 
 const EndSection = ({ productData, loading }) => {
     const [quantity, setQuantity] = useState(1);
@@ -17,6 +19,7 @@ const EndSection = ({ productData, loading }) => {
     const [axiosSecure] = useAxiosSecure();
     const { user } = useContext(AuthContext);
     const [cart, refetch] = useCart();
+    const [image, setImage] = useState(card?.imageVarient?.length > 0 ? card?.imageVarient[0] : null)
 
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
@@ -27,14 +30,21 @@ const EndSection = ({ productData, loading }) => {
             setQuantity(quantity - 1);
         }
     };
+
+    useEffect(() => {
+        if (card?.imageVarient?.length > 0) {
+            setImage(card.imageVarient[0]);
+        }
+    }, [card?.imageVarient]);
+
     if (loading || !productData) {
         return <Loader />
     }
 
+
     if (!card && productData.length > 0) {
         setCard(productData[0]);
     }
-
 
 
     const handelAddToCart = (productData) => {
@@ -70,7 +80,28 @@ const EndSection = ({ productData, loading }) => {
     }
 
 
-    // console.log(card)
+    // console.log(image)
+
+    const Element = <div className="w-full">
+        <div className="w-full">
+            <img className="w-full h-96 rounded-md" src={image} alt="" />
+        </div>
+        {card?.imageVarient && card?.imageVarient.length > 0 && (
+            <div className="flex items-center gap-3 mt-5 w-full">
+                {card?.imageVarient.map((singleImage, index) => (
+                    <img
+                        key={index}
+                        src={singleImage}
+                        alt={`Thumbnail ${index}`}
+                        onClick={() => setImage(singleImage)}
+                        className={`cursor-pointer ${image === singleImage ? "border-2 border-slate-900 rounded-md" : "border"}  lg:w-28 lg:h-20 w-20 h-16 rounded`}
+                    />
+                ))}
+            </div>
+        )}
+    </div>
+
+
 
     return (
         <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="lg:flex mt-10 border lg:my-10 overflow-hidden">
@@ -84,7 +115,7 @@ const EndSection = ({ productData, loading }) => {
                 </div>
                 <div className="lg:w-[80%] relative" onClick={() => setIsOpen(true)}>
                     {/* <img className="w-full" src={card?.productsImage} alt="" /> */}
-                    <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />
+                    <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} Element={Element} />
                     <ReactImageMagnify
                         {...{
                             smallImage: {
@@ -104,7 +135,7 @@ const EndSection = ({ productData, loading }) => {
                         }}
                     />
 
-                    <p className="absolute bottom-6 left-[30%] text-white bg-black px-2 rounded-xl bg-opacity-15">Hover and Roll To Zoom</p>
+                    <p className="absolute bottom-6 left-[30%]  bg-black px-2 rounded-xl bg-opacity-15 flex items-center gap-3"> <FaSearchPlus /> Hover Roll Zoom and Click</p>
                 </div>
             </div>
             <div className="lg:flex flex-col gap-5 p-3 lg:p-8 lg:w-[40%]">
