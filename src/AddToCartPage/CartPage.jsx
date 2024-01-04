@@ -197,7 +197,7 @@ const CartPage = () => {
 
             // Make a POST request to the server
             const result = await axiosSecure.post(`/proceedToCheckOut`, data);
-            console.log(result);
+            // console.log(result);
             if (result?.statusText == 'OK' || result?.data.insertedCount > 0) {
                 sendEmail();
                 handelClearCart();

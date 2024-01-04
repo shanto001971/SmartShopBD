@@ -28,7 +28,7 @@ const SpringModal = ({ isOpen, setIsOpen, Element }) => {
 
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className=" absolute top-0 right-0 w-20 bg-black p-2 rounded-full"
+                                className=" absolute -top-5 -right-5 w-10 bg-black p-2 rounded-full px-0"
                             >
                                 X
                             </button>

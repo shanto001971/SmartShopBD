@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
-
+import SpringModal from "../SpringModal/SpringModal";
 
 
 const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
@@ -13,6 +13,7 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
     const [itemsTotal, setItemsTotal] = useState(0);
     const [totalPayment, setTotalPayment] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -26,15 +27,25 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
         setTotalPayment(newTotalPayment);
     }, [deliveryFee, filterData]);
 
+
     const handelPlaceOrder = async () => {
-
-
-
+        const discounts = obData?.discounts
+        const newPrice = obData?.newPrice
+        const productTitle = obData?.productTitle
+        const productsImage = obData?.productsImage
+        const shopName = obData?.shopName
+        const productsId = obData?._id
         const sendEmail = () => {
             const templateParams = {
                 user_name: user?.displayName,
                 user_email: user?.email,
                 message: "Your order has been placed",
+                productsImage: productsImage,
+                productTitle:productTitle,
+                discounts:discounts,
+                newPrice: newPrice,
+                shopName:shopName,
+                productsId:productsId
             };
 
             emailjs.send(`${import.meta.env.VITE_SERVICE}`, `${import.meta.env.VITE_TAMPALTE}`, templateParams, `${import.meta.env.VITE_PUBLIC_KEY}`)
@@ -86,19 +97,20 @@ const OrderPage = ({ user, obData, filterData, deliveryFee }) => {
         } catch (error) {
             console.error('Error during Axios request:', error);
         }
-
-
-
-
     }
+
+    const address = <>
+        <input type="text" name="" id="" />
+    </>
 
     return (
         <div>
             <Toaster />
             <div className="lg:flex gap-5  mx-auto bg-slate-200">
                 <div className="lg:w-[70%] lg:px-10 bg-slate-200 rounded-md p-5">
-                    <div className="py-10 text-center bg-slate-100 rounded-md shadow-2xl">
+                    <div onClick={() => setIsOpen(true)} className="py-10 text-center bg-slate-100 rounded-md shadow-2xl">
                         <h1>+ Add New Address</h1>
+                        <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} Element={address} />
                     </div>
 
                     <div className="py-5 lg:px-5 bg-slate-100 rounded-md lg:mt-5 shadow-2xl mb-10">

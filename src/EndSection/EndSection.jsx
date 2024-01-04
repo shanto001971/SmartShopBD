@@ -135,7 +135,7 @@ const EndSection = ({ productData, loading }) => {
                         }}
                     />
 
-                    <p className="absolute bottom-6 left-[30%]  bg-black px-2 rounded-xl bg-opacity-15 flex items-center gap-3"> <FaSearchPlus /> Hover Roll Zoom and Click</p>
+                    <p className="absolute bottom-6 left-[30%]  px-2 rounded-xl bg-opacity-15 flex items-center gap-3"> <FaSearchPlus /> Roll over image to zoom in and Click</p>
                 </div>
             </div>
             <div className="lg:flex flex-col gap-5 p-3 lg:p-8 lg:w-[40%]">

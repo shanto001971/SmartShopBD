@@ -12,7 +12,7 @@ import './HeroSlider.css';
 const HeroSlider = () => {
 
     return (
-        <div className=''>
+        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className='lg:my-2'>
             <Swiper
                 spaceBetween={30}
                 pagination={{

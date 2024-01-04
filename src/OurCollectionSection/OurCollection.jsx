@@ -8,7 +8,7 @@ import { FreeMode, Pagination } from 'swiper/modules';
 const OurCollection = () => {
     return (
         <div className="lg:py-5">
-
+            <h1 className='text-3xl font-medium font-serif'>Categories</h1>
             <Swiper
                 slidesPerView={5}
                 spaceBetween={10}
@@ -59,6 +59,17 @@ const OurCollection = () => {
                             className="className=' rounded-full  transform transition-transform hover:scale-125"
                             alt="Your Image"
                             src="https://gsmartbd.com/cdn/shop/collections/render-diamond-crown-expensive-grind_300x.jpg?v=1687344623"
+                        />
+
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="overflow-hidden rounded-full my-5 relative">
+
+                        <img
+                            className="className=' rounded-full  transform transition-transform hover:scale-125"
+                            alt="Your Image"
+                            src="https://gsmartbd.com/cdn/shop/collections/businessman-checking-time_300x.jpg?v=1687344619"
                         />
 
                     </div>

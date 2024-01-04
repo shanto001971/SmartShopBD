@@ -2,7 +2,7 @@ import Marquee from 'react-fast-marquee';
 
 const Review = () => {
   return (
-    <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="overflow-hidden rounded-md my-10 px-5 bg-slate-100">
+    <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="overflow-hidden rounded-md my-10 lg:px-5 bg-slate-100 lg:mx-3">
 
       <div className="text-center my-5 p-5">
         <h1 className='lg:text-4xl text-xl font-bold'>Testimonials</h1>
