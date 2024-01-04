@@ -12,7 +12,7 @@ const ProductCard = ({ data }) => {
 
 
             {
-                data?.slice(0, 8).map(singleData => <div key={singleData._id} className="">
+                data?.slice(0, 12).map(singleData => <div key={singleData._id} className="">
                     <Link to={`/cardCollection/${singleData?._id}`}>
                         <div className="card card-compact bg-base-100 shadow-xl overflow-hidden relative mt-2 lg:mt-0">
                             <figure className="h-52 lg:w-full"><img className="lg:h-52 lg:w-full" src={singleData?.productsImage} alt="Shoes" /></figure>
@@ -21,7 +21,7 @@ const ProductCard = ({ data }) => {
                                 <h2 className="lg:card-title font-medium" title={singleData?.productTitle}>{singleData?.productTitle.slice(0, 40)}</h2>
                                 <p className="font-semibold">{singleData?.shopName}</p>
                                 <div className="flex items-center">
-                                    <p className="lg:text-2xl">$ {singleData?.newPrice} <del className="lg:text-lg">$ {singleData?.oldPrice}</del></p>
+                                    <p className="lg:text-2xl">Tk {singleData?.newPrice} <del className="lg:text-lg">$ {singleData?.oldPrice}</del></p>
                                     <BsCart className="w-6 h-6" />
                                 </div>
 

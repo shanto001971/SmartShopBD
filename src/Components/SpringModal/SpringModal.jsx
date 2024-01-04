@@ -28,9 +28,9 @@ const SpringModal = ({ isOpen, setIsOpen, Element }) => {
 
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="absolute top-0 right-0 w-20 bg-red-900 bg-transparent hover:bg-white/10 transition-colors text-white font-semibold py-2 rounded"
+                                className=" absolute top-0 right-0 w-20 bg-black p-2 rounded-full"
                             >
-                                go back
+                                X
                             </button>
 
 

@@ -60,13 +60,13 @@ const Home = () => {
                 <Card productData={data} />
                 <EndSection productData={data?.slice(0, 8)} loading={loading} />
                 <ImageHoverEffect />
-                <ProductCard data={data?.slice(0, 8)} key={data._id} />
+                <ProductCard data={data?.slice(0, 12)} key={data._id} />
                 <ShowCase data={data} />
-                <ProductCard data={data?.slice(12, 20)} key={data._id} />
+                <ProductCard data={data?.slice(13, )} key={data._id} />
                 <BannerSlider />
                 <EndSection productData={data?.slice(8, 14)} loading={loading} />
                 <ImageHoverEffect />
-                <ProductCard data={data?.slice(6, 14)} key={data._id} />
+                <ProductCard data={data?.slice(14, )} key={data._id} />
                 <Review />
             </div>
         </div>

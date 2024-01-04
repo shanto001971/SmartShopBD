@@ -4,6 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import ReactImageMagnify from 'react-image-magnify';
 import "./ImageHoverEffect.css"
 import ReactImageZoom from 'react-image-zoom';
+import Zoom from "react-img-zoom-gdn";
 
 const ImageHoverEffect = () => {
     const [quantity, setQuantity] = useState(1);
@@ -27,14 +28,14 @@ const ImageHoverEffect = () => {
         width: 400,
         zoomWidth: 500,
         img: image,
-
+        className: 'custom-image',
     };
 
     return (
         <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="mt-5 lg:flex justify-center gap-3 lg:p-4 border rounded ">
-            <div className="">
+            <div className=" lg:w-[50%]">
                 {/* <Zoom className="rounded-md" img="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" zoomScale={3} width={600} height={600} /> */}
-                {/* <img className="rounded-md w-full" src="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" alt="" /> */}
+                {/* <img className="rounded-md w-full" src="https://hips.hearstapps.com/hmg-prod/images/run-nike-running-shoes-1661870227.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" alt="" ></img> */}
 
                 <ReactImageZoom
                     {...zoomProps}
@@ -42,12 +43,14 @@ const ImageHoverEffect = () => {
                     height={300}
                     width={400}
                     transitionTime={0.1}
-                />
+                    zoomPosition={"right"}
+                    className={`overflow-hidden`}
+                /> 
             </div>
 
 
 
-            <div className="lg:flex flex-col gap-3 px-2 lg:px-0">
+            <div className="lg:flex flex-col gap-3 px-2 lg:px-0 lg:w-[50%]">
                 <h1 className="lg:text-3xl font-medium">Stride in Style: Comfortable and Trendy Footwear for Every Occasion - Shop Now for the Perfect Pair!</h1>
                 <p className="bg-red-600 px-1 w-20 rounded text-white">Save 40%</p>
                 <div className="">
