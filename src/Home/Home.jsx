@@ -59,13 +59,13 @@ const Home = () => {
                 <OurCollection />
                 <Card productData={data} />
                 <EndSection productData={data?.slice(0, 8)} loading={loading} />
-                {/* <ImageHoverEffect /> */}
+                <ImageHoverEffect productData={data?.slice(14, )} loading={loading} />
                 <ProductCard data={data?.slice(0, 12)} key={data._id} />
                 <ShowCase data={data} />
                 <ProductCard data={data?.slice(13, )} key={data._id} />
                 <BannerSlider />
                 <EndSection productData={data?.slice(8, 14)} loading={loading} />
-                {/* <ImageHoverEffect /> */}
+                <ImageHoverEffect productData={data?.slice(20, )} loading={loading} />
                 <ProductCard data={data?.slice(14, )} key={data._id} />
                 <Review />
             </div>

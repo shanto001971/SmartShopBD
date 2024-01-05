@@ -216,8 +216,8 @@ const CartPage = () => {
         <div className="w-full mt-5 px-5 lg:px-0">
             <Toaster />
             <div className="lg:flex w-full lg:px-20">
-                <div className="lg:w-[80%] lg:mr-10 ">
-                    <div className=" flex items-center justify-between border lg:p-2  rounded-md p-5 ">
+                <div  className="lg:w-[80%] lg:mr-10 ">
+                    <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className=" flex items-center justify-between border lg:p-4  rounded-md p-5 ">
                         <h1 className="flex items-center gap-3 font-medium">
                             <input
                                 type="checkbox"
@@ -249,7 +249,7 @@ const CartPage = () => {
 
 
                     <div className="mt-2">
-                        <div className="border lg:px-3 rounded-lg lg:shadow-xl px-4">
+                        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="border lg:px-3 rounded-lg px-4">
                             <h1 className="flex items-center gap-3 mt-4 font-medium">
                                 All Items
                             </h1>
@@ -260,7 +260,7 @@ const CartPage = () => {
 
                         <div className="">
                             {
-                                cart?.map(singleData => <div key={singleData._id} className="mt-1 lg:shadow-xl p-5 lg:p-10 rounded-md relative">
+                                cart?.map(singleData => <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} key={singleData._id} className="mt-1 p-5 lg:p-10 rounded-md relative">
                                     <input type="checkbox"
                                         checked={selectedItems.includes(singleData._id)}
                                         onChange={() => {
