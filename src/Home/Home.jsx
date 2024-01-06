@@ -58,14 +58,14 @@ const Home = () => {
             <div className=" lg:mx-5">
                 <OurCollection />
                 <Card productData={data} />
-                <EndSection productData={data?.slice(0, 8)} loading={loading} />
-                <ImageHoverEffect productData={data?.slice(14, )} loading={loading} />
+                <EndSection productData={data?.slice(5, 9)} loading={loading} />
+                <ImageHoverEffect productData={data?.slice(20, )} loading={loading} />
                 <ProductCard data={data?.slice(0, 12)} key={data._id} />
                 <ShowCase data={data} />
                 <ProductCard data={data?.slice(13, )} key={data._id} />
-                <BannerSlider />
+                <BannerSlider productData={data}  />
                 <EndSection productData={data?.slice(8, 14)} loading={loading} />
-                <ImageHoverEffect productData={data?.slice(20, )} loading={loading} />
+                <ImageHoverEffect productData={data?.slice(14, )} loading={loading} />
                 <ProductCard data={data?.slice(14, )} key={data._id} />
                 <Review />
             </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 const ProductsUseCard = ({ data }) => {
-    console.log(data)
+    // console.log(data)
     return (
             <Link to={`/cardCollection/${data?._id}`}>
                 <div className="card  bg-base-100 shadow-xl overflow-hidden relative hidden lg:block">
