@@ -13,6 +13,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { useCart } from "../../hooks/useCart";
+import Magnifier from "react-magnifier";
 
 
 const SadFace = (
@@ -137,8 +138,8 @@ const ProductsChackOut = () => {
 
                 <div className="lg:flex border lg:w-[75%] rounded-md ">
                     <div className="lg:w-[50%] flex flex-col gap-2 ">
-                        <div className="h-[68%] ">
-                            <img className="w-full h-[100%] rounded-md" src={hoveredImage} alt="" />
+                        <div className="">
+                            <Magnifier src={hoveredImage} />
                         </div>
 
                         <div className="border p-1 ">

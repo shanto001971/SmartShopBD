@@ -55,7 +55,7 @@ const Home = () => {
         <div className="">
             <BannerSlider productData={data}  />
             <div className=" lg:mx-5">
-                <OurCollection />
+                <OurCollection productData={data} />
                 <Card productData={data} />
                 <EndSection productData={data?.slice(5, 9)} loading={loading} />
                 <ImageHoverEffect productData={data?.slice(20, )} loading={loading} />

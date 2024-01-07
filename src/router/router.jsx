@@ -10,6 +10,7 @@ import PlaceOrderPage from "../Components/PlaceOrderPage/PlaceOrderPage";
 import CartPage from "../AddToCartPage/CartPage";
 import ProceedToCheckOutPage from "../ProceedToCheckOutPage/ProceedToCheckOutPage";
 import ConfirmOrderPage from "../ConfirmOrderPage/ConfirmOrderPage";
+import CategoryPage from "../CategoryPage/CategoryPage";
 
 
 export const router = createBrowserRouter([
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/ConfirmOrderPage",
         element: <ConfirmOrderPage />
+      },
+      {
+        path: "/CategoryPage/:category",
+        element: <CategoryPage />
       },
 
 

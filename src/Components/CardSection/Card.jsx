@@ -50,7 +50,6 @@ const Card = ({ productData }) => {
 
     return (
         <div className="lg:mt-10">
-            <h1 className='text-3xl font-medium font-serif'>FlashSale</h1>
                 <div className="grid grid-cols-2 gap-3   ">
                     <Toaster />
                     {

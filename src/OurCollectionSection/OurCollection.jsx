@@ -4,11 +4,11 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 import { FreeMode, Pagination } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
-const OurCollection = () => {
+const OurCollection = ({ productData }) => {
     return (
-        <div className="lg:py-5">
-            <h1 className='text-3xl font-medium font-serif'>Categories</h1>
+        <div className="">
             <Swiper
                 slidesPerView={5}
                 spaceBetween={10}
@@ -19,73 +19,20 @@ const OurCollection = () => {
                 modules={[FreeMode, Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide>
-                    <div className="overflow-hidden rounded-full my-5 relative">
+                {
+                    productData?.slice(16,26).map(singleData => (<SwiperSlide key={singleData._id}>
+                        <Link to={`/CategoryPage/${singleData?.category}`}>
+                            <div className="overflow-hidden rounded-full my-5 relative">
 
-                        <img
-                            className="className=' rounded-full  transform transition-transform hover:scale-125"
-                            alt="Your Image"
-                            src="https://gsmartbd.com/cdn/shop/collections/Earbuds_300x.jpg?v=1687344642"
-                        />
-                    </div>
-                    
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="overflow-hidden rounded-full my-5 relative">
-
-                        <img
-                            className="className=' rounded-full  transform transition-transform hover:scale-125"
-                            alt="Your Image"
-                            src="https://gsmartbd.com/cdn/shop/collections/Earphones_300x.jpg?v=1687344633"
-                        />
-
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="overflow-hidden rounded-full my-5 relative">
-
-                        <img
-                            className="className=' rounded-full  transform transition-transform hover:scale-125"
-                            alt="Your Image"
-                            src="https://gsmartbd.com/cdn/shop/collections/Gadgets_300x.jpg?v=1687344628"
-                        />
-
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="overflow-hidden rounded-full my-5 relative">
-
-                        <img
-                            className="className=' rounded-full  transform transition-transform hover:scale-125"
-                            alt="Your Image"
-                            src="https://gsmartbd.com/cdn/shop/collections/render-diamond-crown-expensive-grind_300x.jpg?v=1687344623"
-                        />
-
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="overflow-hidden rounded-full my-5 relative">
-
-                        <img
-                            className="className=' rounded-full  transform transition-transform hover:scale-125"
-                            alt="Your Image"
-                            src="https://gsmartbd.com/cdn/shop/collections/businessman-checking-time_300x.jpg?v=1687344619"
-                        />
-
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="overflow-hidden rounded-full my-5 relative">
-
-                        <img
-                            className="className=' rounded-full  transform transition-transform hover:scale-125"
-                            alt="Your Image"
-                            src="https://gsmartbd.com/cdn/shop/collections/businessman-checking-time_300x.jpg?v=1687344619"
-                        />
-
-                    </div>
-                </SwiperSlide>
-
+                                <img
+                                    className="className=' rounded-full  transform transition-transform hover:scale-125"
+                                    alt="Your Image"
+                                    src={singleData?.productsImage}
+                                />
+                            </div>
+                        </Link>
+                    </SwiperSlide>))
+                }
             </Swiper>
 
 
