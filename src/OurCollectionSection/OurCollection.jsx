@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 
 const OurCollection = ({ productData }) => {
     return (
-        <div className="">
+        <div className="my-3">
+            <h1 className='text-2xl font-bold mx-5'>Our Category</h1>
             <Swiper
                 slidesPerView={5}
                 spaceBetween={10}
@@ -22,7 +23,7 @@ const OurCollection = ({ productData }) => {
                 {
                     productData?.slice(16,26).map(singleData => (<SwiperSlide key={singleData._id}>
                         <Link to={`/CategoryPage/${singleData?.category}`}>
-                            <div className="overflow-hidden rounded-full my-5 relative">
+                            <div className="overflow-hidden rounded-full my-2 relative">
 
                                 <img
                                     className="className=' rounded-full  transform transition-transform hover:scale-125"
