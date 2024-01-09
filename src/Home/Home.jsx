@@ -20,7 +20,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("https://smart-shop-bd-server-side.vercel.app/cardCollection")
+        fetch("http://localhost:5000/cardCollection")
             .then(res => res.json())
             .then(data => {
                 setData(data)
@@ -33,23 +33,9 @@ const Home = () => {
             });
     }, [])
 
-    // https://smart-shop-bd-server-side.vercel.app
+    // http://localhost:5000
     // https://smart-shop-bd-server-side.vercel.app
 
-    // useEffect(() => {
-    //     fetch("CardInfo.json")
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setProductData(data);
-    //             setLoading(false);
-    //         })
-    //         .catch(error => {
-    //             console.error("Error fetching data:", error);
-    //             setLoading(false);
-    //         });
-    // }, []);
-
-    // console.log(productData)
 
     return (
         <div className="">

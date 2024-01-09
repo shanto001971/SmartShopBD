@@ -3,20 +3,28 @@ import { BsCart } from "react-icons/bs";
 import { CiBookmark, CiSearch } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useCart } from "../hooks/useCart";
 import { useEffect } from "react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+
+
+
 
 const Navbar = () => {
-    const { user, LogOutUser } = useContext(AuthContext)
-    const [selectedOption, setSelectedOption] = useState('');
+    const { user, LogOutUser,setSearchData } = useContext(AuthContext)
     const [cart, refetch] = useCart();
+    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+    const [axiosSecure] = useAxiosSecure();
+    const navigate =useNavigate()
 
-    const handleSelectChange = (event) => {
-        setSelectedOption(event.target.value);
-    };
+    // const handleSelectChange = (event) => {
+    //     setSelectedCategory(event.target.value);
+    // };
 
     const handelLogOut = () => {
         LogOutUser()
@@ -25,13 +33,24 @@ const Navbar = () => {
     }
 
 
-    // console.log(cart)
+    const handleSearch = async (event) => {
+        event.preventDefault();
 
-    // useEffect(() => {
-    //     fetch(`https://smart-shop-bd-server-side.vercel.app/carts?email=${user?.email}`)
-    //         .then(res => res.json())
-    //         .then(data => console.log(data))
-    // }, [user?.email])
+        try {
+            const response = await axiosSecure.get('/api/search', {
+                params: { query: searchQuery, category: selectedCategory },
+            });
+            setSearchData(response.data)
+            setSearchResults(response.data);
+            setSearchQuery('')
+            if (searchResults) {
+                navigate('/search-results')
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     return (
         <div className="flex flex-col bg-black">
@@ -43,15 +62,20 @@ const Navbar = () => {
                     </div>
                 </Link>
                 <div className="w-[50%]">
-                    <form className="flex items-center w-full relative">
-                        <input className="bg-white p-2 rounded-s-2xl lg:rounded-s-lg w-full" type="text" />
+                    <form className="flex items-center w-full relative" onSubmit={handleSearch} >
+                        <input
+                            className="bg-white p-2 rounded-s-2xl lg:rounded-s-lg w-full"
+                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
                         <button className="bg-white text-black p-3 px-4 rounded-r-2xl lg:rounded-r-lg"><CiSearch /></button>
                         <select
                             className="absolute right-12 py-[7px] hidden lg:block"
-                            value={selectedOption}
-                            onChange={handleSelectChange}
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
                         >
-                            <option value="" disabled>All categories <FaAngleDown /></option>
+                            <option value="" >All categories <FaAngleDown /></option>
                             <option value="strapi">Strapi</option>
                             <option value="ghost">Ghost</option>
                             <option value="netlify">Netlify CMS</option>
@@ -82,7 +106,7 @@ const Navbar = () => {
                                 </div>
                             </Link>
                             <CiBookmark className="w-6 h-6" />
-                            
+
                         </div>
                     </div>
                 </div>

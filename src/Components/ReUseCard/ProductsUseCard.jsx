@@ -10,7 +10,7 @@ const ProductsUseCard = ({ data }) => {
                     <figure><img className=" h-40 lg:h-52 w-full" src={data?.productsImage} alt="Shoes" /></figure>
                     <p className="bg-red-600 px-1 w-20 rounded text-white absolute top-0">Save {data?.discounts}%</p>
                     <div className="lg:card-body p-3 h-30 lg:h-auto">
-                        <h2 className="lg:card-title">{data?.productTitle.slice(0, 30)}</h2>
+                        <h2 className="lg:card-title">{data?.productTitle?.slice(0, 30)}</h2>
                         <p>{data?.shopName}</p>
                         <div className="flex items-center">
                             <p className="lg:text-2xl">$ {data?.newPrice} <del className="lg:text-lg">$ {data?.oldPrice}</del></p>

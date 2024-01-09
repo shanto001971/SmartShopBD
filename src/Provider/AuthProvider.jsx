@@ -13,7 +13,8 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [checkOutId, setCheckOutId] = useState([])
+    const [checkOutId, setCheckOutId] = useState([]);
+    const [searchData, setSearchData] = useState([]);
 
 
 
@@ -75,8 +76,9 @@ const AuthProvider = ({ children }) => {
         UpdateUserProfile,
         UserEmailVerify,
         setCheckOutId,
-        checkOutId
-
+        checkOutId,
+        setSearchData,
+        searchData
     }
 
     return (
