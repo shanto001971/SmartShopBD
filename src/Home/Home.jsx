@@ -20,38 +20,45 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/cardCollection")
+        fetch("https://smart-shop-bd.vercel.app/cardCollection")
             .then(res => res.json())
             .then(data => {
                 setData(data)
                 setLoading(false);
             })
-                
+
             .catch(error => {
                 console.error("Error fetching data:", error);
                 setLoading(false);
             });
     }, [])
 
-    // http://localhost:5000
-    // https://smart-shop-bd-server-side.vercel.app
+    // https://smart-shop-bd.vercel.app
 
-
+    console.log(data)
     return (
         <div className="">
-            <BannerSlider productData={data}  />
+            <div className="">
+                <div className="hidden lg:block">
+                    <BannerSlider productData={data} />
+                </div>
+                <div className="block lg:hidden">
+                    <HeroSlider/>
+                </div>
+            </div>
+
             <div className=" lg:mx-5">
                 <OurCollection productData={data} />
                 <Card productData={data} />
                 <EndSection productData={data?.slice(5, 9)} loading={loading} />
-                <ImageHoverEffect productData={data?.slice(20, )} loading={loading} />
+                <ImageHoverEffect productData={data?.slice(20,)} loading={loading} />
                 <ProductCard data={data?.slice(0, 12)} key={data._id} />
                 <ShowCase data={data} />
-                <ProductCard data={data?.slice(13, )} key={data._id} />
+                <ProductCard data={data?.slice(13,)} key={data._id} />
                 <HeroSlider />
                 <EndSection productData={data?.slice(8, 14)} loading={loading} />
-                <ImageHoverEffect productData={data?.slice(14, )} loading={loading} />
-                <ProductCard data={data?.slice(14, )} key={data._id} />
+                <ImageHoverEffect productData={data?.slice(14,)} loading={loading} />
+                <ProductCard data={data?.slice(14,)} key={data._id} />
                 <Review />
             </div>
         </div>

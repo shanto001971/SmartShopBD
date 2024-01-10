@@ -48,8 +48,11 @@ const BannerSlider = ({ productData }) => {
         }
     }, [productData]);
 
+    // console.log(product)
+
     return (
-        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)', background: backgroundColor, backdropFilter: 'blur(50px)' }} className="lg:flex justify-between rounded-md p-5">
+        <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)', background: `url(${productData[currentImageIndex]?.productsImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backdropFilter: 'blur(50px)',position: 'relative'}} className="lg:flex justify-between rounded-md">
+            <div style={{ backdropFilter: 'blur(50px)', position: 'relative', zIndex: 1 }} className="lg:flex justify-between rounded-md p-5">
             <div className="flex flex-col lg:gap-4  px-5 lg:mt-32 ">
                 <h1 className="lg:text-4xl text-base uppercase font-bold">{productTitle.slice(0, 46)}...</h1>
                 <p>High-quality Nike shoes with excellent comfort and durability.
@@ -87,8 +90,8 @@ const BannerSlider = ({ productData }) => {
             <div className="lg:w-[50%] mt-10 lg:mt-0 ">
                 <Carousel className="lg:w-[80%] lg:h-[60%]" onChange={handleImageChange} selectedItem={currentImageIndex}>
                     {productData?.slice(0, 10).map(singleData => (
-                        <div key={singleData?._id} style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)', background: backgroundColor, backdropFilter: 'blur(50px)' }} className="bg-yellow-500 bg-opacity-40 rounded-full w-[80%] h-[60%] mx-auto">
-                            <img style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)', background: backgroundColor, backdropFilter: 'blur(50px)' }} className="rounded-full" src={singleData?.productsImage} />
+                        <div key={singleData?._id} className=" bg-opacity-40 rounded-full w-[80%] h-[60%] mx-auto">
+                            <img style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="rounded-full" src={singleData?.productsImage} />
                         </div>
                     ))}
                 </Carousel>
@@ -98,6 +101,7 @@ const BannerSlider = ({ productData }) => {
                     <div className="p-2 border bg-slate-100 text-black">40</div>
                     <div className="p-2 border">41</div>
                 </div> */}
+            </div>
             </div>
         </div>
     );

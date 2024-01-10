@@ -9,7 +9,7 @@ const CategoryPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:5000/cardCollection")
+        fetch("https://smart-shop-bd.vercel.app/cardCollection")
             .then(res => res.json())
             .then(data => {
                 const filterData = data.filter(singleData => singleData?.category === category)
