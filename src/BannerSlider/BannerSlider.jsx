@@ -15,16 +15,16 @@ const BannerSlider = ({ productData }) => {
     const [newPrice, setNewPrice] = useState(0);
     const [product, setProduct] = useState({})
 
-    const generateRandomGradient = () => {
-        const angle = Math.floor(Math.random() * 360);
-        const colors = Array.from({ length: 3 }, () => `#${Math.floor(Math.random() * 16777215).toString(16)}`);
-        return `linear-gradient(${angle}deg, ${colors.join(', ')})`;
-    };
+    // const generateRandomGradient = () => {
+    //     const angle = Math.floor(Math.random() * 360);
+    //     const colors = Array.from({ length: 3 }, () => `#${Math.floor(Math.random() * 16777215).toString(16)}`);
+    //     return `linear-gradient(${angle}deg, ${colors.join(', ')})`;
+    // };
 
     const handleImageChange = (index) => {
         // console.log(index)
         setCurrentImageIndex(index);
-        setBackgroundColor(generateRandomGradient());
+        // setBackgroundColor(generateRandomGradient());
 
 
         if (productData && productData.length > 0) {
@@ -35,7 +35,7 @@ const BannerSlider = ({ productData }) => {
             setProduct(selectedProduct);
         }
     };
-    const [backgroundColor, setBackgroundColor] = useState(generateRandomGradient());
+    // const [backgroundColor, setBackgroundColor] = useState(generateRandomGradient());
 
     useEffect(() => {
         // Set initial values based on the first index
@@ -44,7 +44,7 @@ const BannerSlider = ({ productData }) => {
             setProductTitle(initialProduct ? initialProduct.productTitle : "Default Title");
             setOldPrice(initialProduct ? initialProduct.oldPrice : 0);
             setNewPrice(initialProduct ? initialProduct.newPrice : 0);
-            
+            setProduct(initialProduct);
         }
     }, [productData]);
 
@@ -55,13 +55,10 @@ const BannerSlider = ({ productData }) => {
             <div style={{ backdropFilter: 'blur(50px)', position: 'relative', zIndex: 1 }} className="lg:flex justify-between rounded-md p-5">
             <div className="flex flex-col lg:gap-4  px-5 lg:mt-32 ">
                 <h1 className="lg:text-4xl text-base uppercase font-bold">{productTitle.slice(0, 46)}...</h1>
-                <p>High-quality Nike shoes with excellent comfort and durability.
-                    <br />
-                    Stylish design and advanced technology make them perfect for
-                    <br />
-                    both athletic activities and casual wear. A bit pricey,  but  the   investment  is
-                    <br />
-                    worth it for the overall performance and style.
+                <p>
+                    {
+                        product?.productDiscretion
+                    }
                 </p>
                 <div className="lg:flex items-center gap-3">
                     <p className="lg:text-2xl lg:mt-3">Price: {newPrice} <del className="lg:text-lg">Tk: {oldPrice}</del></p>

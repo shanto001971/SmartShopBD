@@ -161,6 +161,7 @@ const ProductsChackOut = () => {
                     <div className="lg:flex flex-col gap-5 p-3 lg:p-8 lg:w-[50%]">
                         <h1 className="lg:text-3xl font-medium">{productData?.productTitle}</h1>
                         <p className="bg-red-600 px-1 w-20 rounded text-white">Save{productData?.discounts}%</p>
+                        <small>{productData?.productDiscretion}</small>
                         <div className="">
                             <p className="font-semibold">{productData?.shopName}</p>
                             <p className="flex items-center gap-2">

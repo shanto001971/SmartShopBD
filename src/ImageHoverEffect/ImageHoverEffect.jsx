@@ -122,7 +122,8 @@ const ImageHoverEffect = ({ productData, loading }) => {
             <div className="lg:flex flex-col gap-5 p-3 lg:p-8 lg:w-[40%]">
                 <h1 className="lg:text-3xl text-lg">{card?.productTitle}</h1>
                 <p className="bg-red-600 px-1 w-20 rounded text-white">Save{card?.discounts}%</p>
-                <div className="lg:mt-10">
+                <small>{card?.productDiscretion}</small>
+                <div className="">
                     <p className="font-semibold">{card?.shopName}</p>
                     {/* <p className="flex items-center gap-2">
                         <ReactStars
