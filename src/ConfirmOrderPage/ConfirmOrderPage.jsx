@@ -61,7 +61,7 @@ const ConfirmOrderPage = () => {
                             message: "Your order has been Cancel",
                         };
 
-                        emailjs.send(`${import.meta.env.VITE_SERVICE}`, `${import.meta.env.VITE_TAMPALTE}`, templateParams, `${import.meta.env.VITE_PUBLIC_KEY}`)
+                        emailjs.send(`${import.meta.env.VITE_SERVICE}`, `${import.meta.env.VITE_TAMPALTEId}`, templateParams, `${import.meta.env.VITE_PUBLIC_KEY}`)
                             .then((result) => {
 
                             })

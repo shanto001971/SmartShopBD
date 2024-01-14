@@ -84,7 +84,7 @@ const BannerSlider = ({ productData }) => {
 
             </div>
 
-            <div className="lg:w-[50%] mt-10 lg:mt-0 ">
+            <div className="lg:w-[50%] mt-10 lg:mt-0 mx-auto">
                 <Carousel className="lg:w-[80%] lg:h-[60%]" onChange={handleImageChange} selectedItem={currentImageIndex}>
                     {productData?.slice(0, 10).map(singleData => (
                         <div key={singleData?._id} className=" bg-opacity-40 rounded-full w-[80%] h-[60%] mx-auto">
@@ -92,12 +92,6 @@ const BannerSlider = ({ productData }) => {
                         </div>
                     ))}
                 </Carousel>
-                {/* <div className="w-21 border absolute top-24 right-5 overflow-hidden hidden lg:block text-white">
-                    <div className="p-2 border">38</div>
-                    <div className="p-2 border">39</div>
-                    <div className="p-2 border bg-slate-100 text-black">40</div>
-                    <div className="p-2 border">41</div>
-                </div> */}
             </div>
             </div>
         </div>
