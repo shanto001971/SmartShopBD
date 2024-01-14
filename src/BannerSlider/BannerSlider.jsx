@@ -96,8 +96,16 @@ const BannerSlider = ({ productData }) => {
                             </div>
 
                             <div className="lg:w-[50%] mt-10 lg:mt-0 mx-auto">
-                                <Carousel className="lg:w-[80%] lg:h-[60%]" onChange={handleImageChange} selectedItem={currentImageIndex}>
-                                    {productData?.slice(0, 10).map(singleData => (
+                                <Carousel
+                                    className="lg:w-[80%] lg:h-[60%]"
+                                    onChange={handleImageChange}
+                                    selectedItem={currentImageIndex}
+                                    interval={5000} // Set interval to 5000 milliseconds (5 seconds)
+                                    autoPlay
+                                    stopOnHover={false} // Optional: Stop auto play on hover
+                                    infiniteLoop // Optional: Enable infinite loop
+                                >
+                                    {productData?.slice(0, 10).map((singleData) => (
                                         <div key={singleData?._id} className=" bg-opacity-40 rounded-full w-[80%] h-[60%] mx-auto">
                                             <img style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="rounded-full" src={singleData?.productsImage} />
                                         </div>

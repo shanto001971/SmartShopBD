@@ -14,7 +14,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const Navbar = () => {
-    const { user, LogOutUser, setSearchData, setIsOpen, isOpen, toggleDrawer } = useContext(AuthContext)
+    const { user, setSearchData, toggleDrawer } = useContext(AuthContext)
     const [cart, refetch] = useCart();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -26,11 +26,7 @@ const Navbar = () => {
     //     setSelectedCategory(event.target.value);
     // };
 
-    const handelLogOut = () => {
-        LogOutUser()
-            .then(() => { })
-            .catch(() => { })
-    }
+   
 
 
     const handleSearch = async (event) => {
@@ -87,7 +83,7 @@ const Navbar = () => {
                     </form>
                 </div>
                 <div className="flex-none lg:justify-evenly">
-                    <div className="flex justify-between items-center w-full lg:mr-10 lg:p-6">
+                    <div className="flex justify-between items-center w-full lg:p-6">
                         <div className="hidden lg:block">
                             {
                                 user ? <div className="text-slate-300 pr-6 border-e-2">
@@ -101,7 +97,7 @@ const Navbar = () => {
                                 </Link>
                             }
                         </div>
-                        <div className="flex items-center gap-5  ml-3 text-white ">
+                        <div className="flex items-center gap-3 lg:gap-5  ml-3 text-white ">
                             <Link to="/cartPage">
                                 <div className="relative">
                                     <BsCart className="w-6 h-6" />

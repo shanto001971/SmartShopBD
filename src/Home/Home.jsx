@@ -10,7 +10,7 @@ import Card from "../Components/CardSection/Card";
 import ProductCard from "../Components/ProductCard/ProductCard";
 import { useState } from "react";
 import { useEffect } from "react";
-import DrawerComp from "../Components/DrawerComp/DrawerComp";
+
 
 
 const Home = () => {
@@ -38,7 +38,6 @@ const Home = () => {
     // console.log(data)
     return (
         <div className="">
-            <DrawerComp />
             <div className="">
                 <div className="hidden lg:block">
                     <BannerSlider productData={data} />
