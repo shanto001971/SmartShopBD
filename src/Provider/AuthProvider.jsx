@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [checkOutId, setCheckOutId] = useState([]);
     const [searchData, setSearchData] = useState([]);
-
+    const [isOpen, setIsOpen] = useState(false)
 
 
     const singUpUser = (email, password) => {
@@ -66,6 +66,10 @@ const AuthProvider = ({ children }) => {
         }
     }, []);
 
+    const toggleDrawer = () => {
+        setIsOpen((prevState) => !prevState)
+    }
+
     const authInfo = {
         user,
         setUser,
@@ -78,7 +82,10 @@ const AuthProvider = ({ children }) => {
         setCheckOutId,
         checkOutId,
         setSearchData,
-        searchData
+        searchData,
+        isOpen,
+        setIsOpen,
+        toggleDrawer
     }
 
     return (

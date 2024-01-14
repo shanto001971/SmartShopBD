@@ -1,9 +1,9 @@
 
 import { BsCart } from "react-icons/bs";
-import { CiBookmark, CiSearch } from "react-icons/ci";
+import { CiBookmark, CiSearch, CiMenuFries } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useCart } from "../hooks/useCart";
@@ -14,13 +14,13 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const Navbar = () => {
-    const { user, LogOutUser,setSearchData } = useContext(AuthContext)
+    const { user, LogOutUser, setSearchData, setIsOpen, isOpen, toggleDrawer } = useContext(AuthContext)
     const [cart, refetch] = useCart();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [axiosSecure] = useAxiosSecure();
-    const navigate =useNavigate()
+    const navigate = useNavigate()
 
     // const handleSelectChange = (event) => {
     //     setSelectedCategory(event.target.value);
@@ -51,7 +51,7 @@ const Navbar = () => {
         }
     };
 
-
+    // console.log(isOpen)
     return (
         <div className="flex flex-col bg-black">
             {/* Navbar */}
@@ -75,11 +75,14 @@ const Navbar = () => {
                             value={selectedCategory}
                             onChange={(e) => setSelectedCategory(e.target.value)}
                         >
-                            <option value="" >All categories <FaAngleDown /></option>
-                            <option value="strapi">Strapi</option>
-                            <option value="ghost">Ghost</option>
-                            <option value="netlify">Netlify CMS</option>
-                            <option value="sanity">Sanity</option>
+                            <option className="" value="" >All categories <FaAngleDown /></option>
+                            <option value="Smartwatches & Accessories">Smartwatches</option>
+                            <option value="Wireless Earbuds">Wireless Earbuds</option>
+                            <option value="Luxury Watches">Luxury Watches</option>
+                            <option value="Women's Dresses">Women Dresses</option>
+                            <option value="Shoulder Bags">Shoulder Bags</option>
+                            <option value="Men's Shirt">Mens Shirt</option>
+                            <option value="Men's Hoodies">Mens Hoodies</option>
                         </select>
                     </form>
                 </div>
@@ -106,7 +109,7 @@ const Navbar = () => {
                                 </div>
                             </Link>
                             <CiBookmark className="w-6 h-6" />
-
+                            <button onClick={() => toggleDrawer()}><CiMenuFries className="w-6 h-6" /></button>
                         </div>
                     </div>
                 </div>

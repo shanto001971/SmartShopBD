@@ -10,13 +10,13 @@ import Card from "../Components/CardSection/Card";
 import ProductCard from "../Components/ProductCard/ProductCard";
 import { useState } from "react";
 import { useEffect } from "react";
-
-
+import DrawerComp from "../Components/DrawerComp/DrawerComp";
 
 
 const Home = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
+
 
 
     useEffect(() => {
@@ -35,15 +35,16 @@ const Home = () => {
 
     // https://smart-shop-bd.vercel.app
 
-    console.log(data)
+    // console.log(data)
     return (
         <div className="">
+            <DrawerComp />
             <div className="">
                 <div className="hidden lg:block">
                     <BannerSlider productData={data} />
                 </div>
                 <div className="block lg:hidden">
-                    <HeroSlider/>
+                    <HeroSlider />
                 </div>
             </div>
 

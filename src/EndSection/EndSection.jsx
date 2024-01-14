@@ -20,6 +20,7 @@ const EndSection = ({ productData, loading }) => {
     const { user } = useContext(AuthContext);
     const [cart, refetch] = useCart();
     const [image, setImage] = useState(card?.imageVarient?.length > 0 ? card?.imageVarient[0] : null)
+    const [textSort, setTextSort] = useState(true)
 
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
@@ -101,7 +102,7 @@ const EndSection = ({ productData, loading }) => {
         )}
     </div>
 
-console.log(card)
+    // console.log(card)
 
     return (
         <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="lg:flex mt-10 border lg:my-10 overflow-hidden">
@@ -141,7 +142,7 @@ console.log(card)
             <div className="lg:flex flex-col gap-5 p-3 lg:p-8 lg:w-[40%]">
                 <h1 className="lg:text-3xl text-lg">{card?.productTitle}</h1>
                 <p className="bg-red-600 px-1 w-20 rounded text-white">Save{card?.discounts}%</p>
-                <small>{card?.productDiscretion}</small>
+                <small className="cursor-pointer">{card?.productDiscretion?.slice(`${textSort ? 200 : ""}`)} <span onClick={() => setTextSort(!textSort)} className="font-medium link-hover">{textSort ? "See More" : "See Less"}</span> </small>
                 <div className="">
                     <p className="font-semibold">{card?.shopName}</p>
                     {/* <p className="flex items-center gap-2">
@@ -167,7 +168,7 @@ console.log(card)
                         <div onClick={() => setShoesColoer("Black")} className="p-3 bg-black border border-red-500 w-10"></div>
                         <div onClick={() => setShoesColoer("Yellow")} className="p-3 bg-amber-300 border border-red-500 w-10"></div>
                     </div>
-                    <p className="lg:text-2xl lg:mt-3 my-1">Tk {card?.price} <del className="lg:text-lg">Tk: 3,800</del></p>
+                    <p className="lg:text-2xl lg:mt-3 my-1">Tk {card?.newPrice} <del className="lg:text-lg">Tk {card?.oldPrice} </del></p>
                     <div className="lg:mt-4 border w-44 p-[10px] flex my-1">
                         <button className="px-5" onClick={decrementQuantity}>-</button>
                         <span className="px-6  ">{quantity}</span>
