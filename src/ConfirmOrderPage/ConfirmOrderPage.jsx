@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -9,20 +9,6 @@ import emailjs from '@emailjs/browser';
 const ConfirmOrderPage = () => {
     const { user, loading } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
-    // const [data, setData] = useState([]);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const result = await axiosSecure.get(`/confirmOrder?email=${user?.email}`);
-    //             setData(result.data);
-    //         } catch (error) {
-    //             console.error("Error fetching data:", error);
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, [user?.email]);
 
     const { refetch, data: currentOrder = [] } = useQuery({
         queryKey: ['currentOrder', user?.email],
@@ -33,12 +19,6 @@ const ConfirmOrderPage = () => {
         },
     });
 
-    console.log(currentOrder);
-
-    // const cancelOrderMutation = useMutation(
-    //     (productsId) => axiosSecure.delete(`/cancelOrder/${productsId}`),
-
-    // );
 
     const handleCancelOrder = async (productsId) => {
 
@@ -62,8 +42,7 @@ const ConfirmOrderPage = () => {
                         };
 
                         emailjs.send(`${import.meta.env.VITE_SERVICE}`, `${import.meta.env.VITE_TAMPALTEId}`, templateParams, `${import.meta.env.VITE_PUBLIC_KEY}`)
-                            .then((result) => {
-
+                            .then(() => {
                             })
                             .catch((error) => {
                                 console.log(error.text);
@@ -92,25 +71,39 @@ const ConfirmOrderPage = () => {
 
 
     return (
-        <div className="w-full">
-            <Toaster />
+        <div className="">
             {
-                currentOrder?.map((singleData, index) => <div key={index} className="lg:w-[80%] mx-auto flex justify-between items-center gap-3 mt-5 border p-5 rounded-md shadow-md">
+                currentOrder.length > 0 ? (<div className="w-full">
+                    <Toaster />
+                    {
+                        currentOrder?.map((singleData, index) => <div key={index} className="lg:w-[80%] mx-auto flex justify-between items-center gap-3 mt-5 border p-5 rounded-md shadow-md">
 
-                    <div className="flex items-center gap-3">
-                        <img className="lg:h-40 lg:w-40 h-20 w-20 rounded-lg" src={singleData?.productsImage} alt="" />
-                        <div className="">
-                            <h1 className="lg:text-lg">{singleData?.productTitle.slice(0, 40)}...</h1>
-                            <small className="badge-sm bg-slate-200 rounded-xl">Shop Name: {singleData?.shopName}</small>
-                            <p className="badge-sm">ProductsId: {singleData?.productsId}</p>
-                            <p className="badge-sm">Category: {singleData?.category}</p>
-                            <p className="badge-sm">Quantity: ({singleData?.quantity})</p>
+                            <div className="flex items-center gap-3">
+                                <img className="lg:h-40 lg:w-40 h-20 w-20 rounded-lg" src={singleData?.productsImage} alt="" />
+                                <div className="">
+                                    <h1 className="lg:text-lg">{singleData?.productTitle.slice(0, 40)}...</h1>
+                                    <small className="badge-sm bg-slate-200 rounded-xl">Shop Name: {singleData?.shopName}</small>
+                                    <p className="badge-sm">ProductsId: {singleData?.productsId}</p>
+                                    <p className="badge-sm">Category: {singleData?.category}</p>
+                                    <p className="badge-sm">Quantity: ({singleData?.quantity})</p>
+                                </div>
+                            </div>
+                            <button onClick={() => handleCancelOrder(singleData?.productsId)} className="text-red-500">Cancel Order</button>
+
+                        </div>)
+                    }
+                </div>) :
+                    (
+                        <div className="h-screen flex justify-center items-center">
+                            <div className="bg-slate-200  rounded-full ">
+                                <img className="rounded-full" src="https://mir-s3-cdn-cf.behance.net/projects/404/8412d0104101523.Y3JvcCwxMDI0LDgwMCwwLDcw.jpg" alt="" />
+                                <h1 className="mt-5 lg:text-5xl text-2xl text-center">No Order found</h1>
+                            </div>
                         </div>
-                    </div>
-                    <button onClick={() => handleCancelOrder(singleData?.productsId)} className="text-red-500">Cancel Order</button>
-
-                </div>)
+                    )
             }
+
+
         </div>
     );
 };

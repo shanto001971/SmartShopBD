@@ -62,7 +62,16 @@ const BannerSlider = ({ productData }) => {
                     ?
                     <Code />
                     :
-                    <div style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)', background: `url(${productData[currentImageIndex]?.productsImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backdropFilter: 'blur(50px)', position: 'relative' }} className="lg:flex justify-between rounded-md">
+                    <div
+                        style={{
+                            boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)',
+                            background: `url(${productData[currentImageIndex]?.productsImage})`,
+                            backgroundSize: 'cover', backgroundPosition: 'center',
+                            backdropFilter: 'blur(50px)',
+                            position: 'relative'
+                        }}
+                        className="lg:flex justify-between rounded-md"
+                    >
                         <div style={{ backdropFilter: 'blur(50px)', position: 'relative', zIndex: 1 }} className="lg:flex justify-between rounded-md p-5">
                             <div className="flex flex-col lg:gap-4  px-5 lg:mt-32 ">
                                 <h1 className="lg:text-4xl text-base uppercase font-bold">{productTitle.slice(0, 46)}...</h1>

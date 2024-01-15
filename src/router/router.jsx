@@ -12,6 +12,8 @@ import ProceedToCheckOutPage from "../ProceedToCheckOutPage/ProceedToCheckOutPag
 import ConfirmOrderPage from "../ConfirmOrderPage/ConfirmOrderPage";
 import CategoryPage from "../CategoryPage/CategoryPage";
 import SearchResultsPage from "../SearchResultsPage/SearchResultsPage";
+import CreateSeller from "../SellerPage/CreateSeller/CreateSeller";
+import SellerLayOut from "../SellerPage/SellerLayOut/SellerLayOut";
 
 
 export const router = createBrowserRouter([
@@ -54,7 +56,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/search-results",
-        element: <SearchResultsPage/>
+        element: <SearchResultsPage />
       },
 
 
@@ -68,5 +70,19 @@ export const router = createBrowserRouter([
   {
     path: "/signUp",
     element: <SingUpPage />
+  },
+
+
+
+  {
+    path: "/sellerLayOutCenter",
+    element: <SellerLayOut />,
+    children: [
+      {
+        path: "/sellerLayOutCenter",
+        element: <CreateSeller />
+      }
+    ]
+
   }
 ]);
