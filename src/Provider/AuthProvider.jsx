@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut, updatePhoneNumber, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import { createContext } from "react";
 import { useState } from "react";
@@ -40,13 +40,7 @@ const AuthProvider = ({ children }) => {
 
     };
 
-    const updateUserPhoneNumber = (phone) => {
-        console.log("auth profile", phone)
-        return updateProfile(auth.currentUser, {
-            phoneNumber: phone
-        });
-    };
-
+    
 
 
 
@@ -97,7 +91,6 @@ const AuthProvider = ({ children }) => {
         isOpen,
         setIsOpen,
         toggleDrawer,
-        updateUserPhoneNumber
     }
 
     return (

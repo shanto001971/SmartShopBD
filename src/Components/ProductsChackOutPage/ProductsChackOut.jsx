@@ -14,6 +14,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { useCart } from "../../hooks/useCart";
 import Magnifier from "react-magnifier";
+import Loader from "../Loader/Loader";
 
 
 const SadFace = (
@@ -89,7 +90,7 @@ const ProductsChackOut = () => {
 
 
     if (loading) {
-        return <div className="text-center">Loading...</div>;
+        return <Loader/>
     }
 
     if (!hoveredImage) {
