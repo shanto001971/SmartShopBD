@@ -10,15 +10,6 @@ const SellerNavBar = () => {
                 </div>
             </div>
             <div className="flex-none gap-2">
-                <div className="lg:flex gap-2">
-                    <div className="form-control">
-                        <input type="text" placeholder="Eamil" className="input input-bordered h-8 md:h-12 w-36 md:w-auto" />
-                    </div>
-                    <div className="form-control">
-                        <input type="text" placeholder="Password" className="input input-bordered h-8 md:h-12 w-36 md:w-auto" />
-                    </div>
-                </div>
-                <button className="btn   md:btn-md lg:btn-md">Log In</button>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">

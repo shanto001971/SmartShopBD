@@ -14,6 +14,7 @@ import CategoryPage from "../CategoryPage/CategoryPage";
 import SearchResultsPage from "../SearchResultsPage/SearchResultsPage";
 import CreateSeller from "../SellerPage/CreateSeller/CreateSeller";
 import SellerLayOut from "../SellerPage/SellerLayOut/SellerLayOut";
+import SellerProfile from "../SellerPage/SellerProfile/SellerProfile";
 
 
 export const router = createBrowserRouter([
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
         path: "/cartPage",
         element: <CartPage />,
       },
-      
+
       {
         path: "/ConfirmOrderPage",
         element: <ConfirmOrderPage />
@@ -78,7 +79,11 @@ export const router = createBrowserRouter([
       {
         path: "/sellerLayOutCenter",
         element: <CreateSeller />
-      }
+      },
+      {
+        path: "/sellerLayOutCenter/sellerProfile",
+        element: <SellerProfile />
+      },
     ]
 
   }

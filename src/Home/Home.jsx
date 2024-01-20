@@ -10,6 +10,7 @@ import Card from "../Components/CardSection/Card";
 import ProductCard from "../Components/ProductCard/ProductCard";
 import { useState } from "react";
 import { useEffect } from "react";
+import useSeller from "../hooks/useSeller";
 
 
 
@@ -17,10 +18,10 @@ const Home = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
 
-
+    // https://smart-shop-bd.vercel.app
 
     useEffect(() => {
-        fetch("https://smart-shop-bd.vercel.app/cardCollection")
+        fetch("http://localhost:5000/cardCollection")
             .then(res => res.json())
             .then(data => {
                 setData(data)
@@ -36,6 +37,7 @@ const Home = () => {
     // https://smart-shop-bd.vercel.app
 
     // console.log(data)
+
     return (
         <div className="">
             <div className="">
@@ -51,7 +53,7 @@ const Home = () => {
                 <OurCollection productData={data} />
                 <Card productData={data} />
                 <EndSection productData={data?.slice(5, 9)} loading={loading} />
-                <ImageHoverEffect productData={data?.slice(20,)} loading={loading} />
+                <ImageHoverEffect productData={data?.slice(7,)} loading={loading} />
                 <ProductCard data={data?.slice(0, 12)} key={data._id} />
                 <ShowCase data={data} />
                 <ProductCard data={data?.slice(13,)} key={data._id} />

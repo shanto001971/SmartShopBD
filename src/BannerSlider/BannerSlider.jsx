@@ -65,8 +65,9 @@ const BannerSlider = ({ productData }) => {
                     <div
                         style={{
                             boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)',
-                            background: `url(${productData[currentImageIndex]?.productsImage})`,
-                            backgroundSize: 'cover', backgroundPosition: 'center',
+                            backgroundImage: `url(${productData[currentImageIndex]?.productsImage})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
                             backdropFilter: 'blur(50px)',
                             position: 'relative'
                         }}
