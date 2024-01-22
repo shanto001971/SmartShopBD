@@ -18,7 +18,6 @@ const Navbar = () => {
     const [cart, refetch] = useCart();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
     const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate()
 
@@ -26,7 +25,7 @@ const Navbar = () => {
     //     setSelectedCategory(event.target.value);
     // };
 
-   
+
 
 
     const handleSearch = async (event) => {
@@ -36,11 +35,12 @@ const Navbar = () => {
             const response = await axiosSecure.get('/api/search', {
                 params: { query: searchQuery, category: selectedCategory },
             });
-            setSearchData(response.data)
-            setSearchResults(response.data);
-            setSearchQuery('')
-            if (searchResults) {
-                navigate('/search-results')
+
+            setSearchData(response.data);
+            setSearchQuery('');
+
+            if (response.data.length > 0) {
+                navigate('/search-results');
             }
         } catch (error) {
             console.error(error);
@@ -48,6 +48,8 @@ const Navbar = () => {
     };
 
     // console.log(isOpen)
+    // refetch()
+
     return (
         <div className="flex flex-col bg-black">
             {/* Navbar */}
@@ -88,7 +90,7 @@ const Navbar = () => {
                             {
                                 user ? <div className="text-slate-300 pr-6 border-e-2">
                                     {user ? <p>Hi..{user?.displayName}</p> : <p>Login / SignUp</p>}
-                                    <button className="flex items-center gap-2 font-medium " onClick={() => document.getElementById('my_modal_1').showModal()}>My account <FaAngleDown /></button>
+                                    <button className="flex items-center gap-2 font-medium ">My account <FaAngleDown /></button>
                                 </div> : <Link to="/logIn">
                                     <div className="text-slate-300 pr-6 border-e-2 ">
                                         <p>Login / SignUp</p>

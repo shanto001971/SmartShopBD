@@ -67,7 +67,7 @@ const EndSection = ({ productData, loading }) => {
             }
             axiosSecure.post("/carts", cartItem)
                 .then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     if (res.data?.insertedId) {
                         toast.success('Add Success');
                         refetch()

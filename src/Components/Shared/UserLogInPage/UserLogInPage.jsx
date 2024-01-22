@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import toast, { Toaster } from "react-hot-toast";
 
 
 
@@ -25,13 +26,7 @@ const UserLogInPage = () => {
             const result = await LogInUser(email, password);
 
             if (result.user) {
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "LogIn SuccessFully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+                toast.success('LogIn SuccessFully')
                 navigate(froms, { replace: true });
             }
         } catch (error) {
@@ -40,6 +35,7 @@ const UserLogInPage = () => {
     };
     return (
         <div className="h-[100vh] lg:p-20 ">
+            <Toaster />
             <div className="lg:flex justify-around h-[80vh] shadow-2xl rounded-3xl">
                 <div className="w-full flex justify-center items-center bg-[#FE492E] lg:rounded-s-3xl p-10 ">
                     <div className="text-white">
