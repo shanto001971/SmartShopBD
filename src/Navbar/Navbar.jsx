@@ -21,10 +21,7 @@ const Navbar = () => {
     const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate()
 
-    // const handleSelectChange = (event) => {
-    //     setSelectedCategory(event.target.value);
-    // };
-
+   
 
 
 
