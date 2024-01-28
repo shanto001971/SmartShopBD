@@ -44,9 +44,7 @@ const Navbar = () => {
         }
     };
 
-    // console.log(isOpen)
-    // refetch()
-
+   
     return (
         <div className="flex flex-col bg-black">
             {/* Navbar */}
