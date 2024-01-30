@@ -12,13 +12,13 @@ const NavItemMenu = () => {
     return (
         <div className="">
             <ul className="menu menu-horizontal px-1 items-center gap-3 flex overflow-x-auto">
-                <Link style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} to="/"><li className="border rounded-md "><a>Home</a></li></Link>
+                <Link style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="px-5 border rounded-md p-2"><li>Home</li></Link>
                 <li style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="border rounded-md">
                     <select
                         className=""
                         onChange={handleSelectChange}
                     >
-                        <option value="" className="p-0">Gadgets<FaAngleDown /></option>
+                        <option value="" className="p-0">Gadgets</option>
                         <option value="strapi" >Strapi</option>
                         <option value="ghost">Ghost</option>
                         <option value="netlify">Netlify CMS</option>
@@ -30,7 +30,7 @@ const NavItemMenu = () => {
                         className=""
                         onChange={handleSelectChange}
                     >
-                        <option value="" disabled>Jewelry<FaAngleDown /></option>
+                        <option value="" disabled>Jewelry</option>
                         <option value="strapi">Strapi</option>
                         <option value="ghost">Ghost</option>
                         <option value="netlify">Netlify CMS</option>
@@ -42,7 +42,7 @@ const NavItemMenu = () => {
                         className=""
                         onChange={handleSelectChange}
                     >
-                        <option value="" disabled>Leather<FaAngleDown /></option>
+                        <option value="" disabled>Leather</option>
                         <option value="strapi">Strapi</option>
                         <option value="ghost">Ghost</option>
                         <option value="netlify">Netlify CMS</option>

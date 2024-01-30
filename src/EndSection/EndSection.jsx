@@ -122,10 +122,10 @@ const EndSection = ({ productData, loading }) => {
                             smallImage: {
                                 alt: "",
                                 isFluidWidth: true,
-                                src: card?.productsImage,
+                                src: card?.productsImage || "",
                             },
                             largeImage: {
-                                src: card?.productsImage,
+                                src: card?.productsImage || "",
                                 width: 1100,
                                 height: 1600,
                             },

@@ -3,6 +3,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import toast, { Toaster } from "react-hot-toast";
+import SocialLogIn from "../SocialLogIn/SocialLogIn";
 
 
 
@@ -52,6 +53,7 @@ const UserLogInPage = () => {
                 <div className="w-full flex justify-center items-center lg:rounded-e-2xl bg-slate-100 ">
                     <form onSubmit={handleSignIn} className="lg:w-[60%] pb-5 lg:pb-0">
                         <h1 className="text-3xl mb-5 mt-5 lg:mt-0">LogIn Your Account</h1>
+                        <SocialLogIn/>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>

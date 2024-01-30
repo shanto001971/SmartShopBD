@@ -68,7 +68,7 @@ const Navbar = () => {
                             value={selectedCategory}
                             onChange={(e) => setSelectedCategory(e.target.value)}
                         >
-                            <option className="" value="" >All categories <FaAngleDown /></option>
+                            <option className="" value="" >All categories</option>
                             <option value="Smartwatches & Accessories">Smartwatches</option>
                             <option value="Wireless Earbuds">Wireless Earbuds</option>
                             <option value="Luxury Watches">Luxury Watches</option>

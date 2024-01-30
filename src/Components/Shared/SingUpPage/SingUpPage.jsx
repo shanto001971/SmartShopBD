@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import SocialLogIn from "../SocialLogIn/SocialLogIn";
 
 
 const SingUpPage = () => {
@@ -46,7 +47,7 @@ const SingUpPage = () => {
             <div className="lg:flex justify-around h-[80vh] shadow-2xl lg:rounded-3xl">
                 <div className="w-full flex justify-center items-center rounded-s-2xl bg-slate-100">
                     <form onSubmit={handleSignUp} className="lg:w-[60%] w-full p-10 lg:p-0">
-                        <h1 className="mb-5 text-2xl">Create Account</h1>
+                        <SocialLogIn/>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Your Name</span>

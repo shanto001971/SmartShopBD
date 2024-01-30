@@ -10,12 +10,12 @@ import Card from "../Components/CardSection/Card";
 import ProductCard from "../Components/ProductCard/ProductCard";
 import { useState } from "react";
 import { useEffect } from "react";
-import useSeller from "../hooks/useSeller";
+
 
 
 
 const Home = () => {
-    const [data, setData] = useState([])
+    const [productData, setProductData] = useState([])
     const [loading, setLoading] = useState(true);
 
     // https://smart-shop-bd.vercel.app
@@ -24,7 +24,7 @@ const Home = () => {
         fetch("http://localhost:5000/cardCollection")
             .then(res => res.json())
             .then(data => {
-                setData(data)
+                setProductData(data)
                 setLoading(false);
             })
 
@@ -42,7 +42,7 @@ const Home = () => {
         <div className="">
             <div className="">
                 <div className="hidden lg:block">
-                    <BannerSlider productData={data} />
+                    <BannerSlider productData={productData} />
                 </div>
                 <div className="block lg:hidden">
                     <HeroSlider />
@@ -50,17 +50,17 @@ const Home = () => {
             </div>
 
             <div className=" lg:mx-5">
-                <OurCollection productData={data} />
-                <Card productData={data} />
-                <EndSection productData={data?.slice(5, 9)} loading={loading} />
-                <ImageHoverEffect productData={data?.slice(7,)} loading={loading} />
-                <ProductCard data={data?.slice(0, 12)} key={data._id} />
-                <ShowCase data={data} />
-                <ProductCard data={data?.slice(13,)} key={data._id} />
+                <OurCollection productData={productData} />
+                <Card productData={productData} />
+                <EndSection productData={productData?.slice(5, 9)} loading={loading} />
+                <ImageHoverEffect productData={productData?.slice(7,)} loading={loading} />
+                <ProductCard data={productData?.slice(0, 12)}/>
+                <ShowCase data={productData} />
+                <ProductCard data={productData?.slice(13,)}/>
                 <HeroSlider />
-                <EndSection productData={data?.slice(8, 14)} loading={loading} />
-                <ImageHoverEffect productData={data?.slice(14,)} loading={loading} />
-                <ProductCard data={data?.slice(14,)} key={data._id} />
+                <EndSection productData={productData?.slice(8, 14)} loading={loading} />
+                <ImageHoverEffect productData={productData?.slice(14,)} loading={loading} />
+                <ProductCard data={productData?.slice(14,)} />
                 <Review />
             </div>
         </div>
