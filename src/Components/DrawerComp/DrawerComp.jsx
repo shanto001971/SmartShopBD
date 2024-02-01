@@ -60,7 +60,7 @@ const DrawerComp = () => {
                     <div style={{ boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.1)' }} className="p-2 border rounded-md">
                         {
                             user ?
-                                <button className='cursor-pointer flex items-center gap-2' onClick={handelLogOut}><CiLogout /> LogOut</button> :
+                                <button className='cursor-pointer flex items-center gap-2' onClick={() => handelLogOut()}><CiLogout /> LogOut</button> :
                                 <button className='cursor-pointer flex items-center gap-2'><CiLogin /> Log In</button>
                         }
                     </div>

@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
       {
         path: "/cardCollection/:id",
         element: <PrivateRoute><ProductsChackOut /></PrivateRoute>,
-        loader: () => fetch('https://smart-shop-bd.vercel.app/cardCollection')
+        loader: () => fetch('http://localhost:5000/cardCollection')
       },
       {
         path: "/PlaceOrderPage/:id",

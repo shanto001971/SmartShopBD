@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import toast, { Toaster } from "react-hot-toast";
 import SocialLogIn from "../SocialLogIn/SocialLogIn";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 
@@ -13,6 +13,7 @@ const UserLogInPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const froms = location.state?.from?.pathname || "/";
+    const [axiosSecure] = useAxiosSecure();
 
     const handleSignIn = async (event) => {
         event.preventDefault();
@@ -25,10 +26,15 @@ const UserLogInPage = () => {
 
             // Continue with the login process
             const result = await LogInUser(email, password);
+            // console.log(result)
 
             if (result.user) {
+                const logUser = { email: result?.user?.email }
+                const res = await axiosSecure.post('/jwt', logUser);
+                localStorage.setItem('access-token',res?.data?.token);
                 toast.success('LogIn SuccessFully')
                 navigate(froms, { replace: true });
+
             }
         } catch (error) {
             console.log(error);
@@ -53,7 +59,7 @@ const UserLogInPage = () => {
                 <div className="w-full flex justify-center items-center lg:rounded-e-2xl bg-slate-100 ">
                     <form onSubmit={handleSignIn} className="lg:w-[60%] pb-5 lg:pb-0">
                         <h1 className="text-3xl mb-5 mt-5 lg:mt-0">LogIn Your Account</h1>
-                        <SocialLogIn/>
+                        <SocialLogIn />
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>

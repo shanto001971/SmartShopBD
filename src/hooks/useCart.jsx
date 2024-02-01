@@ -12,11 +12,16 @@ export const useCart = () => {
         queryKey: ['cart', user?.email],
         enabled: !loading,
         // queryFn: async () => {
-        //     const response = await fetch(`https://smart-shop-bd.vercel.app/carts?email=${user?.email}`)
+        //     const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`)
         //     return response.json()
         // },
         queryFn: async () => {
-            const res = await axiosSecure(`/carts?email=${user.email}`)
+            const res = await axiosSecure(`/carts?email=${user.email}`,{
+                method:'GET',
+                headers:{
+                    authorization:`Bearer ${localStorage.getItem('access-token')}`
+                }
+            })
             return res.data;
         },
 

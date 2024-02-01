@@ -18,7 +18,7 @@ const Home = () => {
     const [productData, setProductData] = useState([])
     const [loading, setLoading] = useState(true);
 
-    // https://smart-shop-bd.vercel.app
+    // http://localhost:5000
 
     useEffect(() => {
         fetch("http://localhost:5000/cardCollection")
@@ -34,7 +34,7 @@ const Home = () => {
             });
     }, [])
 
-    // https://smart-shop-bd.vercel.app
+    // http://localhost:5000
 
     // console.log(data)
 

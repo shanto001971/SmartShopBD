@@ -14,7 +14,12 @@ const ConfirmOrderPage = () => {
         queryKey: ['currentOrder', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const response = await fetch(`https://smart-shop-bd.vercel.app/confirmOrder?email=${user?.email}`);
+            const response = await fetch(`http://localhost:5000/confirmOrder?email=${user?.email}`,{
+                method:'GET',
+                headers:{
+                    authorization:`Bearer ${localStorage.getItem('access-token')}`
+                }
+            });
             return response.json();
         },
     });
