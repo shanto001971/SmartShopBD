@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom";
 
 
 const SellerNavBar = () => {
     return (
         <div className="navbar bg-slate-200 lg:px-10">
             <div className="flex-1">
-                <div className="">
-                    <h1 className="text-2xl">SS mart</h1>
-                    <small>Seller Center</small>
-                </div>
+                <Link to="/">
+                    <div className="lg:mx-10">
+                        <img className="w-12 h-12" src="https://i.ibb.co/tbpvpMM/www-deshihawker-com-free-logo-e-commerce-11564258090k03hqojlfy-removebg-preview.png" alt="" />
+                    </div>
+                </Link>
             </div>
             <div className="flex-none gap-2">
                 <div className="dropdown dropdown-end">

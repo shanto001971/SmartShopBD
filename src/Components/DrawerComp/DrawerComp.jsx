@@ -18,7 +18,9 @@ const DrawerComp = () => {
     const { isOpen, toggleDrawer, LogOutUser, user } = useContext(AuthContext);
     const handelLogOut = () => {
         LogOutUser()
-            .then(() => { })
+            .then(() => {
+                localStorage.removeItem('access-token');
+             })
             .catch(() => { })
     }
 

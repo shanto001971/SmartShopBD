@@ -2,27 +2,37 @@ import { useContext } from "react";
 import { FaGooglePlusG, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { TiSocialFacebook } from "react-icons/ti";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const SocialLogIn = () => {
-    const { googleLogin, facebookLogin, githubLogin} = useContext(AuthContext);
+    const { googleLogin, facebookLogin, githubLogin } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    const [axiosSecure] = useAxiosSecure();
 
 
     const handelGoogleLogIn = async () => {
         const res = await googleLogin()
-        if (res?.user?.email) {
+        if (res?._tokenResponse?.email) {
+            const logUser = { email: res?.user?.email }
+            const resToken = await axiosSecure.post('/jwt', logUser);
+            localStorage.setItem('access-token', resToken?.data?.token);
             toast.success('LogIn SuccessFully')
-            navigate("/");
+            navigate(from, { replace: true });
         }
     }
 
     const handelFacebookLogIn = async () => {
         const res = await facebookLogin();
+        console.log(res)
         if (res?.user?.email) {
+            const logUser = { email: res?.user?.email }
+            const res = await axiosSecure.post('/jwt', logUser);
+            localStorage.setItem('access-token', res?.data?.token);
             toast.success('LogIn SuccessFully')
             navigate("/");
         }
@@ -31,6 +41,9 @@ const SocialLogIn = () => {
     const handelGitHubLigIn = async () => {
         const res = await githubLogin();
         if (res?.user?.email) {
+            const logUser = { email: res?.user?.email }
+            const res = await axiosSecure.post('/jwt', logUser);
+            localStorage.setItem('access-token', res?.data?.token);
             toast.success('LogIn SuccessFully')
             navigate("/");
         }
