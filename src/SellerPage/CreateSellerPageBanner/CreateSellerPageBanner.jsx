@@ -3,15 +3,16 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 // import useSeller from "../../hooks/useSeller";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useSeller from "../../hooks/useSeller";
 
 
 const CreateSellerPageBanner = () => {
 
     const [axiosSecure] = useAxiosSecure();
     const [toggolForm, setToggolForm] = useState(true);
-    const [logEmail, setLogEmail] = useState();
-    // const [isSeller, isSellerLoading] = useSeller('');
     const navigate = useNavigate();
+    const [sellerData, isSellerLoading, refetch] = useSeller();
+
 
     const handleUpdateSeller = async (e) => {
         e.preventDefault()
@@ -27,10 +28,10 @@ const CreateSellerPageBanner = () => {
             try {
                 // Send a POST request to the Express.js server
                 const response = await axiosSecure.post('/sellerRegister', { sellerRegister });
-                console.log(response)
                 // Check for success status in the response
                 if (response.data.success) {
                     toast.success('Profile updated successfully');
+                    setToggolForm(true);
                     // You can perform additional actions based on the success response if needed
                 } else {
                     toast.error(response.data.error || 'Email Already Use');
@@ -58,10 +59,12 @@ const CreateSellerPageBanner = () => {
 
         try {
             const res = await axiosSecure.post('/auth/login', { email, password });
-
+            console.log(res)
             if (res?.status === 200) {
                 const tokenRes = await axiosSecure.post('/jwt');
-                localStorage.setItem('sellerToken', tokenRes.data.token);
+                localStorage.setItem('sellerToken', tokenRes?.data?.token);
+                localStorage.setItem('userId', res?.data?.userId);
+                refetch()
             }
         } catch (error) {
             console.error('Error during login:', error);
@@ -70,13 +73,13 @@ const CreateSellerPageBanner = () => {
     };
 
 
-    // useEffect(() => {
-    //     // When isSeller changes, check if it is true and navigate to the seller profile
-    //     if (isSeller && !isSellerLoading) {
-    //         navigate('/sellerLayOutCenter/sellerProfile');
-    //     }
-    // }, [isSeller, isSellerLoading, navigate]);
-
+    console.log(sellerData)
+    useEffect(() => {
+        // When isSeller changes, check if it is true and navigate to the seller profile
+        if (sellerData?.roll?.seller === true && !isSellerLoading) {
+            navigate('/sellerLayOutCenter/sellerProfile');
+        }
+    }, [sellerData?.roll?.seller, isSellerLoading, navigate]);
 
 
     return (
@@ -179,7 +182,7 @@ const CreateSellerPageBanner = () => {
                                             />
                                         </div>
                                         <div className="form-control mt-6">
-                                            <button type="submit" className="btn btn-primary">LogIn</button>
+                                            <button type="submit" className="btn btn-primary">{isSellerLoading ? "Loading.." : "LogIn"}</button>
                                         </div>
                                         <small onClick={() => setToggolForm(!toggolForm)} className="cursor-pointer link">Become a New seller</small>
                                     </form>
