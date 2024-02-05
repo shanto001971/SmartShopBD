@@ -2,9 +2,9 @@ import toast, { Toaster } from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 // import useSeller from "../../hooks/useSeller";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useSeller from "../../hooks/useSeller";
-
+import { FaHome } from "react-icons/fa";
 
 const CreateSellerPageBanner = () => {
 
@@ -77,7 +77,7 @@ const CreateSellerPageBanner = () => {
     useEffect(() => {
         // When isSeller changes, check if it is true and navigate to the seller profile
         if (sellerData?.roll?.seller === true && !isSellerLoading) {
-            navigate('/sellerLayOutCenter/sellerProfile');
+            navigate('/sellerLayOutCenter');
         }
     }, [sellerData?.roll?.seller, isSellerLoading, navigate]);
 
@@ -88,6 +88,7 @@ const CreateSellerPageBanner = () => {
 
                 <Toaster />
                 <div className="lg:w-[50%]">
+                    <Link to={`/`}><button className="flex justify-center items-center gap-2 p-3 lg:ml-5"><FaHome /> Home</button></Link>
                     <div className="p-10">
                         <h1 className="text-5xl font-medium text-[#446AF9]">{`Bangladesh's #1 `}<br /> Marketplace</h1>
                         <p className="text-2xl ">Create account in 5 minutes and reach millions of customers today!</p>

@@ -5,7 +5,7 @@ import ReactStars from "react-rating-stars-component";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Code } from "react-content-loader";
-
+import "./BannerSlider.css"
 
 
 
@@ -75,13 +75,13 @@ const BannerSlider = ({ productData }) => {
                     >
                         <div style={{ backdropFilter: 'blur(50px)', position: 'relative', zIndex: 1 }} className="lg:flex justify-between rounded-md p-5">
                             <div className="flex flex-col lg:gap-4  px-5 lg:mt-32 ">
-                                <h1 className="lg:text-4xl text-base uppercase font-bold">{productTitle.slice(0, 46)}...</h1>
-                                <p>
+                                <h1 className="lg:text-4xl text-base uppercase font-bold name">{productTitle.slice(0, 46)}...</h1>
+                                <p className="dis">
                                     {
                                         product?.productDiscretion
                                     }
                                 </p>
-                                <div className="lg:flex items-center gap-3">
+                                <div className="lg:flex items-center gap-3 dis">
                                     <p className="lg:text-2xl lg:mt-3">Price: {newPrice} <del className="lg:text-lg">Tk: {oldPrice}</del></p>
                                     <ReactStars
                                         count={5}
@@ -91,7 +91,7 @@ const BannerSlider = ({ productData }) => {
                                 </div>
 
                                 <Link to={`/PlaceOrderPage/${product._id}`}>
-                                    <div className="flex items-center gap-3">
+                                    <div className="flex items-center gap-3 b-ton">
                                         <button className="lg:w-[35%] inline-flex overflow-hidden text-white bg-gray-900 rounded group">
                                             <span className="px-3.5 py-2 text-white bg-purple-500 group-hover:bg-purple-600 flex items-center justify-center">
                                                 <svg className="w-6 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
@@ -117,7 +117,7 @@ const BannerSlider = ({ productData }) => {
                                 >
                                     {productData?.slice(0, 10).map((singleData) => (
                                         <div key={singleData?._id} className=" bg-opacity-40 rounded-full w-[80%] h-[60%] mx-auto">
-                                            <img style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="rounded-full" src={singleData?.productsImage} />
+                                            <img style={{ boxShadow: '8px 4px 8px rgba(0, 0, 0, 0.1)' }} className="rounded-full name" src={singleData?.productsImage} />
                                         </div>
                                     ))}
                                 </Carousel>

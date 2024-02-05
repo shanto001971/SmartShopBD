@@ -21,7 +21,7 @@ const Navbar = () => {
     const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate()
 
-   
+
 
 
 
@@ -34,7 +34,7 @@ const Navbar = () => {
             });
 
             setSearchData(response.data);
-            setSearchQuery('');
+            // setSearchQuery('');
 
             if (response.data.length > 0) {
                 navigate('/search-results');
@@ -44,7 +44,7 @@ const Navbar = () => {
         }
     };
 
-   
+
     return (
         <div className="flex flex-col bg-black">
             {/* Navbar */}
@@ -55,7 +55,7 @@ const Navbar = () => {
                     </div>
                 </Link>
                 <div className="w-[50%]">
-                    <form className="flex items-center w-full relative" onSubmit={handleSearch} >
+                    <form className="flex items-center w-full relative" onChange={handleSearch} >
                         <input
                             className="bg-white p-2 rounded-s-2xl lg:rounded-s-lg w-full"
                             type="text"

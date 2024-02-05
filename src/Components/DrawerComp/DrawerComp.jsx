@@ -48,7 +48,7 @@ const DrawerComp = () => {
                     </div>
                 </Link>
 
-                <Link to={`/sellerLayOutCenter`}>
+                <Link to={`/sellerLogIn`}>
                     <div style={{ boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.1)' }} className="p-2 border rounded-md">
                         <button className='cursor-pointer flex items-center gap-2 font-medium'><MdOutlineSell /> <h6>Become a Seller</h6></button>
                     </div>

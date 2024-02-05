@@ -3,7 +3,7 @@
 const SellerProfile = () => {
     return (
         <div>
-            this is seller profile
+            this i seller 
         </div>
     );
 };

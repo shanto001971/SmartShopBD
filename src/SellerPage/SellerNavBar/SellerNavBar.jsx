@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import useSeller from "../../hooks/useSeller";
-
+import { CiMenuFries } from "react-icons/ci";
 
 const SellerNavBar = () => {
     const navigate = useNavigate()
@@ -11,13 +11,13 @@ const SellerNavBar = () => {
     const handleLogOut = () => {
         localStorage.removeItem('sellerToken');
         localStorage.removeItem('userId');
-        navigate('/sellerLayOutCenter');
+        navigate('/sellerLogIn');
 
     }
 
 
     return (
-        <div className="navbar bg-slate-200 lg:px-10">
+        <div className="navbar bg-slate-200 px-5 lg:px-5">
             <div className="flex-1">
                 <Link to="/">
                     <div className="lg:mx-10">
@@ -26,13 +26,16 @@ const SellerNavBar = () => {
                 </Link>
             </div>
             {
-                sellerData && (<div className="flex-none gap-2">
+                sellerData && (<div className="flex-none gap-3">
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                             </div>
                         </div>
+
+
+
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                             <li>
                                 <a className="justify-between">
@@ -44,6 +47,7 @@ const SellerNavBar = () => {
                             <button onClick={() => handleLogOut()}><li><a>Logout</a></li></button>
                         </ul>
                     </div>
+                    <label htmlFor="my-drawer-2" className="lg:hidden drawer-button"><CiMenuFries /></label>
                 </div>)
             }
         </div>

@@ -78,13 +78,14 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/sellerLayOutCenter",
-        element: <CreateSeller />
-      },
-      {
-        path: "/sellerLayOutCenter/sellerProfile",
         element: <SellerProfile />
       },
     ]
 
-  }
+  },
+  {
+    path: "/sellerLogIn",
+    element: <CreateSeller />
+  },
+  
 ]);
