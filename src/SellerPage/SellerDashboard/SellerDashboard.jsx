@@ -133,7 +133,6 @@ const SellerDashboard = () => {
 
                 </div>
 
-
             </div>
             <div className="bg-green-500 w-full lg:w-[30%] rounded-2xl hidden lg:block">
                 qrwe
