@@ -20,7 +20,7 @@ const DrawerComp = () => {
         LogOutUser()
             .then(() => {
                 localStorage.removeItem('access-token');
-             })
+            })
             .catch(() => { })
     }
 
@@ -58,15 +58,15 @@ const DrawerComp = () => {
                     <button className='cursor-pointer flex items-center gap-2 font-medium'><LuHelpCircle /> <h6> Help & Support</h6></button>
                 </div>
 
-                <Link to={"/logIn"}>
-                    <div style={{ boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.1)' }} className="p-2 border rounded-md">
-                        {
-                            user ?
-                                <button className='cursor-pointer flex items-center gap-2' onClick={() => handelLogOut()}><CiLogout /> LogOut</button> :
-                                <button className='cursor-pointer flex items-center gap-2'><CiLogin /> Log In</button>
-                        }
-                    </div>
-                </Link>
+
+                <div style={{ boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.1)' }} className="p-2 border rounded-md">
+                    {
+                        user ?
+                            <button className='cursor-pointer flex items-center gap-2' onClick={() => handelLogOut()}><CiLogout /> LogOut</button> :
+                            <Link to={"/logIn"}><button className='cursor-pointer flex items-center gap-2'><CiLogin /> Log In</button></Link>
+                    }
+                </div>
+
             </div>
         </Drawer>
     );

@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import SellerNavBar from "../SellerNavBar/SellerNavBar";
 import { MdOutlineSpeed } from "react-icons/md";
 import { FiTruck } from "react-icons/fi";
@@ -8,34 +8,44 @@ import { LuPieChart } from "react-icons/lu";
 import { IoMdTrendingUp, IoIosContact } from "react-icons/io";
 import { GrContact } from "react-icons/gr";
 import { FaMoneyBills } from "react-icons/fa6";
+import { CiLogout } from "react-icons/ci";
 
 const SellerLayOut = () => {
+    const navigate = useNavigate()
+
+    const handleLogOut = () => {
+        localStorage.removeItem('sellerToken');
+        localStorage.removeItem('userId');
+        navigate('/sellerLogIn');
+
+    };
+
+
     return (
         <div className="">
             <SellerNavBar />
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content p-5">
+                <div className="drawer-content p-3">
                     {/* Page content here */}
                     <Outlet />
 
                 </div>
                 <div className="drawer-side ">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-64  bg-base-200 text-base-content">
+                    <ul className="menu p-4 w-64 h-screen lg:h-auto  bg-base-200 text-base-content rounded-b-md">
                         {/* Sidebar content here */}
                         <li className=""><Link><MdOutlineSpeed /> Dashboard</Link></li>
                         <li className=""><Link><FiTruck /> My Orders</Link></li>
-                        <li className=""><Link><FaRegCompass /> Explore</Link></li>
-                        <li className=""><Link><IoTrophyOutline /> Featured Products</Link></li>
                         <li className=""><Link> <IoSettingsOutline />Settings</Link></li>
                         <li className=""><Link><LuPieChart />Chart</Link></li>
                         <li className=""><Link><IoMdTrendingUp />Trends</Link></li>
                         <li className=""><Link><GrContact />Contact</Link></li>
                         <li className=""><Link><FaMoneyBills />Billing</Link></li>
-                        <li className=""><Link><IoIosContact />Settings</Link></li>
+                        <li onClick={() => handleLogOut()} className=""><Link><CiLogout /> LogOut</Link></li>
+
                     </ul>
-                    <div className="w-[90%] bg-green-300 h-48 mt-5 rounded-lg text-center mx-auto">
+                    <div className="w-[90%] bg-green-300 h-48 mt-5  rounded-lg text-center mx-auto hidden lg:block">
                         <button className="font-bold text-4xl px-3 bg-green-300 border border-white rounded-full -mt-32">?</button>
                         <div className="mt-5">
                             <h1 className="font-medium">Help Center</h1>

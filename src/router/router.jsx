@@ -14,7 +14,7 @@ import CategoryPage from "../CategoryPage/CategoryPage";
 import SearchResultsPage from "../SearchResultsPage/SearchResultsPage";
 import CreateSeller from "../SellerPage/CreateSeller/CreateSeller";
 import SellerLayOut from "../SellerPage/SellerLayOut/SellerLayOut";
-import SellerProfile from "../SellerPage/SellerProfile/SellerProfile";
+import SellerDashboard from "../SellerPage/SellerDashboard/SellerDashboard";
 
 
 export const router = createBrowserRouter([
@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/sellerLayOutCenter",
-        element: <SellerProfile />
+        element: <SellerDashboard/>
       },
     ]
 
