@@ -36,7 +36,7 @@ const SellerNavBar = () => {
             console.error(error);
         }
     };
-
+    // console.log(sellerData)
 
     return (
         <div className="navbar bg-slate-200 px-5 lg:px-5 flex gap-2">
@@ -61,7 +61,8 @@ const SellerNavBar = () => {
             </div>
 
             {
-                sellerData && (<div className="flex-none gap-3">
+                sellerData && (<div className=" gap-3">
+
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
@@ -69,8 +70,7 @@ const SellerNavBar = () => {
                             </div>
                         </div>
 
-                        <div className="w-[50%]">
-                        </div>
+
 
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                             <li>
@@ -82,6 +82,10 @@ const SellerNavBar = () => {
                             <li><a>Settings</a></li>
                             <button onClick={() => handleLogOut()}><li><a>Logout</a></li></button>
                         </ul>
+                    </div>
+                    <div className="w-[50%] hidden lg:block">
+                        <p className="font-semibold">{sellerData.email}</p>
+                        <small>{sellerData.roll.seller === true&& 'Seller'}</small>
                     </div>
                     <label htmlFor="my-drawer-2" className="lg:hidden drawer-button"><CiMenuFries /></label>
                 </div>)

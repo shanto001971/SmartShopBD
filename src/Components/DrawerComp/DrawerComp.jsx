@@ -16,6 +16,9 @@ import { LuHelpCircle } from "react-icons/lu";
 
 const DrawerComp = () => {
     const { isOpen, toggleDrawer, LogOutUser, user } = useContext(AuthContext);
+
+
+
     const handelLogOut = () => {
         LogOutUser()
             .then(() => {
@@ -23,6 +26,28 @@ const DrawerComp = () => {
             })
             .catch(() => { })
     }
+
+    function checkTokenExpiration() {
+        const token = localStorage.getItem('access-token');
+        if (token) {
+            try {
+                const tokenData = JSON.parse(atob(token.split('.')[1])); // Decode token payload
+                const expirationTime = tokenData.exp * 1000; // Convert expiration time to milliseconds
+
+                // Calculate the expiration time by adding 1 hour (3600 seconds) in milliseconds
+                const expirationThreshold = Date.now() + 3600 * 1000;
+
+                if (expirationThreshold >= expirationTime) {
+                    // Token has expired
+                    localStorage.removeItem('access-token');
+                    handelLogOut()
+                }
+            } catch (error) {
+                console.error('Error decoding or parsing token:', error);
+            }
+        }
+    }
+    setInterval(checkTokenExpiration, 60000);
 
     return (
         <Drawer

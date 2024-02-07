@@ -1,10 +1,9 @@
-import { GrLineChart } from "react-icons/gr";
 import { Area, Bar, CartesianGrid, ComposedChart, Legend, Line, Tooltip, XAxis, YAxis } from "recharts";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
-import { GiSellCard } from "react-icons/gi";
-import { MdOutlineAttachMoney } from "react-icons/md";
-import { FiArrowRightCircle } from "react-icons/fi";
+import { MdOutlinePhonelink } from "react-icons/md";
+import { FaShirt } from "react-icons/fa6";
+import { IoBagCheckOutline, IoHomeOutline } from "react-icons/io5";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -23,8 +22,45 @@ const SellerDashboard = () => {
     ];
 
     return (
-        <div className="lg:flex gap-4">
-            <div className="w-full h-screen">
+        <div className="lg:flex gap-4 px-3">
+            <div className="w-full lg:h-screen">
+
+                <div className="lg:stats shadow mx-auto my-5 w-full">
+
+                    <div className="stat w-full">
+                        <div className="stat-figure text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <div className="stat-title">Total Visitors</div>
+                        <div className="stat-value text-primary">25.6K</div>
+                        <div className="stat-desc">21% more than last month</div>
+                    </div>
+
+                    <div className="stat w-full">
+                        <div className="stat-figure text-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div className="stat-title">Total Orders</div>
+                        <div className="stat-value text-secondary">2.6M</div>
+                        <div className="stat-desc">21% more than last month</div>
+                    </div>
+
+                    <div className="stat w-full">
+                        <div className="stat-figure text-secondary">
+                            <div className="avatar online">
+                                <div className="w-16 rounded-full">
+                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="stat-value">86%</div>
+                        <div className="stat-title">Tasks done</div>
+                        <div className="stat-desc text-secondary">31 tasks remaining</div>
+                    </div>
+
+                </div>
+
+
                 <div className="lg:flex gap-4 w-full lg:h-[50%]">
                     <div className="w-full  bg-slate-700 rounded-2xl ">
                         <div className="hidden lg:block">
@@ -69,73 +105,172 @@ const SellerDashboard = () => {
                             </Swiper>
                         </div>
                     </div>
-                    <div className="lg:w-[40%]  rounded-2xl mt-5 lg:mt-0">
-                        <div className="w-full h-20 bg-gradient-to-r from-blue-500 to-green-500 rounded-t-2xl text-center p-3 flex justify-center items-center gap-3">
-                            <GiSellCard className="w-10 h-10" />
-                            <div className="">
-                                <h1 className="font-semibold">Total sell</h1>
-                                <h3 className="font-bold text-2xl"> = 3.5k</h3>
+                    <div className="lg:w-[40%] lg:flex-col rounded-2xl mt-5 lg:mt-0">
+                        <div className="stat">
+                            <div className="stat-title">Account balance</div>
+                            <div className="stat-value">$89,400</div>
+                            <div className="stat-actions">
+                                <button className="btn btn-sm btn-success">Add funds</button>
                             </div>
                         </div>
-                        <div className="w-full h-[70%] bg-gradient-to-r from-yellow-500 to-pink-500 rounded-b-2xl mt-4">
-                            <div className="flex justify-center items-center w-full h-16 bg-gradient-to-r from-blue-500 to-green-500 rounded-b-2xl">
-                                <h1 className="flex justify-center items-center font-semibold"><MdOutlineAttachMoney className="w-8 h-8" /> Total Earn = 565000K</h1>
-                            </div>
 
-                            <div className="flex justify-evenly items-center">
-                                <div className="p-5 mt-10">
-                                    <p className="">Total Time</p>
-                                    <h1 className="font-bold">748 hr</h1>
-                                    <p className="">Fab</p>
-                                </div>
-                                <FiArrowRightCircle className="w-5 h-5 mt-8" />
+                        <div className="stat">
+                            <div className="stat-title">Current balance</div>
+                            <div className="stat-value">$89,400</div>
+                            <div className="stat-actions">
+                                <button className="btn btn-sm">Withdrawal</button>
+                                <button className="btn btn-sm">deposit</button>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
 
-                <div className="w-full lg:flex gap-3 p-5 mt-5">
-
-                    <div className="  bg-base-100 shadow-xl rounded-2xl relative">
-                        <figure><img className="rounded-2xl" src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                        <div className="card-body">
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                        </div>
-                        <div className="w-12 h-12 bg-slate-700 rounded-full absolute -top-6 left-[40%] border flex justify-center items-center">
-                            <GrLineChart className="w-full text-green-600" />
-
-                        </div>
+                <div className=" shadow-2xl w-full mt-5 p-3">
+                    <div className="w-full flex justify-between my-5">
+                        <h3 className="font-semibold">Recent Order</h3>
+                        <small className="link text-blue-700">See More</small>
                     </div>
-                    <div className="  bg-base-100 shadow-xl rounded-2xl relative">
-                        <figure><img className="rounded-2xl" src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                        <div className="card-body">
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                        </div>
-                        <div className="w-12 h-12 bg-slate-700 rounded-full absolute -top-6 left-[40%] border flex justify-center items-center">
-                            <GrLineChart className="w-full text-green-600" />
-
-                        </div>
+                    <div className="overflow-x-auto">
+                        <table className="table table-xs">
+                            <thead>
+                                <tr>
+                                    <th>Products Name</th>
+                                    <th>Status</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Xiaomi Mi 11 Ultra 64Gb</td>
+                                    <td>Complete</td>
+                                    <td>2</td>
+                                    <td>25000 Tk</td>
+                                </tr>
+                                <tr>
+                                    <td>Xiaomi Mi 11 Ultra 64Gb</td>
+                                    <td>Complete</td>
+                                    <td>2</td>
+                                    <td>25000 Tk</td>
+                                </tr>
+                                <tr>
+                                    <td>Xiaomi Mi 11 Ultra 64Gb</td>
+                                    <td>Complete</td>
+                                    <td>2</td>
+                                    <td>25000 Tk</td>
+                                </tr>
+                                <tr>
+                                    <td>Xiaomi Mi 11 Ultra 64Gb</td>
+                                    <td>Complete</td>
+                                    <td>2</td>
+                                    <td>25000 Tk</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div className="  bg-base-100 shadow-xl rounded-2xl relative">
-                        <figure><img className="rounded-2xl" src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                        <div className="card-body">
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                        </div>
-                        <div className="w-12 h-12 bg-slate-700 rounded-full absolute -top-6 left-[40%] border flex justify-center items-center">
-                            <GrLineChart className="w-full text-green-600" />
-
-                        </div>
-                    </div>
-
 
                 </div>
 
             </div>
-            <div className="bg-green-500 w-full lg:w-[30%] rounded-2xl hidden lg:block">
-                qrwe
+            <div className=" w-full lg:w-[30%] rounded-2xl">
+                <div className="stats shadow w-full  mt-5">
+                    <div className="stat mx-auto">
+                        <div className="stat-title">Total Page Views</div>
+                        <div className="stat-value">89,400</div>
+                        <div className="stat-desc">21% more than last month</div>
+                    </div>
+                </div>
+
+                <div className="mt-5 shadow-md p-5 rounded-2xl">
+                    <p className="font-semibold my-">Top Category</p>
+                    <div className="flex items-center gap-2 mt-2">
+                        <div className="bg-teal-500 p-3 rounded-full text-white">
+                            <MdOutlinePhonelink />
+                        </div>
+                        <div className="">
+                            <p className="font-semibold">HandPhone&Tablet</p>
+                            <small className="text-xs">83K</small>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-2 mt-2 ">
+                        <div className="bg-orange-400 p-3 rounded-full text-white">
+                            <FaShirt />
+                        </div>
+                        <div className="">
+                            <p className="font-semibold">Fashion</p>
+                            <small className="text-xs">133K</small>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-2 mt-2">
+                        <div className="bg-cyan-600 p-3 rounded-full text-white">
+                            <IoHomeOutline />
+                        </div>
+                        <div className="">
+                            <p className="font-semibold">Home Furniture</p>
+                            <small className="text-xs">53K</small>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-2 mt-2">
+                        <div className="bg-orange-900 p-3 rounded-full text-white">
+                            <IoBagCheckOutline />
+                        </div>
+                        <div className="">
+                            <p className="font-semibold">Cosmetic&Jewelry</p>
+                            <small className="text-xs">144K</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mt-5 shadow-md p-5 rounded-2xl">
+                    <h1 className="font-medium">Customer List</h1>
+
+                    <div className="flex gap-2 mt-2">
+                        <div role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            </div>
+                        </div>
+                        <div className="">
+                                <h4 className="font-semibold">Abram Vaccaro</h4>
+                                <small>abram.vac@gmail.com</small>
+                        </div>
+                    </div>
+                    <div className="flex gap-2 mt-2">
+                        <div role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            </div>
+                        </div>
+                        <div className="">
+                                <h4 className="font-semibold">Abram Vaccaro</h4>
+                                <small>abram.vac@gmail.com</small>
+                        </div>
+                    </div>
+                    <div className="flex gap-2 mt-2">
+                        <div role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            </div>
+                        </div>
+                        <div className="">
+                                <h4 className="font-semibold">Abram Vaccaro</h4>
+                                <small>abram.vac@gmail.com</small>
+                        </div>
+                    </div>
+                    <div className="flex gap-2 mt-2">
+                        <div role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            </div>
+                        </div>
+                        <div className="">
+                                <h4 className="font-semibold">Abram Vaccaro</h4>
+                                <small>abram.vac@gmail.com</small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
