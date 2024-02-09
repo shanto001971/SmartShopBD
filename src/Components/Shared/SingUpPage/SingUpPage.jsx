@@ -44,7 +44,7 @@ const SingUpPage = () => {
 
     return (
         <div className="h-[100vh] lg:p-20">
-            <div className="lg:flex justify-around h-[80vh] shadow-2xl lg:rounded-3xl">
+            <div className="lg:flex justify-around h-[80vh] shadow-2xl rounded-3xl p-2 mt-5 lg:p-0 lg:mt-0">
                 <div className="w-full flex justify-center items-center rounded-s-2xl bg-slate-100">
                     <form onSubmit={handleSignUp} className="lg:w-[60%] w-full p-10 lg:p-0">
                         <SocialLogIn/>
@@ -70,7 +70,7 @@ const SingUpPage = () => {
                     </form>
                 </div>
 
-                <div className="mt- lg:mt-0 p-14 lg:p-0 w-full flex justify-center items-center bg-[#FE492E] lg:rounded-e-3xl">
+                <div className=" lg:mt-0 p-14 lg:p-0 w-full flex justify-center items-center bg-[#FE492E] lg:rounded-e-3xl">
                     <div className="text-white">
                         <h1 className="text-3xl">Welcome Back</h1>
                         <p>
