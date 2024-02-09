@@ -1,4 +1,4 @@
-import { Area, Bar, CartesianGrid, ComposedChart, Legend, Line, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, Bar, CartesianGrid, ComposedChart, Line, Tooltip, XAxis } from "recharts";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { MdOutlinePhonelink } from "react-icons/md";
@@ -23,7 +23,7 @@ const SellerDashboard = () => {
 
     return (
         <div className="lg:flex gap-4 px-3">
-            <div className="w-full lg:h-screen">
+            <div className="w-full">
 
                 <div className="lg:stats shadow mx-auto my-5 w-full">
 
@@ -61,8 +61,8 @@ const SellerDashboard = () => {
                 </div>
 
 
-                <div className="lg:flex gap-4 w-full lg:h-[50%]">
-                    <div className="w-full  bg-slate-700 rounded-2xl ">
+                <div className="lg:flex gap-4 w-full ">
+                    <div className="w-full rounded-2xl ">
                         <div className="hidden lg:block">
                             <ComposedChart width={566} height={310} data={data}>
                                 <XAxis dataKey="name" />
@@ -74,7 +74,7 @@ const SellerDashboard = () => {
                             </ComposedChart>
                         </div>
 
-                        <div className="block lg:hidden">
+                        <div className="block lg:hidden ">
                             <Swiper
                                 spaceBetween={30}
                                 pagination={{
@@ -127,8 +127,8 @@ const SellerDashboard = () => {
                     </div>
                 </div>
 
-                <div className=" shadow-2xl w-full mt-5 p-3">
-                    <div className="w-full flex justify-between my-5">
+                <div className=" shadow-2xl w-full p-3 mt-5">
+                    <div className="w-full flex justify-between">
                         <h3 className="font-semibold">Recent Order</h3>
                         <small className="link text-blue-700">See More</small>
                     </div>

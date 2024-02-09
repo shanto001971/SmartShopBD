@@ -36,7 +36,7 @@ const Home = () => {
 
     // http://localhost:5000
 
-    // console.log(data)
+    console.log(productData)
 
     return (
         <div className="">

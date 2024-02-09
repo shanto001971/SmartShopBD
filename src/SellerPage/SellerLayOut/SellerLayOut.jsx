@@ -1,8 +1,8 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import SellerNavBar from "../SellerNavBar/SellerNavBar";
 import { MdOutlineSpeed } from "react-icons/md";
 import { FiTruck } from "react-icons/fi";
-import { IoSettingsOutline,IoCloudUploadOutline } from "react-icons/io5";
+import { IoCloudUploadOutline } from "react-icons/io5";
 import { LuPieChart } from "react-icons/lu";
 import { IoMdTrendingUp } from "react-icons/io";
 import { GrContact } from "react-icons/gr";
@@ -30,18 +30,18 @@ const SellerLayOut = () => {
                     <Outlet />
 
                 </div>
-                <div className="drawer-side ">
+                <div className="drawer-side z-10">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-64 h-screen lg:h-auto  bg-base-200 text-base-content rounded-b-md gap-1">
                         {/* Sidebar content here */}
-                        <li className=""><NavLink to={`/sellerLayOutCenter`}><MdOutlineSpeed /> Dashboard</NavLink></li>
-                        <li className=""><NavLink><FiTruck /> My Orders</NavLink></li>
-                        <li className=""><NavLink> <IoCloudUploadOutline />Upload Product</NavLink></li>
-                        <li className=""><NavLink><LuPieChart />Chart</NavLink></li>
-                        <li className=""><NavLink><IoMdTrendingUp />Trends</NavLink></li>
-                        <li className=""><NavLink><GrContact />Contact</NavLink></li>
-                        <li className=""><NavLink><FaMoneyBills />Billing</NavLink></li>
-                        <li onClick={() => handleLogOut()} className=""><NavLink><CiLogout /> LogOut</NavLink></li>
+                        <li className=""><Link  to={`/sellerLayOutCenter`}><MdOutlineSpeed /> Dashboard</Link></li>
+                        <li className=""><Link><FiTruck /> My Orders</Link></li>
+                        <li className=""><Link to={`/sellerLayOutCenter/uploadProduct`}> <IoCloudUploadOutline />Upload Product</Link></li>
+                        <li className=""><Link><LuPieChart />Chart</Link></li>
+                        <li className=""><Link><IoMdTrendingUp />Trends</Link></li>
+                        <li className=""><Link><GrContact />Contact</Link></li>
+                        <li className=""><Link><FaMoneyBills />Billing</Link></li>
+                        <li onClick={() => handleLogOut()} className=""><Link><CiLogout /> LogOut</Link></li>
 
                     </ul>
                     <div className="w-[90%] bg-green-300 h-48 mt-5  rounded-lg text-center mx-auto hidden lg:block">
