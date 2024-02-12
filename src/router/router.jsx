@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/cardCollection/:id",
-        element: <PrivateRoute><ProductsChackOut /></PrivateRoute>,
+        element: <ProductsChackOut />,
         loader: () => fetch('http://localhost:5000/cardCollection')
       },
       {

@@ -13,36 +13,42 @@ const UploadProduct = () => {
         category: '',
         oldPrice: '',
         newPrice: '',
-        imageVarient: '',
+        imageVariants: [],
     });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
+    // console.log(selectedImages)
 
-        // Check if the input type is a file
-        if (e.target.type === 'file') {
-            // const selectedImages = Array.from(files); 
-            // Update formData.productsImage with the file object
-            setFormData(prevState => ({
-                ...prevState,
-                [name]: e.target.files[0] // Access the first file object
-            }));
-        } else {
-            // For other input types, update formData normally
-            setFormData(prevState => ({
-                ...prevState,
-                [name]: value
-            }));
-        }
+    const handleInputChange = (e) => {
+        const { name, files } = e.target;
+    if (name === 'productsImage') {
+        // Handle the main product image
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: files[0] // Access the first file object
+        }));
+    } else if (name.startsWith('image')) {
+        // Handle image variants
+        const updatedVariants = [...formData.imageVariants, ...files];
+        setFormData(prevState => ({
+            ...prevState,
+            imageVariants: updatedVariants,
+        }));
+    } else {
+        // For other input types, update formData normally
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: e.target.value
+        }));
+    }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // You can perform further actions here, like sending the form data to a server
-        console.log(formData);
+        // console.log(formData);
     };
 
-    // console.log(formData)
+    console.log(formData)
 
     return (
         <div>
@@ -195,21 +201,64 @@ const UploadProduct = () => {
                                     accept="image/*"
                                     onChange={handleInputChange}
                                     className="w-full max-w-xs"
-                                    multiple 
                                     required
                                 />
                             </label>
-                           
+
+                            <label className="form-control w-full">
+                                <div className="label">
+                                    <span className="label-text">Image 2 *</span>
+                                </div>
+                                <input
+                                    type="file"
+                                    name="image2" // Modify the name attribute
+                                    accept="image/*"
+                                    onChange={handleInputChange}
+                                    className="w-full max-w-xs"
+                                    required
+                                />
+                            </label>
+                            <label className="form-control w-full">
+                                <div className="label">
+                                    <span className="label-text">Image 3 *</span>
+                                </div>
+                                <input
+                                    type="file"
+                                    name="image3" // Modify the name attribute
+                                    accept="image/*"
+                                    onChange={handleInputChange}
+                                    className="w-full max-w-xs"
+                                    required
+                                />
+                            </label>
+                            <label className="form-control w-full">
+                                <div className="label">
+                                    <span className="label-text">Image 4 *</span>
+                                </div>
+                                <input
+                                    type="file"
+                                    name="image4" // Modify the name attribute
+                                    accept="image/*"
+                                    onChange={handleInputChange}
+                                    className="w-full max-w-xs"
+                                    required
+                                />
+                            </label>
                         </div>
-
-
                         <button type="submit" className="btn btn-primary mt-4 w-full">Submit</button>
                     </form>
+                    {/* <div className="flex mt-5  w-full">
+                        {formData.imageVariants.map((image, index) => (
+                           <div className="mx-auto px-5" key={index} >
+                             <img className="w-20 h-20  rounded-md "  src={URL.createObjectURL(image)} alt={`Image ${index + 1}`} />
+                           </div>
+                        ))}
+                    </div> */}
                 </div>
                 <div className="lg:w-[40%] border ">
                     <div className="card w-[80%] bg-base-100 shadow-xl mx-auto lg:mt-5">
                         <figure className="w-full">
-                            <img className="w-full lg:h-48" src={formData?.productsImage ? URL.createObjectURL(formData?.productsImage) : "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"} alt="Shoes" />
+                            <img className="w-full lg:h-56" src={formData?.productsImage ? URL.createObjectURL(formData?.productsImage) : "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"} alt="Shoes" />
                         </figure>
                         <div className="card-body ">
                             <h2 className="lg:card-title font-medium" title={formData?.productTitle}>{formData?.productTitle?.slice(0, 40) || 'Your Product Title'}</h2>
@@ -221,13 +270,6 @@ const UploadProduct = () => {
                             </div>
 
                         </div>
-                    </div>
-
-                    <div className="">
-                        <img src="" alt="" />
-                        <img src="" alt="" />
-                        <img src="" alt="" />
-                        <img src="" alt="" />
                     </div>
                 </div>
             </div>
