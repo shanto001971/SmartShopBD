@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { BsCart } from "react-icons/bs";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const UploadProduct = () => {
+    const [axiosSecure]=useAxiosSecure()
 
     const [formData, setFormData] = useState({
         productsImage: '',
@@ -46,6 +48,7 @@ const UploadProduct = () => {
         e.preventDefault();
         // You can perform further actions here, like sending the form data to a server
         // console.log(formData);
+        axiosSecure.post('/addProduct',formData)
     };
 
     console.log(formData)
