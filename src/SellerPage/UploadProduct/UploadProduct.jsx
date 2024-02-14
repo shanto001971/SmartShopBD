@@ -47,7 +47,6 @@ const UploadProduct = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // You can perform further actions here, like sending the form data to a server
-        // console.log(formData);
         axiosSecure.post('/addProduct',formData)
     };
 
@@ -266,7 +265,7 @@ const UploadProduct = () => {
                         <div className="card-body ">
                             <h2 className="lg:card-title font-medium" title={formData?.productTitle}>{formData?.productTitle?.slice(0, 40) || 'Your Product Title'}</h2>
                             <p>{formData?.productDiscretion || 'Demo Description Like this Experience comfort and style with our soft and comfortable Trouser Joggers for Men. Crafted for leisure and everyday wear'}</p>
-                            <p className="font-semibold">{formData?.shopName || 'Your Shop Name'}</p>
+                            <p className="font-semibold flex-wrap">{formData?.shopName || 'Your Shop Name'}</p>
                             <div className="flex items-center">
                                 <p className="lg:text-2xl">Tk {formData?.newPrice || '00'} <del className="lg:text-lg">TK {formData?.oldPrice || '00'}</del></p>
                                 <BsCart className="w-6 h-6" />
