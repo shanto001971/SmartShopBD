@@ -4,7 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const UploadProduct = () => {
-    const [axiosSecure]=useAxiosSecure()
+    const [axiosSecure] = useAxiosSecure()
 
     const [formData, setFormData] = useState({
         productsImage: '',
@@ -22,35 +22,29 @@ const UploadProduct = () => {
 
     const handleInputChange = (e) => {
         const { name, files } = e.target;
-    if (name === 'productsImage') {
-        // Handle the main product image
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: files[0] // Access the first file object
-        }));
-    } else if (name.startsWith('image')) {
-        // Handle image variants
-        const updatedVariants = [...formData.imageVariants, ...files];
-        setFormData(prevState => ({
-            ...prevState,
-            imageVariants: updatedVariants,
-        }));
-    } else {
-        // For other input types, update formData normally
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: e.target.value
-        }));
-    }
+        if (name === 'productsImage') {
+            // Handle the main product image
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: files[0] // Access the first file object
+            }));
+        } else {
+            // For other input types, update formData normally
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: e.target.value
+            }));
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(formData.productsImage.name)
         // You can perform further actions here, like sending the form data to a server
-        axiosSecure.post('/addProduct',formData)
+        axiosSecure.post('/addProduct', formData)
     };
 
-    console.log(formData)
+    // console.log(formData)
 
     return (
         <div>
@@ -192,7 +186,7 @@ const UploadProduct = () => {
 
 
 
-                        <div className="lg:flex my-4">
+                        {/* <div className="lg:flex my-4">
                             <label className="form-control w-full">
                                 <div className="label">
                                     <span className="label-text">Image 1 *</span>
@@ -246,7 +240,7 @@ const UploadProduct = () => {
                                     required
                                 />
                             </label>
-                        </div>
+                        </div> */}
                         <button type="submit" className="btn btn-primary mt-4 w-full">Submit</button>
                     </form>
                     {/* <div className="flex mt-5  w-full">
