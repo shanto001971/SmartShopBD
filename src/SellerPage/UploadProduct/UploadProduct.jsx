@@ -40,7 +40,6 @@ const UploadProduct = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData.productsImage.name)
-        // You can perform further actions here, like sending the form data to a server
         axiosSecure.post('/addProduct', formData)
     };
 
