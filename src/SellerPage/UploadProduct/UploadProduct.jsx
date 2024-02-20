@@ -18,8 +18,6 @@ const UploadProduct = () => {
         imageVariants: [],
     });
 
-    // console.log(selectedImages)
-
     const handleInputChange = (e) => {
         const { name, files } = e.target;
         if (name === 'productsImage') {
@@ -42,8 +40,6 @@ const UploadProduct = () => {
         console.log(formData.productsImage.name)
         axiosSecure.post('/addProduct', formData)
     };
-
-    // console.log(formData)
 
     return (
         <div>
