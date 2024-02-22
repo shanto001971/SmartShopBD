@@ -5,7 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const UploadProduct = () => {
     const [axiosSecure] = useAxiosSecure()
-
+    const [file, setFile] = useState([]);
     const [formData, setFormData] = useState({
         productsImage: '',
         productTitle: '',
@@ -17,6 +17,16 @@ const UploadProduct = () => {
         newPrice: '',
         imageVariants: [],
     });
+
+    const handleUpload = (e) => {
+        let filesArray = file;
+        if (file) {
+          for (let i = 0; i < file.length; i++) {
+            filesArray.push(e.target.files[i]);
+          }
+        }
+        setFile(filesArray);
+    };
 
     const handleInputChange = (e) => {
         const { name, files } = e.target;
@@ -37,14 +47,14 @@ const UploadProduct = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const form = e.target;
-        const image1 = form.image1.value;
-        const image2 = form.image2.value;
-        const image3 = form.image3.value;
-        const image4 = form.image4.value;
-        const imagevariant = { image1, image2, image3, image4 }
-        console.log(imagevariant)
-        
+        // const form = e.target;
+        // const image1 = form.image1.value;
+        // const image2 = form.image2.value;
+        // const image3 = form.image3.value;
+        // const image4 = form.image4.value;
+        // const imagevariant = { image1, image2, image3, image4 }
+        // console.log(imagevariant)
+
 
         // axiosSecure.post('/addProduct', formData)
     };
@@ -196,53 +206,15 @@ const UploadProduct = () => {
                                 </div>
                                 <input
                                     type="file"
-                                    name="image1" // Modify the name attribute
-                                    accept="image/*"
-                                    onChange={handleInputChange}
+                                    onChange={(e) => handleUpload(e)}
+                                    // ref={fileInputRef}
+                                    multiple
                                     className="w-full max-w-xs"
                                     required
                                 />
                             </label>
 
-                            <label className="form-control w-full">
-                                <div className="label">
-                                    <span className="label-text">Image 2 *</span>
-                                </div>
-                                <input
-                                    type="file"
-                                    name="image2" // Modify the name attribute
-                                    accept="image/*"
-                                    onChange={handleInputChange}
-                                    className="w-full max-w-xs"
-                                    required
-                                />
-                            </label>
-                            <label className="form-control w-full">
-                                <div className="label">
-                                    <span className="label-text">Image 3 *</span>
-                                </div>
-                                <input
-                                    type="file"
-                                    name="image3" // Modify the name attribute
-                                    accept="image/*"
-                                    onChange={handleInputChange}
-                                    className="w-full max-w-xs"
-                                    required
-                                />
-                            </label>
-                            <label className="form-control w-full">
-                                <div className="label">
-                                    <span className="label-text">Image 4 *</span>
-                                </div>
-                                <input
-                                    type="file"
-                                    name="image4" // Modify the name attribute
-                                    accept="image/*"
-                                    onChange={handleInputChange}
-                                    className="w-full max-w-xs"
-                                    required
-                                />
-                            </label>
+
                         </div>
                         <button type="submit" className="btn btn-primary mt-4 w-full">Submit</button>
                     </form>
