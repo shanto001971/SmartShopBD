@@ -199,7 +199,7 @@ const UploadProduct = () => {
 
 
 
-                        <div className="lg:flex my-4">
+                        {/* <div className="lg:flex my-4">
                             <label className="form-control w-full">
                                 <div className="label">
                                     <span className="label-text">Image 1 *</span>
@@ -215,7 +215,7 @@ const UploadProduct = () => {
                             </label>
 
 
-                        </div>
+                        </div> */}
                         <button type="submit" className="btn btn-primary mt-4 w-full">Submit</button>
                     </form>
                     {/* <div className="flex mt-5  w-full">
