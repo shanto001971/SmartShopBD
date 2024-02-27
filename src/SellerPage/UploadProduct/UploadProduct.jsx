@@ -48,10 +48,10 @@ const UploadProduct = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
-        const image1 = form.image1.value;
-        const image2 = form.image2.value;
-        const image3 = form.image3.value;
-        const image4 = form.image4.value;
+        // const image1 = form.image1.value;
+        // const image2 = form.image2.value;
+        // const image3 = form.image3.value;
+        // const image4 = form.image4.value;
         // const imagevariant = { image1, image2, image3, image4 }
         // console.log(imagevariant)
 
