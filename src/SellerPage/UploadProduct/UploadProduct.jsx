@@ -48,7 +48,7 @@ const UploadProduct = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
-        
+        // try to access input fild maltipul image
 
         // axiosSecure.post('/addProduct', formData)
     };
